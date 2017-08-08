@@ -3,14 +3,18 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
-#Main-Content{
+#main-content{
   width: 100vw;
   height: 100vh;
-  
+
   display: flex;
   align-items: center;
   justify-content: center;
 }
-#Search-Summoner{
+#search-summoner{
   width: 500px;
+}
+#search-summoner-button{
+  margin-top: 10px;
+  text-align: center;
 }
