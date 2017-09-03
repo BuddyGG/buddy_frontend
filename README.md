@@ -1,3 +1,3 @@
-# MatchMakr
+# LoLBuddy - Frontend
 
-The official repository for the MatchMakr frontend!
+The official repository for the LoLBuddy frontend!
