@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Dropdown, Input, Form } from 'semantic-ui-react'
+import { Dropdown, Input, Form, Button } from 'semantic-ui-react'
 
 const options = [
   { key: 'euwest', text: 'EU West', value: 'EU West' },
@@ -8,12 +8,17 @@ const options = [
 ]
 
 export const SearchSummoner = (props) => (
-    <Input
-        action={<Dropdown button basic floating options={options} defaultValue='EU West' />}
-        onChange={props.onChange}
-        icon='search'
-        iconPosition='left'
-        placeholder='Find Summoner'
-        fluid
-    />
+    <div id="search-bar">
+        <Input id="test"
+            action={<Dropdown button basic floating options={options} defaultValue='EU West' />}
+            onChange={props.onChange}
+            icon='search'
+            iconPosition='left'
+            placeholder='Find Summoner'
+            fluid
+        />
+        <div id='search-summoner-button'>
+            <Button onClick={this.search} primary>Search</Button>
+        </div>
+    </div>
 )

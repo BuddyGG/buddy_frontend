@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {SearchSummoner} from '../components/SearchSummoner';
+import { SearchSummoner } from '../components/SearchSummoner';
+import SearchForm from '../components/SearchForm';
 import { Header, Button } from 'semantic-ui-react'
 import { SummonerInfo } from '../mocks/SummonerInfo';
 
@@ -22,13 +23,13 @@ class Welcome extends Component {
     render() {
         return (
             <div id="main-content">
+              <div id="width-control">
                 <div id="search-summoner">
-                    <Header as='h1'textAlign='center'>What is your summoner name?</Header>
-                    <SearchSummoner onChange={this.handleChange} />
-                    <div id='search-summoner-button'>
-                      <Button onClick={this.search} primary>Search</Button>
-                    </div>
+                  <Header as='h1'textAlign='center'>What's your summoner name?</Header>
+                  <SearchSummoner onChange={this.handleChange} />                 
                 </div>
+                  <SearchForm/>
+              </div>                
             </div>
         );
     }
