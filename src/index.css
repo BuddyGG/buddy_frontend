@@ -23,8 +23,18 @@ body {
   width: 100%;
 }
 #width-control{
-  width: 900px;
+  width: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+#positions{
+  width: 50%;
+  margin: 0 auto;
+}
+.position-checkbox{
+  padding: 0 !important; /* Used to properly center the checkboxes */
+}
+td{
+  border-top: 0px !important; /* Used to remove the border */
 }

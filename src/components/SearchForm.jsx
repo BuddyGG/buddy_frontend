@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import { Button, Checkbox, Form, Input, Radio, Select, TextArea } from 'semantic-ui-react'
-
-const options = [
-  { key: 'm', text: 'Male', value: 'male' },
-  { key: 'f', text: 'Female', value: 'female' },
-]
+import VoiceChat from './VoiceChat';
+import { Button, Checkbox, Form, Input, Radio, Select, TextArea, Table, Image, Divider, Dropdown } from 'semantic-ui-react'
+import { languages } from '../config/Languages';
+import Top_Icon from '../icons/Top_icon.png';
+import Jungler_Icon from '../icons/Jungler_icon.png';
+import Mid_Icon from '../icons/Mid_icon.png';
+import Bot_Icon from '../icons/Bot_icon.png';
+import Support_Icon from '../icons/Support_icon.png';
 
 class SearchForm extends Component {
   state = {}
@@ -15,22 +17,33 @@ class SearchForm extends Component {
     const { value } = this.state
     return (
       <Form id="search-form">
-        <Form.Group inline id="positions">
-            <Form.Field label='Top' control='input' type='checkbox' />
-            <Form.Field label='Jungle' control='input' type='checkbox' />
-            <Form.Field label='Mid' control='input' type='checkbox' />
-            <Form.Field label='Marksman' control='input' type='checkbox' />
-            <Form.Field label='Support' control='input' type='checkbox' />            
+        <Divider horizontal>Positions</Divider>
+        <Form.Group inline id="positions">  
+          <Table basic="very" compact="very" textAlign="center">
+            <Table.Body>
+              <Table.Row>
+                <Table.Cell><Image centered src={Top_Icon} size='mini'/></Table.Cell>
+                <Table.Cell><Image centered src={Jungler_Icon} size='mini'/></Table.Cell>
+                <Table.Cell><Image centered src={Mid_Icon} size='mini'/></Table.Cell>
+                <Table.Cell><Image centered src={Bot_Icon} size='mini'/></Table.Cell>
+                <Table.Cell><Image centered src={Support_Icon} size='mini'/></Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell><Form.Field className="position-checkbox" control='input' type='checkbox' /></Table.Cell>
+                <Table.Cell><Form.Field className="position-checkbox" control='input' type='checkbox' /></Table.Cell>
+                <Table.Cell><Form.Field className="position-checkbox" control='input' type='checkbox' /></Table.Cell>
+                <Table.Cell><Form.Field className="position-checkbox" control='input' type='checkbox' /></Table.Cell>
+                <Table.Cell><Form.Field className="position-checkbox" control='input' type='checkbox' /></Table.Cell>
+              </Table.Row>
+            </Table.Body>
+          </Table>    
         </Form.Group>
-        <Form.Group inline>
-          <label>Quantity</label>
-          <Form.Field control={Radio} label='One' value='1' checked={value === '1'} onChange={this.handleChange} />
-          <Form.Field control={Radio} label='Two' value='2' checked={value === '2'} onChange={this.handleChange} />
-          <Form.Field control={Radio} label='Three' value='3' checked={value === '3'} onChange={this.handleChange} />
-        </Form.Group>
-        <Form.Field control={TextArea} label='About' placeholder='Tell us more about you...' />
-        <Form.Field control={Checkbox} label='I agree to the Terms and Conditions' />
-        <Form.Field control={Button}>Submit</Form.Field>
+        
+        <Divider horizontal>Languages</Divider>
+        <Dropdown placeholder='State' fluid multiple search selection options={languages} />
+        
+        <Divider horizontal>Voice chat?</Divider>
+        <VoiceChat />
       </Form>
     )
   }
