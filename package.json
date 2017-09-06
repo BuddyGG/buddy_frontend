@@ -19,5 +19,5 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://esow.github.io/matchmakr"
+  "homepage": "https://esow.github.io/LoL_Buddy_Frontend"
 }
