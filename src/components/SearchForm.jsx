@@ -9,12 +9,8 @@ import Bot_Icon from '../icons/Bot_icon.png';
 import Support_Icon from '../icons/Support_icon.png';
 
 class SearchForm extends Component {
-  state = {}
-
-  handleChange = (e, { value }) => this.setState({ value })
 
   render() {
-    const { value } = this.state
     return (
       <Form id="search-form">
         <Divider horizontal>Positions</Divider>
@@ -40,12 +36,12 @@ class SearchForm extends Component {
         </Form.Group>
         
         <Divider horizontal>Languages</Divider>
-        <Dropdown placeholder='State' fluid multiple search selection options={languages} />
+        <Dropdown placeholder='Select one or more languages' fluid multiple search selection options={languages} />
         
         <Divider horizontal>Voice chat?</Divider>
         <VoiceChat />
       </Form>
-    )
+    );
   }
 }
 

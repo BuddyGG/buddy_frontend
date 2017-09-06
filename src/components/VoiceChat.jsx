@@ -6,14 +6,13 @@ export default class VoiceChat extends Component {
   handleChange = (e, { value }) => this.setState({ value })
 
   render() {
-    return (
-      <Form>     
+    return (    
         <Form.Group inline>
           <Form.Field>
             <Checkbox
               radio
               label='YES'
-              name='checkboxRadioGroup'
+              name='voicechatyes'
               value="YES"
               checked={this.state.value === "YES"}
               onChange={this.handleChange}
@@ -23,14 +22,13 @@ export default class VoiceChat extends Component {
             <Checkbox
               radio
               label='NO'
-              name='checkboxRadioGroup'
+              name='voicechatno'
               value="NO"
               checked={this.state.value === "NO"}
               onChange={this.handleChange}
             />
           </Form.Field>
         </Form.Group>
-      </Form>
-    )
+    );
   }
 }
