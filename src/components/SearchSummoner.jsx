@@ -33,7 +33,7 @@ class SearchSummoner extends Component {
         return (
             <div id="search-bar">
                 <Input id="test"
-                    action={<Dropdown button basic floating options={options} defaultValue='EU West' />}
+                    action={<Dropdown button floating options={options} defaultValue='EU West' />}
                     icon='search'
                     onChange={this.handleChange}
                     iconPosition='left'

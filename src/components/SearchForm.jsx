@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import VoiceChat from './VoiceChat';
+import AgeGroup from './AgeGroup';
 import { Button, Checkbox, Form, Input, Radio, Select, TextArea, Table, Image, Divider, Dropdown } from 'semantic-ui-react'
 import { languages } from '../config/Languages';
 import Top_Icon from '../icons/Top_icon.png';
@@ -40,6 +41,11 @@ class SearchForm extends Component {
         
         <Divider horizontal>Voice chat?</Divider>
         <VoiceChat />
+        <Divider horizontal>Age group</Divider>
+        <AgeGroup />
+        <Divider horizontal>Comments</Divider>
+        <Form.TextArea placeholder='Additional information' />
+        <Form.Button primary fluid >Find matches</Form.Button>
       </Form>
     );
   }
