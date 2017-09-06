@@ -8,7 +8,7 @@ class Welcome extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        value: ""
+        value: false
       };
     }
 
@@ -17,7 +17,8 @@ class Welcome extends Component {
     }
 
     handleChange = (event) => {
-      this.setState({value: event.target.value});
+      console.log(this.state.value)
+      this.setState({value: true});
     }
 
     render() {
@@ -28,7 +29,11 @@ class Welcome extends Component {
                   <Header as='h1'textAlign='center'>What's your summoner name?</Header>
                   <SearchSummoner onChange={this.handleChange} />                 
                 </div>
+
+                {this.state.value == true &&
                   <SearchForm/>
+                }
+
               </div>                
             </div>
         );
