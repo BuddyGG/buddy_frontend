@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Dropdown, Input, Form, Button } from 'semantic-ui-react'
+import { GET_SUMMONER_INFO } from '../config/API'
 import { GET_SUMMONER_INFO_MOCK } from '../config/API'
+import { GET_SUMMONER_INFO_MOCK2 } from '../config/API'
 
 const options = [
   { key: 'euwest', text: 'EU West', value: 'EU West' },
@@ -12,13 +14,22 @@ class SearchSummoner extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            value: ""
+            value: "",
+            fetchData: {}
         }
     }
 
     fetchSummoner = () => {
+        var that = this;
         console.log("Getting summoner...")
-        this.props.getSummonerByName(GET_SUMMONER_INFO_MOCK); // TODO: Use fetch
+        //this.props.getSummonerByName(GET_SUMMONER_INFO_MOCK2); // TODO: Use fetch
+        let summonerNameNoSpaces = (this.state.value).replace(/\s/g,''); //Remove spaces from name
+        const url = GET_SUMMONER_INFO + summonerNameNoSpaces;
+        fetch(url).then(function(response) {
+            return response.json();
+        }).then(function(data) {
+            that.props.getSummonerByName(data);
+        })
     }
 
     handleChange = (event) => {
@@ -32,16 +43,18 @@ class SearchSummoner extends Component {
     render() {
         return (
             <div id="search-bar">
-                <Input id="test"
-                    action={<Dropdown button floating options={options} defaultValue='EU West' />}
-                    icon='search'
-                    onChange={this.handleChange}
-                    iconPosition='left'
-                    placeholder='Find Summoner'
-                    fluid
-                />
+                <div id="search-summoner-input">  
+                    <Input
+                        action={<Dropdown button floating options={options} defaultValue='EU West' />}
+                        icon='search'
+                        onChange={this.handleChange}
+                        iconPosition='left'
+                        placeholder='Find Summoner'
+                        fluid
+                    />
+                </div>             
                 <div id='search-summoner-button'>
-                    <Button onClick={this.fetchSummoner} primary>Search</Button>
+                    <Button id="button-height" fluid onClick={this.fetchSummoner} primary>Search</Button>
                 </div>
             </div>
         );

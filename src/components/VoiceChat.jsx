@@ -7,7 +7,7 @@ export default class VoiceChat extends Component {
 
   render() {
     return (    
-        <Form.Group inline>
+        <Form.Group inline className="centered-form-field">
           <Form.Field>
             <Checkbox
               radio

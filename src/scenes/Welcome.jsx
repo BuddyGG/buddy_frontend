@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import SearchSummoner from '../components/SearchSummoner';
 import SearchForm from '../components/SearchForm';
-import MostPlayed from '../components/MostPlayed';
 import WelcomeHeader from '../components/Header';
-import { Header, Button, Segment } from 'semantic-ui-react'
+import SummonerArea from '../components/SummonerArea';
+import { Header, Button, Segment, Image } from 'semantic-ui-react'
 import { SummonerInfo } from '../mocks/SummonerInfo';
+import Logo from "../images/Logo.png"
 
 class Welcome extends Component {
     constructor(props) {
@@ -15,32 +16,43 @@ class Welcome extends Component {
       };
     }
 
-    getSummonerByName = (data) => {   
+    getSummonerByName = (data) => {
+      console.log(data)   
         this.setState({
-            summonerInfo: data,
+            summonerInfo: data.data,
             showSearchForm: true
         }, function(){
-          console.log(this.state)
+
         })
     }
 
     render() {
+        const summonerInfo = this.state.summonerInfo
         const Welcome = this.state.showSearchForm ? 
-                        <Header as='h1'inverted textAlign='center'>Welcome {this.state.summonerInfo.data.name}</Header> :
+                        <Header as='h1'inverted textAlign='center'>Welcome {summonerInfo.name}</Header> :
                         <Header as='h1'inverted textAlign='center'>What's your summoner name?</Header> 
         
-        const Champions = this.state.showSearchForm ? this.state.summonerInfo.data.champions : {};
+        //TODO: Clean up this shit
+        const Champions = this.state.showSearchForm ? summonerInfo.champions : [];
+        const Icon = this.state.showSearchForm ? summonerInfo.icon_id : "";
+        const Name = this.state.showSearchForm ? summonerInfo.name : "";
+        let League = "No leagues to show";
+        if( this.state.showSearchForm && summonerInfo.leagues[0] != null){ //TODO: Optimise this
+          League = summonerInfo.leagues[0].tier + " " + summonerInfo.leagues[0].rank;
+        }
+        
+
 
         return (
               <div id="main-content">
                 <div id="width-control">
                   <div id="search-summoner">
-                    {Welcome}
+                    <Image id="logo" src={Logo} size="medium" centered/>
                     <SearchSummoner getSummonerByName={this.getSummonerByName} />                 
                   </div>
                   {this.state.showSearchForm &&
-                  <Segment raised>
-                    <MostPlayed champ01={Champions[0].name} champ02={Champions[1].name} champ03={Champions[2].name}/>
+                  <Segment inverted raised>
+                    <SummonerArea icon={Icon} champions={Champions} name={Name} league={League}/>                 
                     <SearchForm/>
                   </Segment>              
                   } 

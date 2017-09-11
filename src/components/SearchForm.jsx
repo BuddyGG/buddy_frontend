@@ -13,8 +13,8 @@ class SearchForm extends Component {
 
   render() {
     return (
-      <Form id="search-form">
-        <Divider horizontal>Positions</Divider>
+      <Form inverted id="search-form">
+        <Divider inverted horizontal>Positions</Divider>
         <Form.Group inline id="positions">  
           <Table basic="very" compact="very" textAlign="center">
             <Table.Body>
@@ -36,14 +36,14 @@ class SearchForm extends Component {
           </Table>    
         </Form.Group>
         
-        <Divider horizontal>Languages</Divider>
+        <Divider inverted horizontal>Languages</Divider>
         <Dropdown placeholder='Select one or more languages' fluid multiple search selection options={languages} />
         
-        <Divider horizontal>Voice chat?</Divider>
+        <Divider inverted horizontal>Voice chat?</Divider>
         <VoiceChat />
-        <Divider horizontal>Age group</Divider>
+        <Divider inverted horizontal>Age group</Divider>
         <AgeGroup />
-        <Divider horizontal>Comments</Divider>
+        <Divider inverted horizontal>Comments</Divider>
         <Form.TextArea placeholder='Additional information' />
         <Form.Button primary fluid >Find matches</Form.Button>
       </Form>

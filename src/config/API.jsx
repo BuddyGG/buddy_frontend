@@ -1,4 +1,5 @@
-export const GET_SUMMONER_INFO = "https://lolbuddy.herokuapp.com/api/summoner/euw/HansP";
+export const GET_SUMMONER_INFO = "https://lolbuddy.herokuapp.com/api/summoner/euw/";
+
 
 export const GET_SUMMONER_INFO_MOCK = {
    "data":{
@@ -29,4 +30,27 @@ export const GET_SUMMONER_INFO_MOCK = {
          }
       ]
    }
+}
+
+export const GET_SUMMONER_INFO_MOCK2 = {
+    "data": {
+        "champions":[
+            "Vayne",
+            "Caitlyn",
+            "Ezreal"
+        ],
+        "icon_id": 512,
+        "leagues":[
+            {
+                "type":"RANKED_SOLO_5x5",
+                "tier":"GOLD",
+                "rank":"I"
+            }
+        ],
+        "positions":[
+            "marksman"
+        ],
+        "name":"Lethly",
+        "region": "euw"
+    }
 }
