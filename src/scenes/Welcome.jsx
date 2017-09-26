@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import SearchSummoner from '../components/SearchSummoner';
 import SearchForm from '../components/SearchForm';
-import WelcomeHeader from '../components/Header';
 import SummonerArea from '../components/SummonerArea';
-import { Header, Button, Segment, Image } from 'semantic-ui-react'
+import { Button, Segment, Image, Header } from 'semantic-ui-react';
+import {CustomHeader} from '../components/CustomHeader'
 import { SummonerInfo } from '../mocks/SummonerInfo';
 import Logo from "../images/Logo.png"
 
@@ -28,9 +28,6 @@ class Welcome extends Component {
 
     render() {
         const summonerInfo = this.state.summonerInfo
-        const Welcome = this.state.showSearchForm ? 
-                        <Header as='h1'inverted textAlign='center'>Welcome {summonerInfo.name}</Header> :
-                        <Header as='h1'inverted textAlign='center'>What's your summoner name?</Header> 
         
         //TODO: Clean up this shit
         const Champions = this.state.showSearchForm ? summonerInfo.champions : [];

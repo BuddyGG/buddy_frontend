@@ -3,7 +3,7 @@ import { Image } from 'semantic-ui-react'
 
 
 export function getChampImage(champ){
-    let trimmedChamp = champ.replace(/\s/g,'');
+    let trimmedChamp = champ.replace(/\s/g,''); // Remove whitespace in champ name
     if(trimmedChamp === "Cho'Gath"){ //TODO: Fix
         trimmedChamp = "Chogath"
     }

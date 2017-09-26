@@ -22,7 +22,7 @@ class SearchSummoner extends Component {
     fetchSummoner = () => {
         var that = this;
         console.log("Getting summoner...")
-        //this.props.getSummonerByName(GET_SUMMONER_INFO_MOCK2); // TODO: Use fetch
+        //this.props.getSummonerByName(GET_SUMMONER_INFO_MOCK2);
         let summonerNameNoSpaces = (this.state.value).replace(/\s/g,''); //Remove spaces from name
         const url = GET_SUMMONER_INFO + summonerNameNoSpaces;
         fetch(url).then(function(response) {
