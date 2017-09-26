@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import SearchSummoner from '../components/SearchSummoner';
-import SearchForm from '../components/SearchForm';
-import SummonerArea from '../components/SummonerArea';
+import SearchSummoner from '../components/startpage/SearchSummoner';
+import SearchForm from '../components/startpage/SearchForm';
+import SummonerArea from '../components/startpage/SummonerArea';
 import { Segment, Image, Header } from 'semantic-ui-react';
 import Logo from "../images/Logo.png"
 
@@ -13,8 +13,7 @@ class Welcome extends Component {
       };
     }
 
-    getSummonerByName = (data) => {
-      console.log(data)   
+    getSummonerByName = (data) => {  
         this.setState({
             summonerInfo: data.data,
         })

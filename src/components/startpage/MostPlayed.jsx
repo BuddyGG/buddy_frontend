@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-import { Table, Image, Header } from 'semantic-ui-react'
-import { getChampImage } from '../config/ChampImages';
+import { Table, Header } from 'semantic-ui-react'
+import { getChampImage } from '../../config/ChampImages';
 
 export default class MostPlayed extends Component {
-
-    getChampImage = (champ) => {
-        const champImageUrl = "http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/" + champ + ".png";
-        return <Image centered src={champImageUrl} size='mini'/>;
-    }
 
     render () {
         return (

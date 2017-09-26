@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Select, Input, Form, Button } from 'semantic-ui-react'
-import { GET_SUMMONER_INFO } from '../config/API'
+import { GET_SUMMONER_INFO } from '../../config/API'
 
 const options = [
   { key: 'euwest', text: 'EU West', value: 'euw' },

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import MostPlayed from '../components/MostPlayed';
+import MostPlayed from './MostPlayed';
 import { Grid, Header } from 'semantic-ui-react';
-import { getSummonerIcon } from '../config/ChampImages';
+import { getSummonerIcon } from '../../config/ChampImages';
 
 export default class SummonerArea extends Component {
     render () {
