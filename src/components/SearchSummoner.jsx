@@ -1,30 +1,33 @@
 import React, { Component } from 'react';
-import { Dropdown, Input, Form, Button } from 'semantic-ui-react'
+import { Select, Input, Form, Button } from 'semantic-ui-react'
 import { GET_SUMMONER_INFO } from '../config/API'
-import { GET_SUMMONER_INFO_MOCK } from '../config/API'
-import { GET_SUMMONER_INFO_MOCK2 } from '../config/API'
 
 const options = [
-  { key: 'euwest', text: 'EU West', value: 'EU West' },
-  { key: 'na', text: 'NA', value: 'NA' },
-  { key: 'kr', text: 'KR', value: 'KR' },
+  { key: 'euwest', text: 'EU West', value: 'euw' },
+  { key: 'na', text: 'NA', value: 'na' },
+  { key: 'kr', text: 'KR', value: 'kr' },
 ]
 
 class SearchSummoner extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            value: "",
+            name: "",
+            region: "euw",
             fetchData: {}
         }
     }
 
     fetchSummoner = () => {
         var that = this;
+        
+        const region = this.state.region
+        const name = (this.state.value).replace(/\s/g,''); //Remove spaces from name
+        const url = GET_SUMMONER_INFO + region + "/" + name;
+        
         console.log("Getting summoner...")
-        //this.props.getSummonerByName(GET_SUMMONER_INFO_MOCK2);
-        let summonerNameNoSpaces = (this.state.value).replace(/\s/g,''); //Remove spaces from name
-        const url = GET_SUMMONER_INFO + summonerNameNoSpaces;
+        console.log("Calling: " + url)
+
         fetch(url).then(function(response) {
             return response.json();
         }).then(function(data) {
@@ -32,30 +35,24 @@ class SearchSummoner extends Component {
         })
     }
 
-    handleChange = (event) => {
-        this.setState({
-            value: event.target.value
-        },function(){
-            console.log(this.state.value)
-        });
-    }
+    handleChangeName = (event) => this.setState({value: event.target.value})
+    
+    handleChangeRegion = (e, { value }) => this.setState({ region: value })
 
     render() {
         return (
             <div id="search-bar">
-                <div id="search-summoner-input">  
-                    <Input
-                        action={<Dropdown button floating options={options} defaultValue='EU West' />}
-                        icon='search'
-                        onChange={this.handleChange}
-                        iconPosition='left'
-                        placeholder='Find Summoner'
-                        fluid
-                    />
-                </div>             
-                <div id='search-summoner-button'>
-                    <Button id="button-height" fluid onClick={this.fetchSummoner} primary>Search</Button>
-                </div>
+                <Form onSubmit={this.fetchSummoner}>
+                    <Input fluid type='text' placeholder='Find summoner' action onChange={this.handleChangeName}>
+                        <input />
+                        <Select className="region-select" 
+                                compact 
+                                onChange={this.handleChangeRegion} 
+                                options={options} 
+                                defaultValue={this.state.region}/>
+                        <Button type='submit'>Search</Button>  
+                    </Input>
+                </Form>           
             </div>
         );
     }

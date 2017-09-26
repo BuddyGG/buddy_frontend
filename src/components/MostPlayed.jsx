@@ -3,9 +3,6 @@ import { Table, Image, Header } from 'semantic-ui-react'
 import { getChampImage } from '../config/ChampImages';
 
 export default class MostPlayed extends Component {
-    constructor(props) {
-        super(props)
-    }
 
     getChampImage = (champ) => {
         const champImageUrl = "http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/" + champ + ".png";

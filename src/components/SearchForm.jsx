@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import VoiceChat from './VoiceChat';
 import AgeGroup from './AgeGroup';
-import { Button, Checkbox, Form, Input, Radio, Select, TextArea, Table, Image, Divider, Dropdown } from 'semantic-ui-react'
+import { Form, Table, Image, Divider, Dropdown } from 'semantic-ui-react'
 import { languages } from '../config/Languages';
 import Top_Icon from '../icons/Top_icon.png';
 import Jungler_Icon from '../icons/Jungler_icon.png';

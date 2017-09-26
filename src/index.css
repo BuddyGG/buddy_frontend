@@ -19,7 +19,6 @@ body {
 }
 #search-bar{
   width: 100%;
-  overflow: hidden;
 }
 #search-summoner-input{
   float: left;
@@ -83,4 +82,7 @@ td{
 }
 .centered-form-field{
   width: 100%;
+}
+.region-select{
+  width: 110px;
 }
