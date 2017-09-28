@@ -15,16 +15,13 @@ class SearchForm extends Component {
     this.state = {
       roles: {
         top: false,
-        jungle: false,
+        jun: false,
         mid: false,
         adc: false,
-        support: false
+        sup: false
       },
-      languages: {
-        danish: false,
-        english: false,
-        korean: false
-      },
+      languageOptions: languages,
+      value: [],
       voicechat: false,
       agegroup: "",
       comment: ""
@@ -32,14 +29,49 @@ class SearchForm extends Component {
   }
 
   findMatches = () => {
-    console.log("finding matches..");
+    const {roles,value,voicechat,agegroup,comment} = this.state
+
+    const submitData = {
+      selectedRoles: roles,
+      languages: value,
+      voicechat: voicechat,
+      agegroup: agegroup,
+      comment: comment
+    }
+
+    console.log(submitData)
+    return submitData;
   }
 
-  toggleRoles = (roleIndex) => {
+  toggleRole = (event) => {
+    const target = event.target;
+    const value = target.checked;
+    const name = target.name;
 
+    let roles = this.state.roles;
+    roles[name] = value;
+
+    this.setState({
+      roles: roles
+    });
   }
+
+  handleVoiceChat = (bool) => this.setState({ voicechat: bool })
+
+  handleAgeGroup = (age) => {
+    console.log(age)
+    this.setState({ agegroup: age })
+  }
+
+  handleLanguage = (e, { value }) => {
+    this.setState({value})
+  }
+
+  handleComment = (event) => this.setState({comment: event.target.value});
 
   render() {
+    const { roles, languageOptions, value, voicechat, agegroup, comment } = this.state
+
     return (
       <Form inverted id="search-form" onSubmit={this.findMatches}>
         <Divider inverted horizontal>Positions</Divider>
@@ -54,25 +86,33 @@ class SearchForm extends Component {
                 <Table.Cell><Image centered src={Support_Icon} size='mini'/></Table.Cell>
               </Table.Row>
               <Table.Row>
-                <Table.Cell><Form.Field onChange={this.toggleRoles(0)} className="position-checkbox" control='input' type='checkbox' /></Table.Cell>
-                <Table.Cell><Form.Field onChange={this.toggleRoles(1)} className="position-checkbox" control='input' type='checkbox' /></Table.Cell>
-                <Table.Cell><Form.Field onChange={this.toggleRoles(2)} className="position-checkbox" control='input' type='checkbox' /></Table.Cell>
-                <Table.Cell><Form.Field onChange={this.toggleRoles(3)} className="position-checkbox" control='input' type='checkbox' /></Table.Cell>
-                <Table.Cell><Form.Field onChange={this.toggleRoles(4)} className="position-checkbox" control='input' type='checkbox' /></Table.Cell>
+                <Table.Cell><Form.Field onClick={this.toggleRole} name="top" checked={roles.top} className="position-checkbox" control='input' type='checkbox' /></Table.Cell>
+                <Table.Cell><Form.Field onClick={this.toggleRole} name="jun" checked={roles.jun} className="position-checkbox" control='input' type='checkbox' /></Table.Cell>
+                <Table.Cell><Form.Field onClick={this.toggleRole} name="mid" checked={roles.mid} className="position-checkbox" control='input' type='checkbox' /></Table.Cell>
+                <Table.Cell><Form.Field onClick={this.toggleRole} name="adc" checked={roles.adc} className="position-checkbox" control='input' type='checkbox' /></Table.Cell>
+                <Table.Cell><Form.Field onClick={this.toggleRole} name="sup" checked={roles.sup} className="position-checkbox" control='input' type='checkbox' /></Table.Cell>
               </Table.Row>
             </Table.Body>
           </Table>    
         </Form.Group>
         
         <Divider inverted horizontal>Languages</Divider>
-        <Dropdown placeholder='Select one or more languages' fluid multiple search selection options={languages} />
+        <Dropdown placeholder='Select one or more languages' 
+                  fluid 
+                  multiple 
+                  search 
+                  selection 
+                  options={languageOptions}
+                  value={value}
+                  onChange={this.handleLanguage}
+                  closeOnChange />
         
         <Divider inverted horizontal>Voice chat?</Divider>
-        <VoiceChat />
+        <VoiceChat handleChange={this.handleVoiceChat} value={this.state.voicechat} />
         <Divider inverted horizontal>Age group</Divider>
-        <AgeGroup />
+        <AgeGroup handleChange={this.handleAgeGroup} value={this.state.agegroup}/>
         <Divider inverted horizontal>Comments</Divider>
-        <Form.TextArea placeholder='Additional information' />
+        <Form.TextArea onChange={this.handleComment} value={this.state.comment} placeholder='Additional information' />
         <Button fluid primary type="submit">Find matches</Button>
       </Form>
     );

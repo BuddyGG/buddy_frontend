@@ -2,8 +2,14 @@ import React, { Component } from 'react'
 import { Form, Checkbox } from 'semantic-ui-react'
 
 export default class VoiceChat extends Component {
-  state = {}
-  handleChange = (e, { value }) => this.setState({ value })
+
+  setTrue = () => {
+    this.props.handleChange(true)
+  }
+
+  setFalse = () => {
+    this.props.handleChange(false)
+  }
 
   render() {
     return (    
@@ -12,20 +18,16 @@ export default class VoiceChat extends Component {
             <Checkbox
               radio
               label='YES'
-              name='voicechatyes'
-              value="YES"
-              checked={this.state.value === "YES"}
-              onChange={this.handleChange}
+              checked={this.props.value === true}
+              onChange={this.setTrue}
             />
           </Form.Field>
           <Form.Field>
             <Checkbox
               radio
               label='NO'
-              name='voicechatno'
-              value="NO"
-              checked={this.state.value === "NO"}
-              onChange={this.handleChange}
+              checked={this.props.value === false}
+              onChange={this.setFalse}
             />
           </Form.Field>
         </Form.Group>

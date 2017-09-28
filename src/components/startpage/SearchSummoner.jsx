@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Select, Input, Form, Button } from 'semantic-ui-react'
 import { GET_SUMMONER_INFO } from '../../config/API'
+import { GET_SUMMONER_INFO_MOCK2 } from '../../config/API'
 
 const options = [
   { key: 'euwest', text: 'EU West', value: 'euw' },
@@ -35,6 +36,10 @@ class SearchSummoner extends Component {
         })
     }
 
+    fetchSummonerMock = () => {
+     this.props.getSummonerByName(GET_SUMMONER_INFO_MOCK2);
+    }
+
     handleChangeName = (event) => this.setState({value: event.target.value})
     
     handleChangeRegion = (e, { value }) => this.setState({ region: value })
@@ -42,7 +47,7 @@ class SearchSummoner extends Component {
     render() {
         return (
             <div id="search-bar">
-                <Form onSubmit={this.fetchSummoner}>
+                <Form onSubmit={this.fetchSummonerMock}>
                     <Input fluid type='text' placeholder='Find summoner' action onChange={this.handleChangeName}>
                         <input />
                         <Select className="region-select" 
