@@ -8,6 +8,7 @@ import Jungler_Icon from '../../icons/Jungler_icon.png';
 import Mid_Icon from '../../icons/Mid_icon.png';
 import Bot_Icon from '../../icons/Bot_icon.png';
 import Support_Icon from '../../icons/Support_icon.png';
+import { Socket } from 'phoenix';
 
 class SearchForm extends Component {
   constructor(props) {
@@ -39,8 +40,7 @@ class SearchForm extends Component {
       comment: comment
     }
 
-    console.log(submitData)
-    return submitData;
+    this.props.submit(submitData);
   }
 
   toggleRole = (event) => {
