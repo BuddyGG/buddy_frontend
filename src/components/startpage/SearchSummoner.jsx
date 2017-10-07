@@ -29,7 +29,11 @@ class SearchSummoner extends Component {
         console.log("Getting summoner...")
         console.log("Calling: " + url)
 
-        fetch(url).then(function(response) {
+        const params = {
+            credentials: 'same-origin'
+        }
+
+        fetch(url, params).then(function(response) {
             return response.json();
         }).then(function(data) {
             that.props.getSummonerByName(data);
@@ -47,7 +51,7 @@ class SearchSummoner extends Component {
     render() {
         return (
             <div id="search-bar">
-                <Form onSubmit={this.fetchSummonerMock}>
+                <Form onSubmit={this.fetchSummoner}>
                     <Input fluid type='text' placeholder='Find summoner' action onChange={this.handleChangeName}>
                         <input />
                         <Select className="region-select" 

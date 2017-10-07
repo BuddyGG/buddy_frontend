@@ -2,42 +2,57 @@ import React, { Component } from 'react';
 import SearchSummoner from '../components/startpage/SearchSummoner';
 import SearchForm from '../components/startpage/SearchForm';
 import SummonerArea from '../components/startpage/SummonerArea';
-import { Segment, Image, Header } from 'semantic-ui-react';
-import Logo from "../images/Logo.png"
+import LoLAmigoHeader from '../components/shared/LoLAmigoHeader';
+import { Segment, Header } from 'semantic-ui-react';
 import { Socket } from 'phoenix';
 
 class Welcome extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        playerId: 1337
+        playerId: 1337,
+        summonerInfo: null,
       };
     }
 
     getSummonerByName = (data) => {  
-        this.setState({
-            summonerInfo: data.data,
-        })
+      this.setState({
+          summonerInfo: data.data,
+      })
     }
 
-    connectToSocket = (playerInfo) => {
+    getUserInput = (userInput) => {
+      this.setState(prevState => ({
+        summonerInfo: {
+          ...prevState.summonerInfo,
+          userInfo: userInput
+        }
+      }), function(){
+        this.connectToSocket()
+      })     
+    }
+
+    connectToSocket = () => {
       // const token = JSON.parse(localStorage.getItem('token'));
 
-      const socket = new Socket("ws://lolbuddy.herokuapp.com/socket", {
-        logger: (kind, msg, data) => { console.log(`${kind}: ${msg}`, data); }
-      });
-      console.log(socket);
+      const socket = new Socket("ws://lolbuddy.herokuapp.com/socket");
+
       socket.connect();  
       
-      this.connectToChannel(socket, this.state.playerId);
+      this.connectToChannel(socket, this.state.summonerInfo);
     }
 
-    connectToChannel = (socket, playerId) => {
-      const channel = socket.channel(`players:${playerId}`);
+    connectToChannel = (socket, player) => {
+      const playerId = this.state.playerId
+      const channel = socket.channel(`players:${playerId}`, {
+        payload: player
+      });
       
-          channel.join("test").receive('ok', (response) => {
-            console.log(response);
-          });
+      channel.join().receive('ok', (response) => {
+        console.log("Channel: " + JSON.stringify(response));
+      });
+
+      this.props.history.push('/matching');
     }
 
     leaveChannel = (channel) => {
@@ -52,17 +67,17 @@ class Welcome extends Component {
         "No leagues to show";
 
         return (
-              <div id="main-content">
-                <div id="width-control">
+              <div className="main-content">
+                <div className="width-control">
                   <div id="search-summoner">
-                    <Image id="logo" src={Logo} size="medium" centered/>
+                    <LoLAmigoHeader/>
                     <SearchSummoner getSummonerByName={this.getSummonerByName} />                 
                   </div>
 
                   {summonerInfo &&
                   <Segment inverted raised>
                     <SummonerArea icon={summonerInfo.icon_id} champions={summonerInfo.champions} name={summonerInfo.name} league={league}/>                 
-                    <SearchForm submit={this.connectToSocket}/>
+                    <SearchForm history={this.props.history} submit={this.getUserInput}/>
                   </Segment>              
                   } 
 

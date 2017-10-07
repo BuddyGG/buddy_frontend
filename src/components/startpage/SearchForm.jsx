@@ -8,7 +8,6 @@ import Jungler_Icon from '../../icons/Jungler_icon.png';
 import Mid_Icon from '../../icons/Mid_icon.png';
 import Bot_Icon from '../../icons/Bot_icon.png';
 import Support_Icon from '../../icons/Support_icon.png';
-import { Socket } from 'phoenix';
 
 class SearchForm extends Component {
   constructor(props) {
@@ -25,22 +24,24 @@ class SearchForm extends Component {
       value: [],
       voicechat: false,
       agegroup: "",
-      comment: ""
+      comment: "",
+      cookieId: 1337
     }
   }
 
   findMatches = () => {
-    const {roles,value,voicechat,agegroup,comment} = this.state
+    const {roles,value,voicechat,agegroup,comment, cookieId} = this.state
 
-    const submitData = {
+    const playerInfo = {
       selectedRoles: roles,
       languages: value,
       voicechat: voicechat,
       agegroup: agegroup,
-      comment: comment
+      comment: comment,
+      cookieId: cookieId
     }
 
-    this.props.submit(submitData);
+    this.props.submit(playerInfo);
   }
 
   toggleRole = (event) => {
@@ -59,7 +60,6 @@ class SearchForm extends Component {
   handleVoiceChat = (bool) => this.setState({ voicechat: bool })
 
   handleAgeGroup = (age) => {
-    console.log(age)
     this.setState({ agegroup: age })
   }
 
@@ -70,7 +70,7 @@ class SearchForm extends Component {
   handleComment = (event) => this.setState({comment: event.target.value});
 
   render() {
-    const { roles, languageOptions, value, voicechat, agegroup, comment } = this.state
+    const { roles, languageOptions, value } = this.state
 
     return (
       <Form inverted id="search-form" onSubmit={this.findMatches}>
