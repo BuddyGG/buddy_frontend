@@ -9,7 +9,7 @@ import Support_Icon from '../../icons/Support_icon.png';
 export default class Roles extends Component {
     render () {
         return (
-            <div className="criteria">
+            <div className="criteria test">
                 <Divider className="criteria-header" inverted horizontal>Positions</Divider>
                 
                 <Form.Group className="criteria-content no-margin">
