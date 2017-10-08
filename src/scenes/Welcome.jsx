@@ -34,7 +34,7 @@ class Welcome extends Component {
 
     goToMatching = (socket, player) => {
       this.props.sendConnectInfo(this.state.summonerInfo, this.state.id)
-      history.push('/matching');
+      history.push(process.env.PUBLIC_URL + '/matching');
     }
 
     render() {
