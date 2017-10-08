@@ -27,8 +27,8 @@ export default class LoLAmigo extends Component {
         return (
             <Router history={history}>
                 <div>
-                    <Route exact path="/" render={ () => <Welcome sendConnectInfo={this.passData} />} />
-                    <Route path="/matching" render={ () => <Matching playerInfo={this.state.playerInfo} id={this.state.id} />} />                    
+                    <Route exact path={process.env.PUBLIC_URL + '/'} render={ () => <Welcome sendConnectInfo={this.passData} />} />
+                    <Route path={process.env.PUBLIC_URL + '/matching'} render={ () => <Matching playerInfo={this.state.playerInfo} id={this.state.id} />} />                    
                 </div>
             </Router>
             
