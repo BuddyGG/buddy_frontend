@@ -9,18 +9,16 @@ import AgeGroup from '../matching/AgeGroup';
 export default class YourCriteria extends Component {
     render () {
         return (
-            <div className="main-content">
-                <div className="width-control2">
-                    <LoLAmigoHeader/>
-                    <Form inverted>
-                        <Segment id="criteria-bar" raised inverted>
-                            <Roles/>
-                            <AgeGroup/>
-                            <VoiceChat/>
-                            <MatchList/>
-                        </Segment>
-                    </Form>
-                </div>
+            <div>
+                <LoLAmigoHeader/>
+                <Form inverted>
+                    <Segment id="criteria-bar" raised inverted>
+                        <Roles/>
+                        <AgeGroup/>
+                        <VoiceChat/>
+                        <MatchList/>
+                    </Segment>
+                </Form>
             </div>
         );
     }

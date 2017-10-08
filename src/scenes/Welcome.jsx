@@ -4,13 +4,13 @@ import SearchForm from '../components/startpage/SearchForm';
 import SummonerArea from '../components/startpage/SummonerArea';
 import LoLAmigoHeader from '../components/shared/LoLAmigoHeader';
 import { Segment, Header } from 'semantic-ui-react';
-import { Socket } from 'phoenix';
+import history from '../config/History';
 
 class Welcome extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        playerId: 1337,
+        id: Math.floor((Math.random() * 10) + 1),
         summonerInfo: null,
       };
     }
@@ -28,35 +28,13 @@ class Welcome extends Component {
           userInfo: userInput
         }
       }), function(){
-        this.connectToSocket()
+        this.goToMatching()
       })     
     }
 
-    connectToSocket = () => {
-      // const token = JSON.parse(localStorage.getItem('token'));
-
-      const socket = new Socket("ws://lolbuddy.herokuapp.com/socket");
-
-      socket.connect();  
-      
-      this.connectToChannel(socket, this.state.summonerInfo);
-    }
-
-    connectToChannel = (socket, player) => {
-      const playerId = this.state.playerId
-      const channel = socket.channel(`players:${playerId}`, {
-        payload: player
-      });
-      
-      channel.join().receive('ok', (response) => {
-        console.log("Channel: " + JSON.stringify(response));
-      });
-
-      this.props.history.push('/matching');
-    }
-
-    leaveChannel = (channel) => {
-      channel.leave();
+    goToMatching = (socket, player) => {
+      this.props.sendConnectInfo(this.state.summonerInfo, this.state.id)
+      history.push('/matching');
     }
 
     render() {
@@ -77,7 +55,7 @@ class Welcome extends Component {
                   {summonerInfo &&
                   <Segment inverted raised>
                     <SummonerArea icon={summonerInfo.icon_id} champions={summonerInfo.champions} name={summonerInfo.name} league={league}/>                 
-                    <SearchForm history={this.props.history} submit={this.getUserInput}/>
+                    <SearchForm history={this.props.history} submit={this.getUserInput} id={this.state.id}/>
                   </Segment>              
                   } 
 

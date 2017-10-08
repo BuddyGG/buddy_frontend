@@ -24,13 +24,12 @@ class SearchForm extends Component {
       value: [],
       voicechat: false,
       agegroup: "",
-      comment: "",
-      cookieId: 1337
+      comment: ""
     }
   }
 
   findMatches = () => {
-    const {roles,value,voicechat,agegroup,comment, cookieId} = this.state
+    const {roles,value,voicechat,agegroup,comment} = this.state
 
     const playerInfo = {
       selectedRoles: roles,
@@ -38,9 +37,10 @@ class SearchForm extends Component {
       voicechat: voicechat,
       agegroup: agegroup,
       comment: comment,
-      cookieId: cookieId
+      id: this.props.id
     }
 
+    console.log(playerInfo);
     this.props.submit(playerInfo);
   }
 
