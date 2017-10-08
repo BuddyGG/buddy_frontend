@@ -30,7 +30,7 @@ export default class Matching extends Component {
 
     connectToSocket = () => {
         // const token = JSON.parse(localStorage.getItem('token'));
-        const socket = new Socket("wss://lolbuddy.herokuapp.com/socket");
+        const socket = new Socket("ws://lolbuddy.herokuapp.com/socket");
   
         socket.connect();  
         
