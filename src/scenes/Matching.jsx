@@ -57,10 +57,14 @@ export default class Matching extends Component {
         })
             
         channel.on('new_player', (response) => {
-            
+            this.addNewPlayer(response)
         })
     }
   
+    addNewPlayer = (player) => {
+        this.setState({matches:[...this.state.matches, player]});
+    }
+
     leaveChannel = (channel) => {
         channel.leave();
     }
