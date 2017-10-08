@@ -22,6 +22,12 @@ export default class Matching extends Component {
         })
     }
 
+    componentWillUnmount = () => {
+        // channel.leave
+        //const socket = new Socket("ws://lolbuddy.herokuapp.com/socket");
+        //socket.disconnect();
+    }
+
     connectToSocket = () => {
         // const token = JSON.parse(localStorage.getItem('token'));
         const socket = new Socket("ws://lolbuddy.herokuapp.com/socket");
@@ -45,14 +51,13 @@ export default class Matching extends Component {
             this.setState({
                 matches: response.players
             }, function(){
-                console.log("Setting state")
-                console.log(this.state.matches)
+                console.log(response)
             })
             console.log("Retrieved players!!")
         })
             
         channel.on('new_player', (response) => {
-            console.log(JSON.stringify(response))
+            
         })
     }
   

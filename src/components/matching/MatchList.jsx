@@ -11,7 +11,7 @@ export default class MatchList extends Component {
                         <Checkbox label='Automatically refresh list'/>
                     </Form.Field>
                     <Form.Field>
-                        <Button>Refresh</Button>
+                        <Button primary compact>Refresh</Button>
                     </Form.Field>
                 </Form.Group>
             </div>

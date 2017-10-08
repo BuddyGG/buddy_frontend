@@ -1,26 +1,34 @@
 import React, { Component } from 'react';
 import { Segment } from 'semantic-ui-react';
+import MatchTile from './MatchTile'
 
 export default class MatchingTable extends Component {
     constructor(props){
         super(props);
         this.state = {
-            matches: [1,2,3]
+            matches: []
         }
     }
-    componentDidMount = () => {
-        console.log("Mounted!!")
+
+    componentWillReceiveProps = (props) => {
+        this.setState({
+            matches: props.matches
+        })
     }
 
+    renderMatchList = () => {
+        return this.state.matches.map((match) =>
+            MatchTile(match)
+        );
+    }
 
     render () {   
         return (
             <div className="match-table">
-                <Segment>
-                <h1> Matches! </h1>
-                <div>
-                    {this.matchList}
-                </div>
+                <Segment inverted>
+                    <div>
+                        {this.renderMatchList()}            
+                    </div>
                 </Segment>
             </div>
         );

@@ -112,5 +112,25 @@ td{
   width: 100%;
   text-align: center;
 }
-
+.match-tile{
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+  overflow: hidden;
+  border: solid red;
+}
+.grid{
+  width: 100%;
+}
+.shadow{
+  margin: 12px 5px;
+  box-shadow: 1px 1px 5px #0C0C0C;
+}
+.inline{
+  display: flex;
+  justify-content: center;
+}
+.icon{
+  margin: 0px 5px 0px 5px;
+}
 
