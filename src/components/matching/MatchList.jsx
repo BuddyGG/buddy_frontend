@@ -8,7 +8,7 @@ export default class MatchList extends Component {
                 <Divider className="criteria-header" inverted horizontal>MatchList</Divider>
                 <Form.Group className="criteria-content no-margin">
                     <Form.Field>
-                        <Checkbox label='Automatically refresh list'/>
+                        <Checkbox checked label='Automatically refresh list'/>
                     </Form.Field>
                     <Form.Field>
                         <Button primary compact>Refresh</Button>

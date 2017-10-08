@@ -6,6 +6,7 @@ import {
 import Welcome from './scenes/Welcome';
 import Matching from './scenes/Matching';
 import history from './config/History';
+import uuidv4 from 'uuid/v4'
 
 export default class LoLAmigo extends Component {
     constructor(props) {
@@ -20,6 +21,16 @@ export default class LoLAmigo extends Component {
         this.setState({
             playerInfo: playerInfo,
             id: id
+        })
+    }
+
+    componentWillMount = () => {
+        const sessionId = uuidv4();
+        console.log(sessionId)
+
+        localStorage.setItem('sessionId', sessionId)
+        this.setState({
+            id: sessionId
         })
     }
 

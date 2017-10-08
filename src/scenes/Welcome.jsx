@@ -10,7 +10,7 @@ class Welcome extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        id: Math.floor((Math.random() * 10) + 1),
+        id: localStorage.getItem('sessionId'),
         summonerInfo: null,
       };
     }

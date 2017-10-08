@@ -42,6 +42,10 @@ export default class Matching extends Component {
         const channel = socket.channel(`players:${id}`, {
             payload: player
         });
+
+        this.setState({
+            channel: channel
+        })
         
         channel.join().receive('ok', (response) => {
             console.log("Succesfully connected to channel");
@@ -59,10 +63,23 @@ export default class Matching extends Component {
         channel.on('new_player', (response) => {
             this.addNewPlayer(response)
         })
+
+        channel.on('match_requested', (response) => {
+            console.log("MATCH REQUESTED: " + JSON.stringify(response))
+        })
     }
   
     addNewPlayer = (player) => {
         this.setState({matches:[...this.state.matches, player]});
+    }
+
+    requestMatch = (player) => {
+        console.log("requestinnnngggg")
+        console.log(JSON.stringify(player))
+
+        const channel = this.state.channel
+        channel.push('request_match_response', player)
+            .receive('ok', () => console.log("OK"))
     }
 
     leaveChannel = (channel) => {
@@ -74,7 +91,7 @@ export default class Matching extends Component {
             <div className="main-content">
                 <div className="width-control2">
                     <YourCriteria/>
-                    <MatchingTable matches={this.state.matches}/>
+                    <MatchingTable matches={this.state.matches} requestMatch={this.requestMatch}/>
                 </div>
             </div>
         );

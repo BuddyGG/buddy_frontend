@@ -13,7 +13,6 @@ class SearchSummoner extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            name: "",
             region: "euw",
             fetchData: {}
         }
@@ -29,11 +28,7 @@ class SearchSummoner extends Component {
         console.log("Getting summoner...")
         console.log("Calling: " + url)
 
-        const params = {
-            credentials: 'same-origin'
-        }
-
-        fetch(url, params).then(function(response) {
+        fetch(url).then(function(response) { 
             return response.json();
         }).then(function(data) {
             that.props.getSummonerByName(data);
