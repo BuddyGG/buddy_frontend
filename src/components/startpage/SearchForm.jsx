@@ -15,10 +15,10 @@ class SearchForm extends Component {
     this.state = {
       roles: {
         top: false,
-        jun: false,
+        jungle: false,
         mid: false,
-        adc: false,
-        sup: false
+        marksman: false,
+        support: false
       },
       languageOptions: languages,
       value: [],
@@ -87,10 +87,10 @@ class SearchForm extends Component {
               </Table.Row>
               <Table.Row>
                 <Table.Cell><Form.Field onClick={this.toggleRole} name="top" checked={roles.top} className="position-checkbox" control='input' type='checkbox' /></Table.Cell>
-                <Table.Cell><Form.Field onClick={this.toggleRole} name="jun" checked={roles.jun} className="position-checkbox" control='input' type='checkbox' /></Table.Cell>
+                <Table.Cell><Form.Field onClick={this.toggleRole} name="jungle" checked={roles.jun} className="position-checkbox" control='input' type='checkbox' /></Table.Cell>
                 <Table.Cell><Form.Field onClick={this.toggleRole} name="mid" checked={roles.mid} className="position-checkbox" control='input' type='checkbox' /></Table.Cell>
-                <Table.Cell><Form.Field onClick={this.toggleRole} name="adc" checked={roles.adc} className="position-checkbox" control='input' type='checkbox' /></Table.Cell>
-                <Table.Cell><Form.Field onClick={this.toggleRole} name="sup" checked={roles.sup} className="position-checkbox" control='input' type='checkbox' /></Table.Cell>
+                <Table.Cell><Form.Field onClick={this.toggleRole} name="marksman" checked={roles.adc} className="position-checkbox" control='input' type='checkbox' /></Table.Cell>
+                <Table.Cell><Form.Field onClick={this.toggleRole} name="support" checked={roles.sup} className="position-checkbox" control='input' type='checkbox' /></Table.Cell>
               </Table.Row>
             </Table.Body>
           </Table>    

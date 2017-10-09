@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import YourCriteria from '../components/matching/YourCriteria'
 import MatchingTable from '../components/matching/MatchingTable'
+import MatchRequestModal from '../components/matching/MatchRequestModal'
 import { Socket } from 'phoenix';
 
 export default class Matching extends Component {
@@ -9,7 +10,8 @@ export default class Matching extends Component {
         this.state = {
             playerInfo: null,
             id: null,
-            matches: []
+            matches: [],
+            modalOpen: false
         }
     }
 
@@ -40,7 +42,7 @@ export default class Matching extends Component {
     connectToChannel = (socket, player) => {
         const id = this.state.id
         const channel = socket.channel(`players:${id}`, {
-            payload: player
+            payload: player         
         });
 
         this.setState({
@@ -55,17 +57,21 @@ export default class Matching extends Component {
             this.setState({
                 matches: response.players
             }, function(){
+                console.log("new_players:")
                 console.log(response)
             })
-            console.log("Retrieved players!!")
         })
             
         channel.on('new_player', (response) => {
             this.addNewPlayer(response)
+            console.log("new_player:")
+            console.log(response)
         })
 
         channel.on('match_requested', (response) => {
-            console.log("MATCH REQUESTED: " + JSON.stringify(response))
+            console.log("match_requested")
+            console.log(response)
+            this.handleOpen()
         })
     }
   
@@ -74,13 +80,18 @@ export default class Matching extends Component {
     }
 
     requestMatch = (player) => {
-        console.log("requestinnnngggg")
-        console.log(JSON.stringify(player))
+        console.log("request_match:")
+        console.log(player)
+
+        const playerInfo = {"player": player}
 
         const channel = this.state.channel
-        channel.push('request_match_response', player)
-            .receive('ok', () => console.log("OK"))
+        channel.push('request_match', playerInfo)
+            .receive('match_requested', () => console.log("match_requested!"))
     }
+
+    handleOpen = () => this.setState({ modalOpen: true })  
+    handleClose = () => this.setState({ modalOpen: false }) 
 
     leaveChannel = (channel) => {
         channel.leave();
@@ -92,6 +103,7 @@ export default class Matching extends Component {
                 <div className="width-control2">
                     <YourCriteria/>
                     <MatchingTable matches={this.state.matches} requestMatch={this.requestMatch}/>
+                    <MatchRequestModal open={this.state.modalOpen} handleOpen={this.handleOpen} handleClose={this.handleClose} />
                 </div>
             </div>
         );

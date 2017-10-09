@@ -5,13 +5,7 @@ import { getRoleImage } from '../../config/RoleImages';
 import { getFlagImage } from '../../config/FlagIcons';
 
 export default class MatchTile extends Component {
-    constructor(props){
-        super(props);
-        
-    }
-
     requestMatch = () => {
-        console.log("Requesting match")
         this.props.requestMatch(this.props.match)
     }
 
@@ -30,17 +24,17 @@ export default class MatchTile extends Component {
                         </Grid.Column>
                         <Grid.Column>
                             <div className="inline">
-                                {this.props.match.champions.map((champ) => <div className="icon"> {getChampImage(champ)} </div>)}                       
+                                {this.props.match.champions.map((champ) => <div key={champ} className="icon"> {getChampImage(champ)} </div>)}                       
                             </div>
                         </Grid.Column>
                         <Grid.Column>
                             <div className="inline">
-                                {this.props.match.positions.map((position) => <div className="icon"> {getRoleImage(position)} </div>)}                                                     
+                                {this.props.match.positions.map((position) => <div key={position} className="icon"> {getRoleImage(position)} </div>)}                                                     
                             </div>
                         </Grid.Column>
                         <Grid.Column>
                             <div className="inline">
-                                {this.props.match.languages.map((language) => <div> {getFlagImage(language)} </div>)}
+                                {this.props.match.languages.map((language) => <div key={language}> {getFlagImage(language)} </div>)}
                             </div>
                         </Grid.Column>
                         <Grid.Column>

@@ -18,7 +18,7 @@ export default class MatchingTable extends Component {
 
     renderMatchList = () => {
         return this.state.matches.map((match) =>
-            <MatchTile requestMatch={this.props.requestMatch} match={match} />
+            <MatchTile key={match.id} requestMatch={this.props.requestMatch} match={match} />
         );
     }
 
