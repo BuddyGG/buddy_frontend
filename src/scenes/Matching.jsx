@@ -11,7 +11,8 @@ export default class Matching extends Component {
             playerInfo: null,
             id: null,
             matches: [],
-            modalOpen: false
+            modalOpen: false,
+            requestingPlayer: "name"
         }
     }
 
@@ -26,8 +27,8 @@ export default class Matching extends Component {
 
     componentWillUnmount = () => {
         // channel.leave
-        //const socket = new Socket("ws://lolbuddy.herokuapp.com/socket");
-        //socket.disconnect();
+        // const socket = new Socket("ws://lolbuddy.herokuapp.com/socket");
+        // socket.disconnect();
     }
 
     connectToSocket = () => {
@@ -71,7 +72,9 @@ export default class Matching extends Component {
         channel.on('match_requested', (response) => {
             console.log("match_requested")
             console.log(response)
-            this.handleOpen()
+            this.setState({
+                requestingPlayer: response
+            }, () => this.handleOpen() )
         })
     }
   
@@ -103,7 +106,7 @@ export default class Matching extends Component {
                 <div className="width-control2">
                     <YourCriteria/>
                     <MatchingTable matches={this.state.matches} requestMatch={this.requestMatch}/>
-                    <MatchRequestModal open={this.state.modalOpen} handleOpen={this.handleOpen} handleClose={this.handleClose} />
+                    <MatchRequestModal open={this.state.modalOpen} handleOpen={this.handleOpen} handleClose={this.handleClose} player={this.state.requestingPlayer} />
                 </div>
             </div>
         );

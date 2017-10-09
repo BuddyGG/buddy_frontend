@@ -3,9 +3,10 @@ import { Header, Modal } from 'semantic-ui-react'
 
 export default class MatchRequestModal extends Component {
     render () {
+        const player = this.props.player
         return (
             <Modal open={this.props.open} close={this.props.handleClose}>
-            <Modal.Header>Select a Photo</Modal.Header>
+            <Modal.Header>Player {this.props.player} wants to play with you!</Modal.Header>
             <Modal.Content>
               <Modal.Description>
                 <Header>Default Profile Image</Header>
