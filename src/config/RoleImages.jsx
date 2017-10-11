@@ -15,16 +15,16 @@ export function getRoleImage(role){
         case "top":
             roleIcon = Top_Icon
             break;
-        case "jun":
+        case "jungle":
             roleIcon = Jungler_Icon
             break;
         case "mid":
             roleIcon = Mid_Icon
             break;
-        case "adc":
+        case "marksman":
             roleIcon = Bot_Icon
             break;
-        case "sup":
+        case "support":
             roleIcon = Support_Icon
             break;
         default:

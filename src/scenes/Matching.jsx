@@ -11,8 +11,7 @@ export default class Matching extends Component {
             playerInfo: null,
             id: null,
             matches: [],
-            modalOpen: false,
-            requestingPlayer: "name"
+            modalOpen: true,
         }
     }
 
@@ -71,10 +70,15 @@ export default class Matching extends Component {
 
         channel.on('match_requested', (response) => {
             console.log("match_requested")
-            console.log(response)
+            console.log(JSON.stringify(response))
             this.setState({
                 requestingPlayer: response
             }, () => this.handleOpen() )
+        })
+
+        channel.on('requesting_match', (response) => {
+            console.log('requesting_match:')
+            console.log(response)
         })
     }
   
