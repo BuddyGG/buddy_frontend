@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import YourCriteria from '../components/matching/YourCriteria'
 import MatchingTable from '../components/matching/MatchingTable'
 import MatchRequestModal from '../components/matching/MatchRequestModal'
+import RequestingMatchModal from '../components/matching/RequestingMatchModal'
+import MatchResponseModal from '../components/matching/MatchResponseModal'
 import { Socket } from 'phoenix';
 
 export default class Matching extends Component {
@@ -11,7 +13,11 @@ export default class Matching extends Component {
             playerInfo: null,
             id: null,
             matches: [],
-            modalOpen: true,
+            requestingModalOpen: false,
+            requestedModalOpen: false,
+            responseModalOpen: false,            
+            timeLeft: 30,
+            responseMessage: null
         }
     }
 
@@ -73,12 +79,24 @@ export default class Matching extends Component {
             console.log(JSON.stringify(response))
             this.setState({
                 requestingPlayer: response
-            }, () => this.handleOpen() )
+            }, () => this.requestedHandleOpen() )
         })
 
         channel.on('requesting_match', (response) => {
-            console.log('requesting_match:')
+            console.log("requesting_match")
+            console.log(JSON.stringify(response))
+            this.setState({
+                requestedPlayer: response
+            }, () => this.requestingHandleOpen() )
+        })
+
+        channel.on('request_response', (response) => {
+            console.log("request_response:")
             console.log(response)
+            this.setState({
+                responseMessage: response
+            }, () => this.responseHandleOpen() )
+            
         })
     }
   
@@ -94,15 +112,39 @@ export default class Matching extends Component {
 
         const channel = this.state.channel
         channel.push('request_match', playerInfo)
-            .receive('match_requested', () => console.log("match_requested!"))
+            
     }
 
-    handleOpen = () => this.setState({ modalOpen: true })  
-    handleClose = () => this.setState({ modalOpen: false }) 
+    requestedHandleOpen = () => this.setState({ requestedModalOpen: true })  
+    requestedHandleClose = () => this.setState({ requestedModalOpen: false }) 
+
+    requestingHandleOpen = () => this.setState({ requestingModalOpen: true })  
+    requestingHandleClose = () => this.setState({ requestingModalOpen: false }) 
+
+    responseHandleOpen = () => this.setState({ responseModalOpen: true })  
+    responseHandleClose = () => this.setState({ responsegModalOpen: false }) 
 
     leaveChannel = (channel) => {
         channel.leave();
     }
+
+    respondToRequest = (playerId, requestResponse) => {
+        // Close both modals when time is up
+        this.requestedHandleClose();
+        this.requestingHandleClose();   
+        
+        console.log("Responding to request!")
+
+        const response = {
+            id: playerId,
+            response: requestResponse
+        }
+
+        const channel = this.state.channel
+        channel.push('respond_to_request', response)           
+
+     
+      }
 
     render () {
         return (
@@ -110,7 +152,26 @@ export default class Matching extends Component {
                 <div className="width-control2">
                     <YourCriteria/>
                     <MatchingTable matches={this.state.matches} requestMatch={this.requestMatch}/>
-                    <MatchRequestModal open={this.state.modalOpen} handleOpen={this.handleOpen} handleClose={this.handleClose} player={this.state.requestingPlayer} />
+                    <MatchRequestModal 
+                        open={this.state.requestedModalOpen} 
+                        handleOpen={this.requestedHandleOpen} 
+                        handleClose={this.requestedHandleClose} 
+                        player={this.state.requestingPlayer}
+                        timeLeft={this.state.timeLeft}
+                        respondToRequest={this.respondToRequest} />
+
+                    <RequestingMatchModal 
+                        open={this.state.requestingModalOpen} 
+                        handleOpen={this.requestingHandleOpen} 
+                        handleClose={this.requestingHandleClose} 
+                        player={this.state.requestedPlayer}
+                        timeLeft={this.state.timeLeft}
+                        respondToRequest={this.respondToRequest} />
+                    <MatchResponseModal
+                        open={this.state.responseModalOpen}
+                        handleClose={this.responseHandleClose}
+                        player={this.state.requestedPlayer} 
+                        response={this.state.responseMessage} /> 
                 </div>
             </div>
         );

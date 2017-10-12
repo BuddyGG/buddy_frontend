@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Grid, Segment, Progress, Button } from 'semantic-ui-react'
+import { Grid, Segment, Progress } from 'semantic-ui-react'
 import { getChampImage } from '../../config/ChampImages';
 import { getRoleImage } from '../../config/RoleImages';
 import { getFlagImage } from '../../config/FlagIcons';
-import ReactCountdownClock from "react-countdown-clock";
 
 export default class RequestingPlayerInfo extends Component {
     render () {
@@ -55,26 +54,7 @@ export default class RequestingPlayerInfo extends Component {
                             <Grid.Column>
                             <h4 className="comment-header">Comment:</h4> {this.props.match.comment}
                             </Grid.Column>
-                        </Grid.Row>
-                        <Grid.Row textAlign="center">
-                            <Grid.Column>
-                                <div className="answer-bar">
-                                    <div className="button-box">
-                                        <Button negative> Reject </Button>
-                                    </div>
-                                    <div className="countdown">
-                                        <ReactCountdownClock seconds={this.props.timeLeft} 
-                                                             size="60" 
-                                                             color="black" 
-                                                             onComplete={this.props.timeout}
-                                                             showMilliseconds="false"/>
-                                    </div>
-                                    <div className="button-box">
-                                        <Button positive> Accept </Button>
-                                    </div>
-                                </div>
-                            </Grid.Column>
-                        </Grid.Row>
+                        </Grid.Row>                        
                     </Grid>
                 </Segment>
             </div>

@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
-import { Modal } from 'semantic-ui-react'
+import { Modal, Button } from 'semantic-ui-react'
 import RequestingPlayerInfo from './RequestingPlayerInfo'
 import { player } from "../../mocks/SummonerInfo";
-import { Button } from 'semantic-ui-react'
 import ReactCountdownClock from "react-countdown-clock";
 
-export default class MatchRequestModal extends Component {
+
+export default class RequestingMatchModal extends Component {
 
     reject = () => {
         this.props.respondToRequest(this.props.player.id, false)
-    }
-
-    accept = () => {
-        this.props.respondToRequest(this.props.player.id, true)
     }
 
     render () {
@@ -23,7 +19,7 @@ export default class MatchRequestModal extends Component {
 
               <Modal dimmer={"blurring"} className="modal" open={this.props.open} onClose={this.props.handleClose}>
               
-                <Modal.Header>Match found!</Modal.Header>
+                <Modal.Header>Requesting match...</Modal.Header>
                 <Modal.Content className="no-padding">
                     <RequestingPlayerInfo match={player}/>
                 </Modal.Content>
@@ -38,9 +34,6 @@ export default class MatchRequestModal extends Component {
                                                     color="black" 
                                                     onComplete={this.reject}
                                                     showMilliseconds="false"/>
-                        </div>
-                        <div className="button-box">
-                            <Button positive onClick={this.accept}> Accept </Button>
                         </div>
                     </div>
                 </Modal.Actions>
