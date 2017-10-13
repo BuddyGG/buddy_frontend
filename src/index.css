@@ -108,7 +108,8 @@ td{
   margin: 0 !important;
 }
 .no-padding{
-  padding: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }
 .match-table{
   margin: 10px;
@@ -178,4 +179,15 @@ canvas{
   margin: auto;
   display: block;
   width: 60px;
+}
+.response-message{
+  text-align: center;
+}
+.response-logo{
+  margin-bottom: 10px;
+}
+.modal{
+  padding:5px;
+  outline: 1px solid rgba(0, 0, 0, 0.425);
+  outline-offset: -10px;
 }

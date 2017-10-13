@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, Button } from 'semantic-ui-react'
 import RequestingPlayerInfo from './RequestingPlayerInfo'
-import { player } from "../../mocks/SummonerInfo";
 import ReactCountdownClock from "react-countdown-clock";
 
 
@@ -12,7 +11,7 @@ export default class RequestingMatchModal extends Component {
     }
 
     render () {
-        //const player = this.props.player
+        const player = this.props.player
         return (
           <div>
             {player && 

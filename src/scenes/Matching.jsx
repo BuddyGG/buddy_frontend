@@ -15,9 +15,9 @@ export default class Matching extends Component {
             matches: [],
             requestingModalOpen: false,
             requestedModalOpen: false,
-            responseModalOpen: false,            
+            responseModalOpen: true,            
             timeLeft: 30,
-            responseMessage: null
+            responseMessage: false
         }
     }
 
@@ -94,8 +94,11 @@ export default class Matching extends Component {
             console.log("request_response:")
             console.log(response)
             this.setState({
-                responseMessage: response
-            }, () => this.responseHandleOpen() )
+                responseMessage: response.response,
+            }, () => {
+                this.responseHandleOpen()
+                this.requestingHandleClose()
+            })
             
         })
     }
@@ -122,7 +125,7 @@ export default class Matching extends Component {
     requestingHandleClose = () => this.setState({ requestingModalOpen: false }) 
 
     responseHandleOpen = () => this.setState({ responseModalOpen: true })  
-    responseHandleClose = () => this.setState({ responsegModalOpen: false }) 
+    responseHandleClose = () => this.setState({ responseModalOpen: false }) 
 
     leaveChannel = (channel) => {
         channel.leave();
