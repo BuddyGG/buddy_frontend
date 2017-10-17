@@ -60,33 +60,38 @@ export default class Matching extends Component {
         });
 
         channel.on('new_players', (response) => {
+            console.log("new_players:")
+            console.log(response)
+
             this.setState({
                 matches: response.players
-            }, function(){
-                console.log("new_players:")
-                console.log(response)
-            })
+            });
         })
             
         channel.on('new_player', (response) => {
-            this.addNewPlayer(response)
             console.log("new_player:")
             console.log(response)
+
+            this.setState({
+                matches:[...this.state.matches, response]
+            });           
         })
 
         channel.on('match_requested', (response) => {
             console.log("match_requested")
-            console.log(JSON.stringify(response))
+            console.log(response)
+
             this.setState({
-                requestingPlayer: response
+                otherPlayer: response
             }, () => this.requestedHandleOpen() )
         })
 
         channel.on('requesting_match', (response) => {
             console.log("requesting_match")
-            console.log(JSON.stringify(response))
+            console.log(response)
+
             this.setState({
-                requestedPlayer: response
+                otherPlayer: response
             }, () => this.requestingHandleOpen() )
         })
 
@@ -98,37 +103,18 @@ export default class Matching extends Component {
             }, () => {
                 this.responseHandleOpen()
                 this.requestingHandleClose()
-            })
-            
+            })     
         })
     }
   
-    addNewPlayer = (player) => {
-        this.setState({matches:[...this.state.matches, player]});
-    }
-
     requestMatch = (player) => {
         console.log("request_match:")
         console.log(player)
 
         const playerInfo = {"player": player}
-
         const channel = this.state.channel
-        channel.push('request_match', playerInfo)
-            
-    }
 
-    requestedHandleOpen = () => this.setState({ requestedModalOpen: true })  
-    requestedHandleClose = () => this.setState({ requestedModalOpen: false }) 
-
-    requestingHandleOpen = () => this.setState({ requestingModalOpen: true })  
-    requestingHandleClose = () => this.setState({ requestingModalOpen: false }) 
-
-    responseHandleOpen = () => this.setState({ responseModalOpen: true })  
-    responseHandleClose = () => this.setState({ responseModalOpen: false }) 
-
-    leaveChannel = (channel) => {
-        channel.leave();
+        channel.push('request_match', playerInfo)        
     }
 
     respondToRequest = (playerId, requestResponse) => {
@@ -145,9 +131,16 @@ export default class Matching extends Component {
 
         const channel = this.state.channel
         channel.push('respond_to_request', response)           
+    }
 
-     
-      }
+    requestedHandleOpen = () => this.setState({ requestedModalOpen: true })  
+    requestedHandleClose = () => this.setState({ requestedModalOpen: false }) 
+
+    requestingHandleOpen = () => this.setState({ requestingModalOpen: true })  
+    requestingHandleClose = () => this.setState({ requestingModalOpen: false }) 
+
+    responseHandleOpen = () => this.setState({ responseModalOpen: true })  
+    responseHandleClose = () => this.setState({ responseModalOpen: false }) 
 
     render () {
         return (
@@ -159,7 +152,7 @@ export default class Matching extends Component {
                         open={this.state.requestedModalOpen} 
                         handleOpen={this.requestedHandleOpen} 
                         handleClose={this.requestedHandleClose} 
-                        player={this.state.requestingPlayer}
+                        player={this.state.otherPlayer}
                         timeLeft={this.state.timeLeft}
                         respondToRequest={this.respondToRequest} />
 
@@ -167,13 +160,14 @@ export default class Matching extends Component {
                         open={this.state.requestingModalOpen} 
                         handleOpen={this.requestingHandleOpen} 
                         handleClose={this.requestingHandleClose} 
-                        player={this.state.requestedPlayer}
+                        player={this.state.otherPlayer}
                         timeLeft={this.state.timeLeft}
                         respondToRequest={this.respondToRequest} />
+                        
                     <MatchResponseModal
                         open={this.state.responseModalOpen}
                         handleClose={this.responseHandleClose}
-                        player={this.state.requestedPlayer} 
+                        player={this.state.otherPlayer} 
                         response={this.state.responseMessage} /> 
                 </div>
             </div>
