@@ -7,11 +7,11 @@ import ReactCountdownClock from "react-countdown-clock";
 export default class MatchRequestModal extends Component {
 
     reject = () => {
-        this.props.respondToRequest(this.props.player.id, false)
+        this.props.respondToRequest(this.props.player.id, "reject")
     }
 
     accept = () => {
-        this.props.respondToRequest(this.props.player.id, true)
+        this.props.respondToRequest(this.props.player.id, "accept")
     }
 
     render () {

@@ -98,12 +98,48 @@ export default class Matching extends Component {
         channel.on('request_response', (response) => {
             console.log("request_response:")
             console.log(response)
-            this.setState({
-                responseMessage: response.response,
-            }, () => {
-                this.responseHandleOpen()
-                this.requestingHandleClose()
-            })     
+
+            switch(response.response) {
+                
+                case "accept":
+                    this.setState({
+                        responseMessage: response.response
+                    }, () => {
+                        this.responseHandleOpen()
+                        this.requestedHandleClose()
+                        this.requestingHandleClose()                        
+                    })
+                    break;
+
+                case "reject":
+                    if (this.state.requestedModalOpen){
+                        this.requestedHandleClose()
+                    } else {
+                        this.setState({
+                            responseMessage: response.response
+                        }, () => {
+                            this.responseHandleOpen()
+                            this.requestingHandleClose()
+                        })
+                    }                    
+                    break;
+                  
+                case "cancel":
+                    if (this.state.requestingModalOpen){
+                        this.requestingHandleClose()
+                    } else {
+                        this.setState({
+                            responseMessage: response.response
+                        }, () => {
+                            this.responseHandleOpen()
+                            this.requestedHandleClose()
+                        })
+                    }                    
+                    break;
+                
+                default:
+                    break;
+            }                          
         })
     }
   
@@ -118,9 +154,6 @@ export default class Matching extends Component {
     }
 
     respondToRequest = (playerId, requestResponse) => {
-        // Close both modals when time is up
-        this.requestedHandleClose();
-        this.requestingHandleClose();   
         
         console.log("Responding to request!")
 
@@ -163,7 +196,7 @@ export default class Matching extends Component {
                         player={this.state.otherPlayer}
                         timeLeft={this.state.timeLeft}
                         respondToRequest={this.respondToRequest} />
-                        
+
                     <MatchResponseModal
                         open={this.state.responseModalOpen}
                         handleClose={this.responseHandleClose}

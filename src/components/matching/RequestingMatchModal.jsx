@@ -6,8 +6,8 @@ import ReactCountdownClock from "react-countdown-clock";
 
 export default class RequestingMatchModal extends Component {
 
-    reject = () => {
-        this.props.respondToRequest(this.props.player.id, false)
+    cancel = () => {
+        this.props.respondToRequest(this.props.player.id, "cancel")
     }
 
     render () {
@@ -25,7 +25,7 @@ export default class RequestingMatchModal extends Component {
                 <Modal.Actions>
                     <div className="answer-bar">
                         <div className="button-box">
-                            <Button negative onClick={this.reject}> Cancel </Button>
+                            <Button negative onClick={this.cancel}> Cancel </Button>
                         </div>
                         <div className="countdown">
                             <ReactCountdownClock seconds={this.props.timeLeft} 

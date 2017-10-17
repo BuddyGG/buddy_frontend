@@ -3,7 +3,7 @@ import SearchSummoner from '../components/startpage/SearchSummoner';
 import SearchForm from '../components/startpage/SearchForm';
 import SummonerArea from '../components/startpage/SummonerArea';
 import LoLAmigoHeader from '../components/shared/LoLAmigoHeader';
-import { Segment, Header } from 'semantic-ui-react';
+import { Segment, Header, Loader } from 'semantic-ui-react';
 import history from '../config/History';
 
 class Welcome extends Component {
