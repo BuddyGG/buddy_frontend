@@ -14,7 +14,8 @@ class SearchSummoner extends Component {
         super(props)
         this.state = {
             region: "euw",
-            fetchData: {}
+            fetchData: {},
+            loading: false
         }
     }
 
@@ -25,6 +26,9 @@ class SearchSummoner extends Component {
         const name = (this.state.value).replace(/\s/g,''); //Remove spaces from name
         const url = GET_SUMMONER_INFO + region + "/" + name;
         
+        this.setState({
+            loading: true
+        })
         console.log("Getting summoner...")
         console.log("Calling: " + url)
 
@@ -32,6 +36,9 @@ class SearchSummoner extends Component {
             return response.json();
         }).then(function(data) {
             that.props.getSummonerByName(data);
+            that.setState({
+                loading: false
+            })
         })
     }
 
@@ -54,7 +61,7 @@ class SearchSummoner extends Component {
                                 onChange={this.handleChangeRegion} 
                                 options={options} 
                                 defaultValue={this.state.region}/>
-                        <Button type='submit'>Search</Button>  
+                        <Button primary loading={this.state.loading} type='submit'>Search</Button>  
                     </Input>
                 </Form>           
             </div>

@@ -3,7 +3,7 @@ import SearchSummoner from '../components/startpage/SearchSummoner';
 import SearchForm from '../components/startpage/SearchForm';
 import SummonerArea from '../components/startpage/SummonerArea';
 import LoLAmigoHeader from '../components/shared/LoLAmigoHeader';
-import { Segment, Header, Loader } from 'semantic-ui-react';
+import { Segment, Header } from 'semantic-ui-react';
 import history from '../config/History';
 
 class Welcome extends Component {
@@ -11,7 +11,7 @@ class Welcome extends Component {
       super(props);
       this.state = {
         id: localStorage.getItem('sessionId'),
-        summonerInfo: null,
+        summonerInfo: null
       };
     }
 
@@ -37,6 +37,12 @@ class Welcome extends Component {
       history.push(process.env.PUBLIC_URL + '/matching');
     }
 
+    setLoader = (loading) => {
+      this.setState({
+        loading: loading
+      })
+    }
+
     render() {
         const {summonerInfo = undefined} = this.state
         
@@ -49,7 +55,7 @@ class Welcome extends Component {
                 <div className="width-control">
                   <div id="search-summoner">
                     <LoLAmigoHeader/>
-                    <SearchSummoner getSummonerByName={this.getSummonerByName} />                 
+                    <SearchSummoner loading={this.setLoader} getSummonerByName={this.getSummonerByName} />                 
                   </div>
 
                   {summonerInfo &&

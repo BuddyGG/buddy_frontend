@@ -121,7 +121,13 @@ td{
   justify-content: center;
   margin: 5px;
   overflow: hidden;
-  border: solid red;
+  border-radius: 5px;
+}
+.match-tile.empty{
+  border: dashed black 1px;
+  height: 73.5px;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.096);
 }
 .grid{
   width: 100%;
