@@ -46,11 +46,10 @@ class SearchForm extends Component {
 
   toggleRole = (event) => {
     const target = event.target;
-    const value = target.checked;
     const name = target.name;
 
     let roles = this.state.roles;
-    roles[name] = value;
+    roles[name] = !roles[name];
 
     this.setState({
       roles: roles
@@ -79,18 +78,18 @@ class SearchForm extends Component {
           <Table basic="very" compact="very" textAlign="center">
             <Table.Body>
               <Table.Row>
-                <Table.Cell><Image centered src={Top_Icon} size='mini'/></Table.Cell>
-                <Table.Cell><Image centered src={Jungler_Icon} size='mini'/></Table.Cell>
-                <Table.Cell><Image centered src={Mid_Icon} size='mini'/></Table.Cell>
-                <Table.Cell><Image centered src={Bot_Icon} size='mini'/></Table.Cell>
-                <Table.Cell><Image centered src={Support_Icon} size='mini'/></Table.Cell>
+                <Table.Cell><Image onClick={this.toggleRole} name="top" centered src={Top_Icon} size='mini'/></Table.Cell>
+                <Table.Cell><Image onClick={this.toggleRole} name="jungle" centered src={Jungler_Icon} size='mini'/></Table.Cell>
+                <Table.Cell><Image onClick={this.toggleRole} name="mid" centered src={Mid_Icon} size='mini'/></Table.Cell>
+                <Table.Cell><Image onClick={this.toggleRole} name="marksman" centered src={Bot_Icon} size='mini'/></Table.Cell>
+                <Table.Cell><Image onClick={this.toggleRole} name="support" centered src={Support_Icon} size='mini'/></Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell><Form.Field onClick={this.toggleRole} name="top" checked={roles.top} className="position-checkbox" control='input' type='checkbox' /></Table.Cell>
-                <Table.Cell><Form.Field onClick={this.toggleRole} name="jungle" checked={roles.jun} className="position-checkbox" control='input' type='checkbox' /></Table.Cell>
+                <Table.Cell><Form.Field onClick={this.toggleRole} name="jungle" checked={roles.jungle} className="position-checkbox" control='input' type='checkbox' /></Table.Cell>
                 <Table.Cell><Form.Field onClick={this.toggleRole} name="mid" checked={roles.mid} className="position-checkbox" control='input' type='checkbox' /></Table.Cell>
-                <Table.Cell><Form.Field onClick={this.toggleRole} name="marksman" checked={roles.adc} className="position-checkbox" control='input' type='checkbox' /></Table.Cell>
-                <Table.Cell><Form.Field onClick={this.toggleRole} name="support" checked={roles.sup} className="position-checkbox" control='input' type='checkbox' /></Table.Cell>
+                <Table.Cell><Form.Field onClick={this.toggleRole} name="marksman" checked={roles.marksman} className="position-checkbox" control='input' type='checkbox' /></Table.Cell>
+                <Table.Cell><Form.Field onClick={this.toggleRole} name="support" checked={roles.support} className="position-checkbox" control='input' type='checkbox' /></Table.Cell>
               </Table.Row>
             </Table.Body>
           </Table>    

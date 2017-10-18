@@ -54,7 +54,7 @@ class SearchSummoner extends Component {
         return (
             <div id="search-bar">
                 <Form onSubmit={this.fetchSummoner}>
-                    <Input fluid type='text' placeholder='Find summoner' action onChange={this.handleChangeName}>
+                    <Input required fluid type='text' placeholder='Find summoner' action onChange={this.handleChangeName}>
                         <input />
                         <Select className="region-select" 
                                 compact 
