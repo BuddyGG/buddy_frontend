@@ -78,7 +78,7 @@ export default class MatchResponseModal extends Component {
                 </Modal.Content>
                 <Modal.Actions>
                     <div className="answer-bar">
-                        <Button onClick={this.props.handleClose} primary> Okay </Button>   
+                        <Button onClick={this.props.handleClose} primary> Close </Button>   
                     </div>
                 </Modal.Actions>
             </Modal>

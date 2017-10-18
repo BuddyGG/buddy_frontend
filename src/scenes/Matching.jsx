@@ -15,7 +15,7 @@ export default class Matching extends Component {
             matches: [],
             requestingModalOpen: false,
             requestedModalOpen: false,
-            responseModalOpen: true,            
+            responseModalOpen: false,            
             timeLeft: 30,
             responseMessage: false
         }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Logo from "../../images/Logo.png"
+import Logo from "../../images/LOLAMIGO2.png"
 import { Image } from 'semantic-ui-react';
 
 export default class LoLAmigoHeader extends Component {
