@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Segment, Transition } from 'semantic-ui-react';
+import { Segment } from 'semantic-ui-react';
 import MatchTile from './MatchTile'
 
 export default class MatchingTable extends Component {

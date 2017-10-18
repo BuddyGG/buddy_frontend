@@ -81,9 +81,19 @@ export default class Matching extends Component {
             console.log("match_requested")
             console.log(response)
 
-            this.setState({
-                otherPlayer: response
-            }, () => this.requestedHandleOpen() )
+            if (this.state.requestedModalOpen){
+                const busyResponse = {
+                    id: response.id,
+                    response: "busy"
+                }
+        
+                const channel = this.state.channel
+                channel.push('respond_to_request', busyResponse)           
+            } else {
+                this.setState({
+                    otherPlayer: response
+                }, () => this.requestedHandleOpen() )
+            }         
         })
 
         channel.on('requesting_match', (response) => {

@@ -55,6 +55,21 @@ export default class MatchResponseModal extends Component {
                 )
                 break;
 
+            case "busy":
+                responseHeader = "Hold on...";
+                icon = <Icon size="huge" color="blue" name="warning circle"/>
+                message = (
+                    <div>
+                    <h4> 
+                        {this.props.player.name} is responding to another request!
+                    </h4>
+                    <h4> 
+                        Click close to return to your list of matches.
+                    </h4>
+                </div>
+                )
+                break;
+
             default:
                 break;
         }
