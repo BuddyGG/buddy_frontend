@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Form, Checkbox } from 'semantic-ui-react'
-import { interval1, interval2, interval3 } from '../../config/AgeIntervals'
+import { Form, Checkbox, Divider } from 'semantic-ui-react'
+import { interval1, interval2, interval3 } from '../../../../../config/AgeIntervals'
 
 export default class AgeGroup extends Component {
   
@@ -9,7 +9,9 @@ export default class AgeGroup extends Component {
   setAgeInterval3 = () => this.props.handleChange(interval3)
 
   render() {
-    return (    
+    return (  
+      <div>  
+        <Divider inverted horizontal>Age group</Divider>
         <Form.Group inline>
           <Form.Field>
             <Checkbox
@@ -39,6 +41,7 @@ export default class AgeGroup extends Component {
             />
           </Form.Field>
         </Form.Group>
+      </div>
     );
   }
 }

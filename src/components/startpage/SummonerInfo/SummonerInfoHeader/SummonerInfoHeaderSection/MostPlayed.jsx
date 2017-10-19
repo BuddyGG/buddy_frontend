@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Table, Header } from 'semantic-ui-react'
-import { getChampImage } from '../../config/ChampImages';
+import { getChampImage } from '../../../../../config/ChampImages';
 
 export default class MostPlayed extends Component {
 

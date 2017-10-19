@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Segment } from 'semantic-ui-react';
-import MatchTile from './MatchTile'
+import MatchTile from './MatchTableTile/MatchTile'
 
-export default class MatchingTable extends Component {
+export default class MatchTable extends Component {
 
     noMatches = () => {
         return (

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import SearchSummoner from '../components/startpage/SearchSummoner';
-import SearchForm from '../components/startpage/SearchForm';
-import SummonerArea from '../components/startpage/SummonerArea';
+import SearchSummoner from '../components/startpage/SearchSummoner/SearchSummoner';
 import LoLAmigoHeader from '../components/shared/LoLAmigoHeader';
+import SummonerInfo from "../components/startpage/SummonerInfo/SummonerInfo";
 import { Segment, Header } from 'semantic-ui-react';
 import history from '../config/History';
 
@@ -15,13 +14,14 @@ class Welcome extends Component {
       };
     }
 
-    getSummonerByName = (data) => {  
+    getSummonerByName = (data) => { 
       this.setState({
           summonerInfo: data.data,
       })
     }
 
     getUserInput = (userInput) => {
+      console.log(userInput)
       this.setState(prevState => ({
         summonerInfo: {
           ...prevState.summonerInfo,
@@ -32,7 +32,7 @@ class Welcome extends Component {
       })     
     }
 
-    goToMatching = (socket, player) => {
+    goToMatching = () => {
       this.props.sendConnectInfo(this.state.summonerInfo, this.state.id)
       history.push(process.env.PUBLIC_URL + '/matching');
     }
@@ -60,8 +60,7 @@ class Welcome extends Component {
 
                   {summonerInfo &&
                   <Segment inverted raised>
-                    <SummonerArea icon={summonerInfo.icon_id} champions={summonerInfo.champions} name={summonerInfo.name} league={league}/>                 
-                    <SearchForm history={this.props.history} submit={this.getUserInput} id={this.state.id}/>
+                    <SummonerInfo player={this.state.summonerInfo} submit={this.getUserInput} league={league} id={this.state.id} />                   
                   </Segment>              
                   } 
 

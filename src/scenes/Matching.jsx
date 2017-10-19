@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import YourCriteria from '../components/matching/YourCriteria'
-import MatchingTable from '../components/matching/MatchingTable'
-import MatchRequestModal from '../components/matching/MatchRequestModal'
-import RequestingMatchModal from '../components/matching/RequestingMatchModal'
-import MatchResponseModal from '../components/matching/MatchResponseModal'
+import CriteriaList from '../components/matching/CriteriaList/CriteriaList'
+import MatchingTable from '../components/matching/MatchTable/MatchTable'
+import MatchRequestModal from '../components/matching/Modals/MatchRequestModal'
+import RequestingMatchModal from '../components/matching/Modals/RequestingMatchModal'
+import MatchResponseModal from '../components/matching/Modals/MatchResponseModal'
+import LoLAmigoHeader from '../components/shared/LoLAmigoHeader';
 import { Socket } from 'phoenix';
 
 export default class Matching extends Component {
@@ -41,11 +42,10 @@ export default class Matching extends Component {
         const socket = new Socket("wss://lolbuddy.herokuapp.com/socket");
   
         socket.connect();  
-        
         this.connectToChannel(socket, this.state.playerInfo);
       }
 
-    connectToChannel = (socket, player) => {
+    connectToChannel = (socket, player) => {       
         const id = this.state.id
         const channel = socket.channel(`players:${id}`, {
             payload: player         
@@ -183,14 +183,20 @@ export default class Matching extends Component {
     requestingHandleClose = () => this.setState({ requestingModalOpen: false }) 
 
     responseHandleOpen = () => this.setState({ responseModalOpen: true })  
-    responseHandleClose = () => this.setState({ responseModalOpen: false }) 
+    responseHandleClose = () => this.setState({ responseModalOpen: false })
+    
+    updateCriteria = (criteria) => {
+        //handle criteria
+    }
 
     render () {
         return (
             <div className="main-content">
                 <div className="width-control2">
-                    <YourCriteria/>
+                    <LoLAmigoHeader/>
+                    <CriteriaList onChangeCriteria={this.updateCriteria} />
                     <MatchingTable matches={this.state.matches} requestMatch={this.requestMatch}/>
+                    
                     <MatchRequestModal 
                         open={this.state.requestedModalOpen} 
                         handleOpen={this.requestedHandleOpen} 

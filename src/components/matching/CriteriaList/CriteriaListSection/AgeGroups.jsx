@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Divider } from 'semantic-ui-react';
 import { Form, Checkbox } from 'semantic-ui-react'
-import { interval1, interval2, interval3 } from '../../config/AgeIntervals'
+import { interval1, interval2, interval3 } from '../../../../config/AgeIntervals'
 
-export default class AgeGroup extends Component {
+export default class AgeGroups extends Component {
     render () {
         return (
             <div className="criteria">
@@ -12,29 +12,26 @@ export default class AgeGroup extends Component {
                 <Form.Group className="criteria-content no-margin" inline>
                     <Form.Field>
                         <Checkbox
-                        radio
                         label={interval1}
-                        value="13"
-                        checked={this.props.value === interval1}
-                        onChange={this.setAgeInterval1}
+                        name="interval1"
+                        checked={this.props.ageGroups.interval1}
+                        onChange={this.props.onChange}
                         />
                     </Form.Field>
                     <Form.Field>
                         <Checkbox
-                        radio
                         label={interval2}
-                        value="20"
-                        checked={this.props.value === interval2}
-                        onChange={this.setAgeInterval2}
+                        name="interval2"
+                        checked={this.props.ageGroups.interval2}
+                        onChange={this.props.onChange}
                         />
                     </Form.Field>
                     <Form.Field>
                         <Checkbox
-                        radio
                         label={interval3}
-                        value="29"
-                        checked={this.props.value === interval3}
-                        onChange={this.setAgeInterval3}
+                        name="interval3"
+                        checked={this.props.ageGroups.interval3}
+                        onChange={this.props.onChange}
                         />
                     </Form.Field>
                 </Form.Group>

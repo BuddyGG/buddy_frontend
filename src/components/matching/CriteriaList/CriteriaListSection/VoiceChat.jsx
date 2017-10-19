@@ -12,14 +12,16 @@ export default class VoiceChat extends Component {
                 <Form.Group className="no-margin criteria-content" inline>
                     <Form.Field inline>
                         <Checkbox
-                        radio
-                        label='YES'/>
+                        label='YES'
+                        checked={this.props.voiceChat.YES}
+                        onChange={this.props.onChange} />
                     </Form.Field>
 
                     <Form.Field>
                         <Checkbox
-                        radio
-                        label='NO'/>
+                        label='NO'
+                        checked={this.props.voiceChat.NO}
+                        onChange={this.props.onChange} />
                     </Form.Field>
                 </Form.Group>
             </div>

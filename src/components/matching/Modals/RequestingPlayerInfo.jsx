@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Grid, Segment, Progress } from 'semantic-ui-react'
-import { getChampImage } from '../../config/ChampImages';
-import { getRoleImage } from '../../config/RoleImages';
-import { getFlagImage } from '../../config/FlagIcons';
+import { getChampImage } from '../../../config/ChampImages';
+import { getRoleImage } from '../../../config/RoleImages';
+import { getFlagImage } from '../../../config/FlagIcons';
 
 export default class RequestingPlayerInfo extends Component {
     render () {

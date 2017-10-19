@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Checkbox } from 'semantic-ui-react'
+import { Form, Checkbox, Divider } from 'semantic-ui-react'
 
 export default class VoiceChat extends Component {
 
@@ -12,7 +12,9 @@ export default class VoiceChat extends Component {
   }
 
   render() {
-    return (    
+    return (
+      <div>    
+        <Divider inverted horizontal>Voice chat?</Divider>
         <Form.Group inline className="centered-form-field">
           <Form.Field>
             <Checkbox
@@ -31,6 +33,7 @@ export default class VoiceChat extends Component {
             />
           </Form.Field>
         </Form.Group>
+      </div>
     );
   }
 }
