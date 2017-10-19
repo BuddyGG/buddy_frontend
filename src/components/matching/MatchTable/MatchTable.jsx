@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Segment } from 'semantic-ui-react';
+import { Segment, Transition, List } from 'semantic-ui-react';
 import MatchTile from './MatchTableTile/MatchTile'
 
 export default class MatchTable extends Component {
@@ -14,11 +14,20 @@ export default class MatchTable extends Component {
 
     someMatches = () => {
         return (
-            <div>
+            <Transition.Group
+                as={List}
+                duration={600}
+                divided
+                size='huge'
+                verticalAlign='middle'
+                animation="vertical flip"
+            >
                 {this.props.matches.map((match) =>
-                    <MatchTile key={match.id} requestMatch={this.props.requestMatch} match={match} />
+                    <List.Item>
+                        <MatchTile key={match.id} requestMatch={this.props.requestMatch} match={match} />
+                    </List.Item>
                 )}        
-            </div>
+            </Transition.Group>
         )
     }
 
