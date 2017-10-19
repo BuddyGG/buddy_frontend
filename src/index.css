@@ -15,7 +15,6 @@ body {
 }
 #search-summoner{
   width: 100%;
-  margin-bottom: 20px;
 }
 #search-bar{
   width: 100%;
@@ -196,4 +195,7 @@ canvas{
   padding:5px;
   outline: 1px solid rgba(0, 0, 0, 0.425);
   outline-offset: -10px;
+}
+#submit-button {
+  margin-top: 14px;
 }

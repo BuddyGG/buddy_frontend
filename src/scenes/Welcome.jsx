@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import SearchSummoner from '../components/startpage/SearchSummoner/SearchSummoner';
 import LoLAmigoHeader from '../components/shared/LoLAmigoHeader';
 import SummonerInfo from "../components/startpage/SummonerInfo/SummonerInfo";
-import { Segment, Header } from 'semantic-ui-react';
+import { Segment, Header, Transition } from 'semantic-ui-react';
 import history from '../config/History';
 
 class Welcome extends Component {
@@ -58,11 +58,13 @@ class Welcome extends Component {
                     <SearchSummoner loading={this.setLoader} getSummonerByName={this.getSummonerByName} />                 
                   </div>
 
-                  {summonerInfo &&
-                  <Segment inverted raised>
-                    <SummonerInfo player={this.state.summonerInfo} submit={this.getUserInput} league={league} id={this.state.id} />                   
-                  </Segment>              
-                  } 
+                  
+                  <Transition visible={summonerInfo !== null} animation={"fade down"} duration={400}>
+                    <Segment inverted raised>
+                      <SummonerInfo player={this.state.summonerInfo} submit={this.getUserInput} league={league} id={this.state.id} />                   
+                    </Segment>   
+                  </Transition>                             
+                  
 
                 </div>
                 <Header as="h4" className="footer">Site is under development...</Header>                                

@@ -85,7 +85,7 @@ export default class SummonerInfo extends Component {
           roles={this.state.roles}
           />  
 
-        <Button fluid primary type="submit">Find matches</Button>
+        <Button fluid primary type="submit" id="submit-button">Find matches</Button>
 
       </Form>
     );
