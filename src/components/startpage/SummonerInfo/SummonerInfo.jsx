@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import ValidationMessage from "./SummonerInfoInput/ValidationMessage";
 import SummonerInfoHeader from "./SummonerInfoHeader/SummonerInfoHeader"
 import SummonerInfoInput from "./SummonerInfoInput/SummonerInfoInput"
 import { Form, Button } from 'semantic-ui-react'
@@ -19,24 +19,59 @@ export default class SummonerInfo extends Component {
       languageOptions: languages,
       value: [],
       voicechat: false,
-      agegroup: "",
-      comment: ""
+      agegroup: null,
+      comment: null,
+      errorMessage: false
     }
   }
 
+  componentDidMount = () => {
+    this.setDefaultRoles()
+  }
+
+  setDefaultRoles = () => {
+    const predictedPositions = this.props.player.positions
+    
+    let roles = this.state.roles
+    predictedPositions.map(pos => roles[pos] = true)
+
+    this.setState({
+      roles: roles
+    })
+  }
+
   findMatches = () => {
-    const {roles,value,voicechat,agegroup,comment} = this.state
+    if(this.validateInput()){
+      const {roles,value,voicechat,agegroup,comment} = this.state
+      
+      const playerInfo = {
+        selectedRoles: roles,
+        languages: value,
+        voicechat: voicechat,
+        agegroup: agegroup,
+        comment: comment,
+        id: this.props.id
+      }
+  
+      if(this.state.errorMessage !== false){
+        this.props.submit(playerInfo);      
+      }
+    } else {
+      this.setState({
+        errorMessage: true
+      })
+    }  
+  }
 
-    const playerInfo = {
-      selectedRoles: roles,
-      languages: value,
-      voicechat: voicechat,
-      agegroup: agegroup,
-      comment: comment,
-      id: this.props.id
+  validateInput = () => {
+    const { value, agegroup } = this.state
+    const roles = this.state
+
+    if (value.length && agegroup){
+      return true
+    } else {
+      return false
     }
-
-    this.props.submit(playerInfo);
   }
 
   toggleRole = (event) => {
@@ -86,7 +121,7 @@ export default class SummonerInfo extends Component {
           />  
 
         <Button fluid primary type="submit" id="submit-button">Find matches</Button>
-
+        <ValidationMessage errorMessage={this.state.errorMessage} /> 
       </Form>
     );
   }

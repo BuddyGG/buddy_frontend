@@ -199,3 +199,6 @@ canvas{
 #submit-button {
   margin-top: 14px;
 }
+.hidden {
+  display: none;
+}
