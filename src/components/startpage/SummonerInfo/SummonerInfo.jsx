@@ -41,7 +41,8 @@ export default class SummonerInfo extends Component {
   }
 
   findMatches = () => {
-    if(this.validateInput()){
+    if(this.validateInput()){    
+      console.log("validated")
       const {roles,value,voicechat,agegroup,comment} = this.state
       
       const playerInfo = {
@@ -53,9 +54,7 @@ export default class SummonerInfo extends Component {
         id: this.props.id
       }
   
-      if(this.state.errorMessage !== false){
         this.props.submit(playerInfo);      
-      }
     } else {
       this.setState({
         errorMessage: true
