@@ -6,55 +6,35 @@ import RequestingMatchModal from '../components/matching/Modals/RequestingMatchM
 import MatchResponseModal from '../components/matching/Modals/MatchResponseModal'
 import LoLAmigoHeader from '../components/shared/LoLAmigoHeader';
 import { Socket } from 'phoenix';
+import history from '../config/History';
 
 export default class Matching extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            playerInfo: null,
-            id: null,
             matches: [],
+            channel: this.props.channel,
             requestingModalOpen: false,
             requestedModalOpen: false,
             responseModalOpen: false,            
+            responseMessage: false,
             timeLeft: 30,
-            responseMessage: false
         }
     }
 
-    componentDidMount = () => {
-        this.setState({
-            playerInfo: this.props.playerInfo,
-            id: this.props.id
-        }, () => {
-            this.connectToSocket()
-        })
+    componentWillMount = () => {
+        // Go to frontpage if you don't have channel or criteria
+        console.log(this.state.channel)
+        console.log(this.state.criteria)
+        console.log("HERE")
+        if(!this.state.channel){
+            history.push('/')
+        } else {
+         this.configureChannel(this.state.channel)         
+        }    
     }
 
-    componentWillUnmount = () => {
-        // channel.leave
-        // const socket = new Socket("ws://lolbuddy.herokuapp.com/socket");
-        // socket.disconnect();
-    }
-
-    connectToSocket = () => {
-        // const token = JSON.parse(localStorage.getItem('token'));
-        const socket = new Socket("wss://lolbuddy.herokuapp.com/socket");
-  
-        socket.connect();  
-        this.connectToChannel(socket, this.state.playerInfo);
-      }
-
-    connectToChannel = (socket, player) => {       
-        const id = this.state.id
-        const channel = socket.channel(`players:${id}`, {
-            payload: player         
-        });
-
-        this.setState({
-            channel: channel
-        })
-        
+    configureChannel = (channel) => {       
         channel.join().receive('ok', (response) => {
             console.log("Succesfully connected to channel");
         });
@@ -103,6 +83,11 @@ export default class Matching extends Component {
             this.setState({
                 otherPlayer: response
             }, () => this.requestingHandleOpen() )
+        })
+
+        channel.on('remove_player', (response) => {
+            console.log("Player left")
+            console.log(response)
         })
 
         channel.on('request_response', (response) => {
@@ -187,6 +172,12 @@ export default class Matching extends Component {
     
     updateCriteria = (criteria) => {
         //handle criteria
+        if(this.state.channel){
+            console.log("pushing")
+            const channel = this.state.channel
+            channel.push('update_criteria', criteria)
+        }
+        
     }
 
     render () {
@@ -194,7 +185,7 @@ export default class Matching extends Component {
             <div className="main-content">
                 <div className="width-control2">
                     <LoLAmigoHeader/>
-                    <CriteriaList onChangeCriteria={this.updateCriteria} />
+                    <CriteriaList onChangeCriteria={this.updateCriteria} criteria={this.props.criteria} />
                     <MatchingTable matches={this.state.matches} requestMatch={this.requestMatch}/>
                     
                     <MatchRequestModal 

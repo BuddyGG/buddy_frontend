@@ -202,3 +202,10 @@ canvas{
 .hidden {
   display: none;
 }
+#criteria-header {
+  border: solid black;
+  left: 0%;
+}
+.comment-box {
+  word-wrap: break-word;
+}

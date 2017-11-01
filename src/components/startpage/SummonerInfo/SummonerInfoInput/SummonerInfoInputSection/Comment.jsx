@@ -7,7 +7,7 @@ export default class Comment extends Component {
         return (
             <div>
                 <Divider inverted horizontal>Comments</Divider>
-                <Form.TextArea onChange={this.props.handleChange} value={this.props.comment} placeholder='Additional information' />
+                <Form.TextArea maxLength="100" onChange={this.props.handleChange} value={this.props.comment} placeholder='Additional information (max. 100 characters)' />
             </div>
         );
     }

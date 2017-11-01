@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ValidationMessage from "./SummonerInfoInput/ValidationMessage";
 import SummonerInfoHeader from "./SummonerInfoHeader/SummonerInfoHeader"
 import SummonerInfoInput from "./SummonerInfoInput/SummonerInfoInput"
-import { Form, Button } from 'semantic-ui-react'
+import { Form, Button, Icon } from 'semantic-ui-react'
 import { languages } from '../../../config/Languages';
 
 export default class SummonerInfo extends Component {
@@ -42,7 +42,6 @@ export default class SummonerInfo extends Component {
 
   findMatches = () => {
     if(this.validateInput()){    
-      console.log("validated")
       const {roles,value,voicechat,agegroup,comment} = this.state
       
       const playerInfo = {
@@ -64,7 +63,6 @@ export default class SummonerInfo extends Component {
 
   validateInput = () => {
     const { value, agegroup } = this.state
-    const roles = this.state
 
     if (value.length && agegroup){
       return true
@@ -92,7 +90,6 @@ export default class SummonerInfo extends Component {
   }
 
   handleLanguage = (e, { value }) => {
-    console.log("language")
     this.setState({value})
   }
 
@@ -119,7 +116,7 @@ export default class SummonerInfo extends Component {
           roles={this.state.roles}
           />  
 
-        <Button fluid primary type="submit" id="submit-button">Find matches</Button>
+        <Button fluid icon="arrow circle right" labelPosition="right" primary type="submit" id="submit-button" content="Find matches"/>
         <ValidationMessage errorMessage={this.state.errorMessage} /> 
       </Form>
     );

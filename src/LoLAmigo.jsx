@@ -17,10 +17,15 @@ export default class LoLAmigo extends Component {
         }
       }
 
-    passData = (playerInfo, id) => {
+    getChannel = (channel) => {
         this.setState({
-            playerInfo: playerInfo,
-            id: id
+            channel: channel,
+        })
+    }
+
+    getCriteria = (criteria) => {
+        this.setState({
+            criteria: criteria,
         })
     }
 
@@ -38,8 +43,8 @@ export default class LoLAmigo extends Component {
         return (
             <Router history={history}>
                 <div>
-                    <Route exact path={process.env.PUBLIC_URL + '/'} render={ () => <Welcome sendConnectInfo={this.passData} />} />
-                    <Route path={process.env.PUBLIC_URL + '/matching'} render={ () => <Matching playerInfo={this.state.playerInfo} id={this.state.id} />} />                    
+                    <Route exact path={process.env.PUBLIC_URL + '/'} render={ () => <Welcome sendChannel={this.getChannel} id={this.state.id} sendCriteria={this.getCriteria} />} />
+                    <Route path={process.env.PUBLIC_URL + '/matching'} render={ () => <Matching channel={this.state.channel} criteria={this.state.criteria} />} />                    
                 </div>
             </Router>
             

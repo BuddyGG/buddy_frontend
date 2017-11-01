@@ -13,7 +13,7 @@ export default class SummonerInfoInput extends Component {
                 <Languages handleChange={this.props.handleLanguage} languageOptions={this.props.languageOptions} value={this.props.value} />
                 <VoiceChat handleChange={this.props.handleVoiceChat} value={this.props.voicechat}/>
                 <AgeGroup handleChange={this.props.handleAgeGroup} value={this.props.agegroup} />
-                <Comment handleChange={this.props.handleComment} value={this.props.comment} />
+                <Comment handleChange={this.props.handleComment} value={this.props.comment}/>
             </div>
         );
     }

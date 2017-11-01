@@ -61,7 +61,7 @@ class SearchSummoner extends Component {
                                 onChange={this.handleChangeRegion} 
                                 options={options} 
                                 defaultValue={this.state.region}/>
-                        <Button primary loading={this.state.loading} type='submit'>Search</Button>  
+                        <Button icon="search" primary loading={this.state.loading} type='submit' content="Search"/>
                     </Input>
                 </Form>           
             </div>

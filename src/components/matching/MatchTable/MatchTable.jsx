@@ -6,6 +6,9 @@ export default class MatchTable extends Component {
 
     render () {
         const noMatches = (this.props.matches.length === 0)
+        const state = { hide: 500, show: 500, visible: true }
+
+        const { hide, show, visible } = state
 
         return (
             <div className="match-table">
@@ -19,7 +22,7 @@ export default class MatchTable extends Component {
                     
                     <Transition.Group
                         as={List}
-                        duration={600}
+                        duration={{ hide, show }}
                         divided
                         size='huge'
                         verticalAlign='middle'
