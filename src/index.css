@@ -7,10 +7,15 @@ body {
   background-size: cover;
 }
 .main-content{
-  width: 100vw;
   height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+.main-content2{
+  height: 100vh;
+  padding-top: 10vh;
+  display: flex;
   justify-content: center;
 }
 #search-summoner{
@@ -118,22 +123,31 @@ td{
 .match-tile{
   display: flex;
   justify-content: center;
-  margin: 5px;
+  padding: 10px 0px;
+  font-size: 0.7em;
   overflow: hidden;
-  border-radius: 5px;
+  border-bottom: solid #0C0C0C 1px;
+}
+.match-tile h5 {
+  font-weight: 200;
+}
+.full-width{
+  width: 100%;
+}
+.match-tile-header{
+  margin: 0;
+  padding: 0;
+}
+.match-tile-header > .column{
+  padding-top: 0px !important;
 }
 .match-tile.empty{
-  border: dashed black 1px;
   height: 73.5px;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.096);
 }
 .grid{
   width: 100%;
-}
-.shadow{
-  margin: 3px 5px;
-  box-shadow: 1px 1px 5px #0C0C0C;
 }
 .inline{
   display: flex;
@@ -208,4 +222,7 @@ canvas{
 }
 .comment-box {
   word-wrap: break-word;
+}
+.item {
+  padding: 0 !important;
 }

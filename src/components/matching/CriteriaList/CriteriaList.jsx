@@ -31,7 +31,7 @@ export default class CriteriaList extends Component {
 
     componentDidMount = () => {    
         if(!this.props.criteria){
-            history.push('/')
+            // history.push('/')
         } else {
             this.setState({
                 positions: this.props.criteria.positions,

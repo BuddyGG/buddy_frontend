@@ -182,7 +182,7 @@ export default class Matching extends Component {
 
     render () {
         return (
-            <div className="main-content">
+            <div className="main-content2">
                 <div className="width-control2">
                     <LoLAmigoHeader/>
                     <CriteriaList onChangeCriteria={this.updateCriteria} criteria={this.props.criteria} />

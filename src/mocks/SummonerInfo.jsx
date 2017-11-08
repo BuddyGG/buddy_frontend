@@ -24,7 +24,7 @@ export const matchTileProps = {
   region:"euw",
   positions:[
     "mid",
-    "jun"
+    "jungle"
   ],
   name:"YoD SuperNova",
   leagues:[  
@@ -50,7 +50,7 @@ export const matchTileProps = {
   ],
   id:6,
   criteria:null,
-  comment:"Im Good player",
+  comment:"asdasdasddasdasdasddasdasdasddasdasdasddasdasdasddasdasdasddasdasdasddasdasdasddasdasdasddasdasdasdd",
   champions:[  
      "Sivir",
      "Caitlyn",
