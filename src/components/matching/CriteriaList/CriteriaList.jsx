@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Segment, Form, Label, Button } from 'semantic-ui-react';
+import { Segment, Form, Label } from 'semantic-ui-react';
 import history from '../../../config/History';
 import Positions from './CriteriaListSection/Positions';
 import MatchList from './CriteriaListSection/AutoRefresh';
@@ -11,27 +11,27 @@ export default class CriteriaList extends Component {
         super(props);
         this.state = {
             positions: {
-                top: null,
-                jungle: null,
-                mid: null,
-                marksman: null,
-                suppoert: null
+                top: false,
+                jungle: false,
+                mid: false,
+                marksman: false,
+                support: false
             },
             ageGroups: {
-                interval1: null,
-                interval2: null,
-                interval2: null,                
+                interval1: false,
+                interval2: false,
+                interval3: false,                
             },
             voiceChat: {
-                YES: null,
-                NO: null
+                YES: false,
+                NO: false
             }
         }
     }
 
     componentDidMount = () => {    
         if(!this.props.criteria){
-            // history.push('/')
+             history.push('/')
         } else {
             this.setState({
                 positions: this.props.criteria.positions,

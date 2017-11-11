@@ -5,7 +5,6 @@ import MatchRequestModal from '../components/matching/Modals/MatchRequestModal'
 import RequestingMatchModal from '../components/matching/Modals/RequestingMatchModal'
 import MatchResponseModal from '../components/matching/Modals/MatchResponseModal'
 import LoLAmigoHeader from '../components/shared/LoLAmigoHeader';
-import { Socket } from 'phoenix';
 import history from '../config/History';
 
 export default class Matching extends Component {
@@ -24,9 +23,6 @@ export default class Matching extends Component {
 
     componentWillMount = () => {
         // Go to frontpage if you don't have channel or criteria
-        console.log(this.state.channel)
-        console.log(this.state.criteria)
-        console.log("HERE")
         if(!this.state.channel){
             history.push('/')
         } else {
@@ -87,7 +83,7 @@ export default class Matching extends Component {
 
         channel.on('remove_player', (response) => {
             console.log("Player left")
-            console.log(response)
+            this.removePlayer(response.id)
         })
 
         channel.on('request_response', (response) => {
@@ -100,9 +96,10 @@ export default class Matching extends Component {
                     this.setState({
                         responseMessage: response.response
                     }, () => {
-                        this.responseHandleOpen()
                         this.requestedHandleClose()
-                        this.requestingHandleClose()                        
+                        this.requestingHandleClose()
+                        this.props.matchFoundName(this.state.otherPlayer.name)
+                        history.push('/matchfound')                        
                     })
                     break;
 
@@ -138,6 +135,12 @@ export default class Matching extends Component {
         })
     }
   
+    removePlayer = (playerId) => {
+        this.setState((prevState) => ({
+          matches: prevState.matches.filter((match) => match.id !== playerId)
+        }));
+      }
+
     requestMatch = (player) => {
         console.log("request_match:")
         console.log(player)

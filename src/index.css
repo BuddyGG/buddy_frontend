@@ -226,3 +226,14 @@ canvas{
 .item {
   padding: 0 !important;
 }
+.match-segment {
+  outline: 1px solid rgba(0, 0, 0, 0.425);
+  outline-offset: -10px;
+}
+.match-name {
+  color: orange;
+}
+.center-logo {
+  width: 100%;
+  text-align: center;
+}

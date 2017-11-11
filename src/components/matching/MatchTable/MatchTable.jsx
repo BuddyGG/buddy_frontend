@@ -2,15 +2,14 @@ import React, { Component } from 'react';
 import { Segment, Transition, List } from 'semantic-ui-react';
 import MatchTile from './MatchTableTile/MatchTile'
 import MatchTileHeader from './MatchTableTile/MatchTileHeader'
-import { matchTileProps } from '../../../mocks/SummonerInfo'
 
 export default class MatchTable extends Component {
 
     render () {
         const noMatches = (this.props.matches.length === 0)
-        const state = { hide: 0, show: 500, visible: true }
+        const state = { hide: 0, show: 500 }
 
-        const { hide, show, visible } = state
+        const { hide, show } = state
 
         return (
             <div className="match-table">

@@ -10,7 +10,6 @@ class Welcome extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        id: localStorage.getItem('sessionId'),
         summonerInfo: null,
         channel: null
       };
@@ -102,13 +101,15 @@ class Welcome extends Component {
     }
 
     connectToChannel = (socket, player) => {       
-      const id = this.props.id
+      const session_token = localStorage.getItem('sessionToken')
+      const session_id = localStorage.getItem('sessionId')
 
       console.log("Connecting to channel with player:")
       console.log(player)
 
-      const channel = socket.channel(`players:${id}`, {
-          payload: player         
+      const channel = socket.channel(`players:${session_id}`, {
+          payload: player,
+          token: session_token         
       });
     
       this.setState({

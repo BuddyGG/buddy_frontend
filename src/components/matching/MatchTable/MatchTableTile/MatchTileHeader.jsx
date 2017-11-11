@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Grid, Segment, Progress, Button } from 'semantic-ui-react'
+import React from 'react';
+import { Grid } from 'semantic-ui-react'
 
 export default function MatchTileHeader() {
     return (

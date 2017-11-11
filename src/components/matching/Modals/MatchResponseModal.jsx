@@ -10,21 +10,7 @@ export default class MatchResponseModal extends Component {
         let message;
         
         switch (this.props.response) {
-            case "accept":
-                responseHeader = "Congratulations!";
-                icon = <Icon size="huge" color="green" name="check circle outline" />
-                message = (
-                    <div>
-                        <h4> 
-                            You have succesfully matched with {this.props.player.name}!
-                        </h4>
-                        <h4> 
-                            Add eachother in the League of Legends client and fight together on the Rift! 
-                        </h4>
-                    </div>
-                )
-                break;
-
+            
             case "reject":
                 responseHeader = "I don't know how to tell you this, but...";
                 icon = <Icon size="huge" color="red" name="remove circle outline"/>

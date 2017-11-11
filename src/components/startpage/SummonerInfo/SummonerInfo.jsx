@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ValidationMessage from "./SummonerInfoInput/ValidationMessage";
 import SummonerInfoHeader from "./SummonerInfoHeader/SummonerInfoHeader"
 import SummonerInfoInput from "./SummonerInfoInput/SummonerInfoInput"
-import { Form, Button, Icon } from 'semantic-ui-react'
+import { Form, Button } from 'semantic-ui-react'
 import { languages } from '../../../config/Languages';
 
 export default class SummonerInfo extends Component {
@@ -50,7 +50,7 @@ export default class SummonerInfo extends Component {
         voicechat: voicechat,
         agegroup: agegroup,
         comment: comment,
-        id: this.props.id
+        id: localStorage.getItem('sessionId')
       }
   
         this.props.submit(playerInfo);      

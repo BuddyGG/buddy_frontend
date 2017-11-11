@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Segment, Progress, Button, Popup } from 'semantic-ui-react'
+import { Grid, Button, Popup } from 'semantic-ui-react'
 import { getChampImage } from '../../../../config/ChampImages';
 import { getRoleImage } from '../../../../config/RoleImages';
 import { getFlagImage } from '../../../../config/FlagIcons';
