@@ -36,6 +36,7 @@ export default class MatchRequestModal extends Component {
                                                     size="60" 
                                                     color="black" 
                                                     onComplete={this.reject}
+                                                    fontColor="white"
                                                     showMilliseconds="false"/>
                         </div>
                         <div className="button-box">

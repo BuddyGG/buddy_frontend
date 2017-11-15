@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import SearchSummoner from '../components/startpage/SearchSummoner/SearchSummoner';
 import LoLAmigoHeader from '../components/shared/LoLAmigoHeader';
 import SummonerInfo from "../components/startpage/SummonerInfo/SummonerInfo";
-import { Segment, Header, Transition } from 'semantic-ui-react';
+import { Segment, Header, Transition, Message } from 'semantic-ui-react';
 import history from '../config/History';
 import { Socket } from 'phoenix';
 
@@ -11,13 +11,15 @@ class Welcome extends Component {
       super(props);
       this.state = {
         summonerInfo: null,
-        channel: null
+        channel: null,
+        error: false
       };
     }
 
-    getSummonerByName = (data) => { 
+    getSummonerByName = (data) => {      
       this.setState({
           summonerInfo: data.data,
+          error: false
       })
     }
 
@@ -126,6 +128,12 @@ class Welcome extends Component {
       })
     }
 
+    handleError = () => {
+      this.setState({
+        error: true
+      })
+    }
+
     render() {
         const {summonerInfo = undefined} = this.state
         
@@ -138,7 +146,8 @@ class Welcome extends Component {
                 <div className="width-control">
                   <div id="search-summoner">
                     <LoLAmigoHeader/>
-                    <SearchSummoner loading={this.setLoader} getSummonerByName={this.getSummonerByName} />                 
+                    <SearchSummoner loading={this.setLoader} getSummonerByName={this.getSummonerByName} errorHandler={this.handleError} />
+                    { this.state.error && <Message warning header="" content="No summoner with that name exists!" />}                 
                   </div>
 
                   

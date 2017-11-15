@@ -35,6 +35,13 @@ class SearchSummoner extends Component {
         fetch(url).then(function(response) { 
             return response.json();
         }).then(function(data) {
+            if(data.error){
+                that.props.errorHandler()
+                that.setState({
+                    loading: false
+                })
+                return;
+            }
             that.props.getSummonerByName(data);
             that.setState({
                 loading: false

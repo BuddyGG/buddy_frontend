@@ -17,7 +17,7 @@ export default class Matching extends Component {
             requestedModalOpen: false,
             responseModalOpen: false,            
             responseMessage: false,
-            timeLeft: 30,
+            timeLeft: 50,
         }
     }
 
