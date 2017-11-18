@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 import { Segment, Header, Icon } from 'semantic-ui-react';
-
+import history from '../config/History';
 
 export default class MatchFound extends Component {
+
+    componentWillMount = () => {
+        // Go to frontpage if you don't have channel or criteria
+        if(!this.props.name){
+            history.push('/')
+        } 
+    }
+
     render() {
         return (
             <div className="main-content">

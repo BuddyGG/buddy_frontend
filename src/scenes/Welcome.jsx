@@ -53,11 +53,39 @@ class Welcome extends Component {
       
       this.props.sendCriteria(criteria);
       
-      const socket = new Socket("wss://lolbuddy.herokuapp.com/socket");
+      const session_token = localStorage.getItem('sessionToken')
+      const session_id = localStorage.getItem('sessionId')
+      
+      console.log(session_token)
+      console.log(session_id)
+      
+      const socket = new Socket("wss://lolbuddy.herokuapp.com/socket", {
+        params: {
+          session_token: session_token,
+          session_id: session_id
+        }
+      });
 
       socket.connect();
 
       this.connectToChannel(socket, player);
+    }
+
+    connectToChannel = (socket, player) => {       
+      const session_id = localStorage.getItem('sessionId')
+
+      console.log("Connecting to channel with player:")
+      console.log(player)
+
+      const channel = socket.channel(`players:${session_id}`, {
+          payload: player     
+      });
+    
+      this.setState({
+          channel: channel
+      }, () => {
+        this.goToMatching()
+      } )
     }
 
     setInitialPositions = (player) => {
@@ -100,27 +128,7 @@ class Welcome extends Component {
       if (!player.userInfo.voicechat) voiceChat.NO = true
 
       return voiceChat
-    }
-
-    connectToChannel = (socket, player) => {       
-      const session_token = localStorage.getItem('sessionToken')
-      const session_id = localStorage.getItem('sessionId')
-
-      console.log("Connecting to channel with player:")
-      console.log(player)
-
-      const channel = socket.channel(`players:${session_id}`, {
-          payload: player,
-          token: session_token         
-      });
-    
-      this.setState({
-          channel: channel
-      }, () => {
-        this.goToMatching()
-      } )
-
-    }
+    }   
 
     setLoader = (loading) => {
       this.setState({
