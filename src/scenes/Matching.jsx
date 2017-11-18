@@ -99,7 +99,7 @@ export default class Matching extends Component {
                         this.requestedHandleClose()
                         this.requestingHandleClose()
                         this.props.matchFoundName(this.state.otherPlayer.name)
-                        history.push('/matchfound')                        
+                        history.push(process.env.PUBLIC_URL + '/matchfound')                        
                     })
                     break;
 
