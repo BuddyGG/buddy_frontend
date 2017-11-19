@@ -83,9 +83,7 @@ export default class SummonerInfo extends Component {
   }
 
   toggleRole = (event) => {
-    const target = event.target;
-    const name = target.name;
-
+    const name = event;
     let roles = this.state.roles;
     roles[name] = !roles[name];
 
@@ -127,7 +125,7 @@ export default class SummonerInfo extends Component {
           roles={this.state.roles}
           />  
 
-        <Button fluid icon="arrow circle right" labelPosition="right" primary type="submit" id="submit-button" content="Find matches"/>
+        <Button fluid primary type="submit" id="submit-button" content="Find matches"/>
         <ValidationMessage errorMessage={this.state.errorMessage} /> 
       </Form>
     );

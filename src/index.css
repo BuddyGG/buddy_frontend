@@ -48,8 +48,10 @@ body {
   align-items: center;
 }
 #positions{
-  width: 50%;
+  width: 80%;
   margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
 }
 .position-checkbox{
   padding: 0 !important; /* Used to properly center the checkboxes */
