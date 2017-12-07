@@ -7,8 +7,10 @@ export default class MatchFound extends Component {
     componentWillMount = () => {
         // Go to frontpage if you don't have channel or criteria
         if(!this.props.name){
-            history.push('/')
+            history.push(process.env.PUBLIC_URL + '/')
         } 
+
+        this.props.channel.leave();
     }
 
     render() {

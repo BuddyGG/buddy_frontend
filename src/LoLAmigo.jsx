@@ -54,7 +54,7 @@ export default class LoLAmigo extends Component {
                 <div>
                     <Route exact path={process.env.PUBLIC_URL + '/'} render={ () => <Welcome sendChannel={this.getChannel} sendCriteria={this.getCriteria} />} />
                     <Route path={process.env.PUBLIC_URL + '/matching'} render={ () => <Matching channel={this.state.channel} criteria={this.state.criteria} matchFoundName={this.getMatchedName} />} />                    
-                    <Route path={process.env.PUBLIC_URL + '/matchfound'} render={ () => <MatchFound name={this.state.name} />} />                    
+                    <Route path={process.env.PUBLIC_URL + '/matchfound'} render={ () => <MatchFound channel={this.state.channel} name={this.state.name} />} />                    
                 </div>
             </Router>
             

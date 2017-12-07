@@ -24,10 +24,16 @@ export default class Matching extends Component {
     componentWillMount = () => {
         // Go to frontpage if you don't have channel or criteria
         if(!this.state.channel){
-            history.push('/')
+            history.push(process.env.PUBLIC_URL + '/')
         } else {
          this.configureChannel(this.state.channel)         
         }    
+    }
+
+    componentWillUnmount = () => {
+        var channel = this.state.channel;
+
+        channel.leave();
     }
 
     configureChannel = (channel) => {       
