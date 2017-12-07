@@ -37,6 +37,7 @@ body {
 }
 .width-control{
   width: 600px;
+  max-height: 95vh;
   display: flex;
   flex-direction: column;
   align-items: center;
