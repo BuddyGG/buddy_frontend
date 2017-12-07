@@ -166,8 +166,7 @@ class Welcome extends Component {
                   </Transition>                             
                   
 
-                </div>
-                <Header as="h4" className="footer">Site is under development...</Header>                                
+                </div>                           
               </div>
         );
     }
