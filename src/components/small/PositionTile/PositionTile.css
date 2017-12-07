@@ -1,0 +1,21 @@
+.position-tile {
+    height: 50px;
+    width: 50px;
+    transform: rotate(45deg);
+    border: solid 3px rgb(9, 62, 70);    
+    background-color: rgb(16, 21, 24); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    flex: 0 0 auto;
+}
+.position-tile.active {
+    background-color: #1B2429;
+    border: solid 3px #158FA4;   
+}
+.position-tile > .icon {
+    transform: rotate(-45deg);
+    height: 37px;
+    width: 37px;
+}
