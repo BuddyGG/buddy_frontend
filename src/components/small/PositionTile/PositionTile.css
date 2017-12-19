@@ -10,6 +10,9 @@
     margin: 5px;
     flex: 0 0 auto;
 }
+.position-tile:hover {
+    border: 3px solid rgb(21, 138, 156);  
+}
 .position-tile.active {
     background-color: #1B2429;
     border: solid 3px #158FA4;   
