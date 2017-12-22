@@ -8,12 +8,12 @@ export function getChampImage(champ){
     let allLoverCase = trimmedChamp2.toLowerCase();
     let championString = capitalizeFirstLetter(allLoverCase);
 
-    const champImageUrl = "https://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/" + championString + ".png";
+    const champImageUrl = "https://ddragon.leagueoflegends.com/cdn/7.24.1/img/champion/" + championString + ".png";
     return <Image centered src={champImageUrl} size='mini'/>;
 }
 
 export function getSummonerIcon(id){
-    const champImageUrl = "https://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/" + id + ".png";
+    const champImageUrl = "https://ddragon.leagueoflegends.com/cdn/7.24.1/img/profileicon/" + id + ".png";
     return <Image shape="rounded" src={champImageUrl} size='tiny'/>;
 }
 
