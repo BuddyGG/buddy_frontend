@@ -32,7 +32,7 @@ class SearchSummoner extends Component {
         console.log("Getting summoner...")
         console.log("Calling: " + url)
 
-        fetch(url).then(function(response) { 
+        fetch(`/api/summoner/${region}/${name}`).then(function(response) { 
             return response.json();
         }).then(function(data) {
             if(data.error){

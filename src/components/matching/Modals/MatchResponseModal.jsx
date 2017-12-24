@@ -11,7 +11,7 @@ export default class MatchResponseModal extends Component {
         
         switch (this.props.response) {
             
-            case "reject":
+            case "Request_Rejected":
                 responseHeader = "I don't know how to tell you this, but...";
                 icon = <Icon size="huge" color="red" name="remove circle outline"/>
                 message = (
@@ -26,7 +26,7 @@ export default class MatchResponseModal extends Component {
                 )
                 break;
 
-            case "cancel":
+            case "Request_Cancelled":
                 responseHeader = "Ooops...";
                 icon = <Icon size="huge" color="red" name="remove circle outline"/>
                 message = (
@@ -41,7 +41,7 @@ export default class MatchResponseModal extends Component {
                 )
                 break;
 
-            case "busy":
+            case "Requested_Player_Busy":
                 responseHeader = "Hold on...";
                 icon = <Icon size="huge" color="blue" name="warning circle"/>
                 message = (

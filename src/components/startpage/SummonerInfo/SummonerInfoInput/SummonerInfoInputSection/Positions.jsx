@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Divider, Table, Image } from 'semantic-ui-react'
+import { Form, Divider } from 'semantic-ui-react'
 import PositionTile from '../../../../small/PositionTile/PositionTile';
 import Top_Icon from '../../../../../icons/Top_icon.png';
 import Top_Icon_inactive from '../../../../../icons/Top_icon_inactive.png';

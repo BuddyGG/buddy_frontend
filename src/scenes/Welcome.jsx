@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import SearchSummoner from '../components/startpage/SearchSummoner/SearchSummoner';
 import LoLAmigoHeader from '../components/shared/LoLAmigoHeader';
 import SummonerInfo from "../components/startpage/SummonerInfo/SummonerInfo";
-import { Segment, Header, Transition, Message } from 'semantic-ui-react';
+import { Segment, Transition, Message } from 'semantic-ui-react';
+import {convertLeague} from '../config/LeagueConverter'
 import history from '../config/History';
 import { Socket } from 'phoenix';
 
@@ -146,7 +147,7 @@ class Welcome extends Component {
         const {summonerInfo = undefined} = this.state
         
         const league = (summonerInfo && summonerInfo.leagues[0]) ? 
-        summonerInfo.leagues[0].tier + " " + summonerInfo.leagues[0].rank :
+        convertLeague(summonerInfo.leagues) :
         "No leagues to show";
 
         return (

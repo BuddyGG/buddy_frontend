@@ -122,7 +122,7 @@ export default class CriteriaList extends Component {
 
     render () {
         return (
-            <div>
+            <div style={{width: "100%"}}>
                 <Form inverted>
                     <Segment id="criteria-bar" raised inverted>
                         <Label id="criteria-header" color='orange' floating>Your criterias</Label>

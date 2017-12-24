@@ -12,7 +12,7 @@ export default class MostPlayed extends Component {
 
         return (
             <div id="top-champs">
-                <Header inverted className="no-margin-header" as="h5" textAlign='center'>Most played:</Header>
+                <Header inverted className="no-margin-header" as="h5" textAlign='center'>Recently most played:</Header>
                 <Table id="most-played-table" basic="very" compact="very" textAlign="center">
                     <Table.Body>
                         <Table.Row>

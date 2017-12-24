@@ -7,7 +7,8 @@ import ReactCountdownClock from "react-countdown-clock";
 export default class RequestingMatchModal extends Component {
 
     cancel = () => {
-        this.props.respondToRequest(this.props.player.id, "cancel")
+        this.props.respondToRequest(this.props.player.id, "Request_Cancelled")
+        this.props.handleClose()
     }
 
     render () {

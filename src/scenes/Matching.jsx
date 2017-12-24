@@ -41,8 +41,8 @@ export default class Matching extends Component {
             console.log("Succesfully connected to channel");
         });
 
-        channel.on('new_players', (response) => {
-            console.log("new_players:")
+        channel.on('initial_matches', (response) => {
+            console.log("initial_matches:")
             console.log(response)
 
             this.setState({
@@ -50,8 +50,8 @@ export default class Matching extends Component {
             });
         })
             
-        channel.on('new_player', (response) => {
-            console.log("new_player:")
+        channel.on('new_match', (response) => {
+            console.log("new_match:")
             console.log(response)
 
             this.setState({
@@ -63,28 +63,27 @@ export default class Matching extends Component {
             console.log("match_requested")
             console.log(response)
 
-            if (this.state.requestedModalOpen){
-                const busyResponse = {
+            const playerIsBusy = this.state.requestedModalOpen
+
+            if (playerIsBusy){
+                const responseMessage = {
                     id: response.id,
-                    response: "busy"
+                    response: "Requested_Player_Busy"
                 }
         
-                const channel = this.state.channel
-                channel.push('respond_to_request', busyResponse)           
+                this.state.channel.push('respond_to_request', responseMessage) 
+
             } else {
+                const responseMessage = {
+                    id: response.id,
+                    response: "Requested_Player_Available"
+                }
+
+                this.state.channel.push('respond_to_request', responseMessage)
                 this.setState({
                     otherPlayer: response
-                }, () => this.requestedHandleOpen() )
+                }, () => this.requestedHandleOpen() )         
             }         
-        })
-
-        channel.on('requesting_match', (response) => {
-            console.log("requesting_match")
-            console.log(response)
-
-            this.setState({
-                otherPlayer: response
-            }, () => this.requestingHandleOpen() )
         })
 
         channel.on('remove_player', (response) => {
@@ -96,43 +95,28 @@ export default class Matching extends Component {
             console.log("request_response:")
             console.log(response)
 
-            switch(response.response) {
+            const responseMessage = response.response;
+
+            switch(responseMessage) {
                 
-                case "accept":
-                    this.setState({
-                        responseMessage: response.response
-                    }, () => {
-                        this.requestedHandleClose()
-                        this.requestingHandleClose()
-                        this.props.matchFoundName(this.state.otherPlayer.name)
-                        history.push(process.env.PUBLIC_URL + '/matchfound')                        
-                    })
+                case "Request_Accepted":
+                    this.handleAccept(responseMessage);
                     break;
 
-                case "reject":
-                    if (this.state.requestedModalOpen){
-                        this.requestedHandleClose()
-                    } else {
-                        this.setState({
-                            responseMessage: response.response
-                        }, () => {
-                            this.responseHandleOpen()
-                            this.requestingHandleClose()
-                        })
-                    }                    
+                case "Request_Rejected":
+                    this.handleReject(responseMessage);   
                     break;
                   
-                case "cancel":
-                    if (this.state.requestingModalOpen){
-                        this.requestingHandleClose()
-                    } else {
-                        this.setState({
-                            responseMessage: response.response
-                        }, () => {
-                            this.responseHandleOpen()
-                            this.requestedHandleClose()
-                        })
-                    }                    
+                case "Request_Cancelled":
+                    this.handleCancel(responseMessage);                
+                    break;
+
+                case "Requested_Player_Available":
+                    this.handleAvailable();
+                    break;
+
+                case "Requested_Player_Busy":
+                    this.handleBusy(responseMessage);
                     break;
                 
                 default:
@@ -141,20 +125,69 @@ export default class Matching extends Component {
         })
     }
   
+    handleAccept = (response) => {
+        this.setState({
+            responseMessage: response
+        }, () => {
+            this.requestedHandleClose()
+            this.requestingHandleClose()
+            this.props.matchFoundName(this.state.otherPlayer.name)
+            history.push(process.env.PUBLIC_URL + '/matchfound')                        
+        })
+    }
+
+    handleReject = (response) => {
+        if (this.state.requestedModalOpen){
+            this.requestedHandleClose()
+        } else {
+            this.setState({
+                responseMessage: response
+            }, () => {
+                this.responseHandleOpen()
+                this.requestingHandleClose()
+            })
+        }         
+    }
+
+    handleCancel = (response) => {
+        if (this.state.requestingModalOpen){
+            this.requestingHandleClose()
+        } else {
+            this.setState({
+                responseMessage: response
+            }, () => {
+                this.responseHandleOpen()
+                this.requestedHandleClose()
+            })
+        }    
+    }
+
+    handleAvailable = () => {
+        this.requestingHandleOpen();
+    }
+
+    handleBusy = (response) => {
+        this.setState({
+            responseMessage: response
+        }, () => {
+            this.responseHandleOpen()
+        })
+    }
+
     removePlayer = (playerId) => {
         this.setState((prevState) => ({
           matches: prevState.matches.filter((match) => match.id !== playerId)
         }));
-      }
+    }
 
     requestMatch = (player) => {
         console.log("request_match:")
         console.log(player)
 
-        const playerInfo = {"player": player}
-        const channel = this.state.channel
+        this.setState({otherPlayer: player})
 
-        channel.push('request_match', playerInfo)        
+        const playerInfo = {"player": player}
+        this.state.channel.push('request_match', playerInfo)        
     }
 
     respondToRequest = (playerId, requestResponse) => {
@@ -180,13 +213,12 @@ export default class Matching extends Component {
     responseHandleClose = () => this.setState({ responseModalOpen: false })
     
     updateCriteria = (criteria) => {
-        //handle criteria
+        // Handle criteria
         if(this.state.channel){
             console.log("pushing")
             const channel = this.state.channel
             channel.push('update_criteria', criteria)
-        }
-        
+        }    
     }
 
     render () {
@@ -203,7 +235,8 @@ export default class Matching extends Component {
                         handleClose={this.requestedHandleClose} 
                         player={this.state.otherPlayer}
                         timeLeft={this.state.timeLeft}
-                        respondToRequest={this.respondToRequest} />
+                        respondToRequest={this.respondToRequest}
+                        handleAccept={this.handleAccept} />
 
                     <RequestingMatchModal 
                         open={this.state.requestingModalOpen} 

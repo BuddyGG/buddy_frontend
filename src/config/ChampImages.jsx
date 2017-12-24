@@ -9,7 +9,7 @@ export function getChampImage(champ){
     let championString = capitalizeFirstLetter(allLoverCase);
 
     const champImageUrl = "https://ddragon.leagueoflegends.com/cdn/7.24.1/img/champion/" + championString + ".png";
-    return <Image centered src={champImageUrl} size='mini'/>;
+    return <Image  centered shape="circular" src={champImageUrl} size='mini'/>;
 }
 
 export function getSummonerIcon(id){
