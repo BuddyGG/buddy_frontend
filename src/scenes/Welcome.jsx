@@ -169,7 +169,7 @@ class Welcome extends Component {
 
                   { !this.state.error && 
                     <Transition visible={summonerInfo !== null} animation={"fade down"} duration={400}>
-                    <Segment inverted raised>
+                    <Segment inverted raised className="summoner-segment">
                       <SummonerInfo player={this.state.summonerInfo} submit={this.getUserInput} league={league} id={this.state.id} buttonDisable={this.state.isChallenger} />                   
                     </Segment>   
                   </Transition>       
