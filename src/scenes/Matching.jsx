@@ -6,6 +6,9 @@ import RequestingMatchModal from '../components/matching/Modals/RequestingMatchM
 import MatchResponseModal from '../components/matching/Modals/MatchResponseModal'
 import LoLAmigoHeader from '../components/shared/LoLAmigoHeader';
 import history from '../config/History';
+import Notification from 'react-web-notification';
+import { Button } from 'semantic-ui-react';
+
 
 export default class Matching extends Component {
     constructor(props) {
@@ -18,6 +21,8 @@ export default class Matching extends Component {
             responseModalOpen: false,            
             responseMessage: false,
             timeLeft: 50,
+            ignore: true,
+            title: ""
         }
     }
 
@@ -32,8 +37,7 @@ export default class Matching extends Component {
 
     componentWillUnmount = () => {
         var channel = this.state.channel;
-
-        channel.leave();
+        if(channel) channel.leave();
     }
 
     configureChannel = (channel) => {       
@@ -63,6 +67,8 @@ export default class Matching extends Component {
             console.log("match_requested")
             console.log(response)
 
+
+
             const playerIsBusy = this.state.requestedModalOpen
 
             if (playerIsBusy){
@@ -82,7 +88,10 @@ export default class Matching extends Component {
                 this.state.channel.push('respond_to_request', responseMessage)
                 this.setState({
                     otherPlayer: response
-                }, () => this.requestedHandleOpen() )         
+                }, () => {
+                    this.requestedHandleOpen()
+                    this.handleNotification()
+                } )         
             }         
         })
 
@@ -221,6 +230,53 @@ export default class Matching extends Component {
         }    
     }
 
+    handlePermissionGranted(){
+        console.log('Permission Granted');
+        this.setState({
+          ignore: false
+        });
+      }
+      handlePermissionDenied(){
+        console.log('Permission Denied');
+        this.setState({
+          ignore: true
+        });
+      }
+      handleNotSupported(){
+        console.log('Web Notification not Supported');
+        this.setState({
+          ignore: true
+        });
+      }
+
+    handleNotification = () => {
+
+        if(this.state.ignore) {
+            return;
+        }
+
+        const now = Date.now();
+
+        const title = 'You matched with someone!';
+        const body = this.state.otherPlayer.name + " wants to play with you.";
+        const tag = now;
+        // const icon = 'http://localhost:3000/Notifications_button_24.png';
+
+        // Available options
+        // See https://developer.mozilla.org/en-US/docs/Web/API/Notification/Notification
+        const options = {
+        tag: tag,
+        body: body,
+        lang: 'en',
+        dir: 'ltr'
+        }
+        
+        this.setState({
+          title: title,
+          options: options
+        }); 
+    }
+
     render () {
         return (
             <div className="main-content2">
@@ -229,6 +285,15 @@ export default class Matching extends Component {
                     <CriteriaList onChangeCriteria={this.updateCriteria} criteria={this.props.criteria} />
                     <MatchingTable matches={this.state.matches} requestMatch={this.requestMatch}/>
                     
+                    <Notification
+                        ignore={this.state.ignore && this.state.title !== ''}
+                        title={this.state.title}
+                        options = {this.state.options}
+                        notSupported={this.handleNotSupported.bind(this)}
+                        onPermissionGranted={this.handlePermissionGranted.bind(this)}
+                        onPermissionDenied={this.handlePermissionDenied.bind(this)}
+                        timeout={5000}/>
+
                     <MatchRequestModal 
                         open={this.state.requestedModalOpen} 
                         handleOpen={this.requestedHandleOpen} 

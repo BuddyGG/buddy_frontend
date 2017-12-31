@@ -35,6 +35,7 @@ export default class LoLAmigo extends Component {
     }
 
     componentDidMount = () => {
+        //fetch("/api/auth/request").then(function(response) { 
         fetch("https://lolbuddy.herokuapp.com/api/auth/request").then(function(response) { 
             return response.json();
         }).then(function(data) { 

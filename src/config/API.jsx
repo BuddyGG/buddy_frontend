@@ -1,4 +1,4 @@
-export const GET_SUMMONER_INFO = "https://lolbuddy.herokuapp.com/api/summoner/";
+export const backend_service = "https://lolbuddy.herokuapp.com";
 
 
 export const GET_SUMMONER_INFO_MOCK = {

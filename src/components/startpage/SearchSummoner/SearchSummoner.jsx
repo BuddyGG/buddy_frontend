@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Select, Input, Form, Button } from 'semantic-ui-react'
-import { GET_SUMMONER_INFO } from '../../../config/API'
+import { backend_service } from '../../../config/API'
 import { GET_SUMMONER_INFO_MOCK2 } from '../../../config/API'
 
 const options = [
@@ -24,13 +24,13 @@ class SearchSummoner extends Component {
         
         const region = this.state.region
         const name = (this.state.value).replace(/\s/g,''); //Remove spaces from name
-        const url = GET_SUMMONER_INFO + region + "/" + name;
+        //const url = GET_SUMMONER_INFO + region + "/" + name;
         
         this.setState({
             loading: true
         })
         console.log("Getting summoner...")
-        console.log("Calling: " + url)
+        //console.log("Calling: " + url)
 
         fetch(`/api/summoner/${region}/${name}`).then(function(response) { 
             return response.json();

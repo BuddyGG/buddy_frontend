@@ -13,7 +13,8 @@ class Welcome extends Component {
       this.state = {
         summonerInfo: null,
         channel: null,
-        error: false
+        error: false,
+        isChallenger: false
       };
     }
 
@@ -21,6 +22,12 @@ class Welcome extends Component {
       this.setState({
           summonerInfo: data.data,
           error: false
+      }, () => {
+        const isChallenger = convertLeague(this.state.summonerInfo.leagues).includes("CHALLENGER")
+        
+        this.setState({
+          isChallenger: isChallenger
+        })
       })
     }
 
@@ -139,7 +146,7 @@ class Welcome extends Component {
 
     handleError = () => {
       this.setState({
-        error: true
+        error: true,
       })
     }
 
@@ -157,15 +164,16 @@ class Welcome extends Component {
                     <LoLAmigoHeader/>
                     <SearchSummoner loading={this.setLoader} getSummonerByName={this.getSummonerByName} errorHandler={this.handleError} />
                     { this.state.error && <Message warning header="" content="No summoner with that name exists!" />}                 
+                    { this.state.isChallenger && <Message warning header="" content="Challenger players are not allowed to duo queue!" />}                 
                   </div>
 
-                  
-                  <Transition visible={summonerInfo !== null} animation={"fade down"} duration={400}>
+                  { !this.state.error && 
+                    <Transition visible={summonerInfo !== null} animation={"fade down"} duration={400}>
                     <Segment inverted raised>
-                      <SummonerInfo player={this.state.summonerInfo} submit={this.getUserInput} league={league} id={this.state.id} />                   
+                      <SummonerInfo player={this.state.summonerInfo} submit={this.getUserInput} league={league} id={this.state.id} buttonDisable={this.state.isChallenger} />                   
                     </Segment>   
-                  </Transition>                             
-                  
+                  </Transition>       
+                  }
 
                 </div>                           
               </div>
