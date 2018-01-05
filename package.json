@@ -6,6 +6,7 @@
     "gh-pages": "^1.0.0",
     "phoenix": "^1.3.0",
     "react": "^15.6.2",
+    "react-scripts": "1.0.17",
     "react-countdown-clock": "^2.0.0",
     "react-dom": "^15.6.1",
     "react-fontawesome": "^1.6.1",
@@ -15,7 +16,7 @@
     "semantic-ui-react": "^0.75.1"
   },
   "devDependencies": {
-    "react-scripts": "1.0.10"
+    "react-scripts": "1.0.17"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -25,6 +26,6 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://esow.github.io/LoL_Buddy_Frontend",
+  "homepage": "https://buddy.gg",
   "proxy": "https://lolbuddy.herokuapp.com"
 }

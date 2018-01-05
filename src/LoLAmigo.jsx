@@ -7,6 +7,7 @@ import Welcome from './scenes/Welcome';
 import Matching from './scenes/Matching';
 import MatchFound from './scenes/MatchFound';
 import history from './config/History';
+import { backend_service } from '../../../config/API'
 
 export default class LoLAmigo extends Component {
     constructor(props) {
@@ -14,7 +15,7 @@ export default class LoLAmigo extends Component {
         this.state = {
             playerInfo: null
         }
-      }
+    }
 
     getChannel = (channel) => {
         this.setState({
@@ -35,8 +36,8 @@ export default class LoLAmigo extends Component {
     }
 
     componentDidMount = () => {
-        //fetch("/api/auth/request").then(function(response) { 
-        fetch("https://lolbuddy.herokuapp.com/api/auth/request").then(function(response) { 
+        fetch(`${backend_service}/auth/request`).then(function(response) { 
+        //fetch("https://lolbuddy.herokuapp.com/api/auth/request").then(function(response) { 
             return response.json();
         }).then(function(data) { 
             const session_id = data.session_id
