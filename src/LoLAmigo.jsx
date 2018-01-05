@@ -7,7 +7,7 @@ import Welcome from './scenes/Welcome';
 import Matching from './scenes/Matching';
 import MatchFound from './scenes/MatchFound';
 import history from './config/History';
-import { backend_service } from '../../../config/API'
+import { backend_service } from './config/API'
 
 export default class LoLAmigo extends Component {
     constructor(props) {
