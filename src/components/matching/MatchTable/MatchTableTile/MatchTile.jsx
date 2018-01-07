@@ -10,6 +10,12 @@ export default class MatchTile extends Component {
         this.props.requestMatch(this.props.match)
     }
 
+    openInNewTab = () =>  {
+        console.log(this.props.match)
+        var win = window.open(`http://${this.props.match.region}.op.gg/summoner/userName=${this.props.match.name}`, '_blank');
+        win.focus();
+    }
+
     render () {
         const style = {
             paddingTop: '2px',
@@ -43,6 +49,11 @@ export default class MatchTile extends Component {
                     <Grid.Column>
                         <h5 className="inline">
                             { this.props.match.voice ? <Icon name="microphone" size="large"/> : <Icon name="microphone slash" size="large"/>  }
+                        </h5>
+                    </Grid.Column> 
+                    <Grid.Column>
+                        <h5 className="inline">
+                            <Button primary compact onClick={this.openInNewTab}> OP.GG</Button>
                         </h5>
                     </Grid.Column>
                     <Grid.Column width={4}>

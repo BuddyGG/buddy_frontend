@@ -22,6 +22,8 @@ export default function MatchTileHeader() {
             </Grid.Column>
             <Grid.Column>
                 <h4> Voice chat? </h4>
+            </Grid.Column><Grid.Column>
+                <h4> OP.GG profile </h4>
             </Grid.Column>
             <Grid.Column width={4}>
                 <h4> Comment </h4>
