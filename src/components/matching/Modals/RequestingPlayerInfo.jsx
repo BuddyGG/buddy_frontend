@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Segment, Progress } from 'semantic-ui-react'
+import { Grid, Segment } from 'semantic-ui-react'
 import { getChampImage } from '../../../config/ChampImages';
 import { getRoleImage } from '../../../config/RoleImages';
 import { getFlagImage } from '../../../config/FlagIcons';
@@ -10,10 +10,7 @@ export default class RequestingPlayerInfo extends Component {
             <div>
                 <Segment inverted raised className="match-tile">
                     <Grid className="grid" columns='equal' verticalAlign='middle' divided>
-                    <Grid.Row className="no-padding bottom-border" textAlign="center">
-                            <Grid.Column>    
-                                <h4 >Match score </h4>                   
-                            </Grid.Column>
+                    <Grid.Row className="no-padding bottom-border" textAlign="center">                         
                             <Grid.Column textAlign="center">
                                 <h4 >Name </h4>
                             </Grid.Column>
@@ -27,10 +24,7 @@ export default class RequestingPlayerInfo extends Component {
                                 <h4> Languages </h4>
                             </Grid.Column>
                         </Grid.Row>
-                        <Grid.Row className="match-found-player-bar" textAlign="center">
-                            <Grid.Column>
-                                <Progress className="no-margin" percent={80} inverted progress success></Progress>
-                            </Grid.Column>
+                        <Grid.Row className="match-found-player-bar" textAlign="center">                           
                             <Grid.Column >
                                 <div> {this.props.match.name} </div>
                             </Grid.Column>
