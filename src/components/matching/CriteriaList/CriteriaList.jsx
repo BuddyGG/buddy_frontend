@@ -124,7 +124,7 @@ export default class CriteriaList extends Component {
             <div style={{width: "100%"}}>
                 <Form inverted>
                     <Segment id="criteria-bar" raised inverted>
-                        <Label id="criteria-header" color='orange' floating>Your criterias</Label>
+                        <Label id="criteria-header" color='orange' floating>Search criteria</Label>
                         <Positions onChange={this.onChangePositions} positions={this.state.positions} />
                         <AgeGroups onChange={this.onChangeAgeGroup} ageGroups={this.state.ageGroups} />
                         <VoiceChat onChange={this.onChangeVoiceChat} voiceChat={this.state.voiceChat}/>
