@@ -7,8 +7,6 @@ import MatchResponseModal from '../components/matching/Modals/MatchResponseModal
 import LoLAmigoHeader from '../components/shared/LoLAmigoHeader';
 import history from '../config/History';
 import Notification from 'react-web-notification';
-import { Button } from 'semantic-ui-react';
-
 
 export default class Matching extends Component {
     constructor(props) {

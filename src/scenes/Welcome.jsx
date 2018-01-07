@@ -67,7 +67,8 @@ class Welcome extends Component {
       console.log(session_token)
       console.log(session_id)
       
-      const socket = new Socket("wss://api.lolbuddy.gg/socket", {
+      //const socket = new Socket("wss://api.lolbuddy.gg/socket", {
+      const socket = new Socket("wss://lolbuddy.herokuapp.com/socket", {
         params: {
           session_token: session_token,
           session_id: session_id

@@ -13,7 +13,7 @@ export default class Positions extends Component {
                 <Divider className="criteria-header" inverted horizontal>Positions</Divider>
                 
                 <Form.Group className="criteria-content no-margin">
-                    <Table basic="very" compact="very" textAlign="center">
+                    <Table basic="very" compact="very" textAlign="center" className="criteria-positions">
                         <Table.Body>
                         <Table.Row>
                             <Table.Cell><Image onClick={this.props.onChange} name="top" centered src={Top_Icon} size='mini'/></Table.Cell>

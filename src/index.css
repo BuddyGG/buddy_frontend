@@ -112,6 +112,9 @@ td{
   align-items: center;
   justify-content: center;
 }
+.criteria-positions {
+  max-width: 400px;
+}
 .no-margin{
   margin: 0 !important;
 }
