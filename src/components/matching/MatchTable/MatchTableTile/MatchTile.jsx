@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Button, Popup } from 'semantic-ui-react'
+import { Grid, Button, Popup, Icon } from 'semantic-ui-react'
 import { getChampImage } from '../../../../config/ChampImages';
 import { getRoleImage } from '../../../../config/RoleImages';
 import { getFlagImage } from '../../../../config/FlagIcons';
@@ -42,7 +42,7 @@ export default class MatchTile extends Component {
                     </Grid.Column>
                     <Grid.Column>
                         <h5 className="inline">
-                            {this.props.match.voice.toString()}
+                            { this.props.match.voice ? <Icon name="microphone" size="large"/> : <Icon name="microphone slash" size="large"/>  }
                         </h5>
                     </Grid.Column>
                     <Grid.Column width={4}>
