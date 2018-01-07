@@ -67,7 +67,8 @@ export default class Matching extends Component {
 
 
 
-            const playerIsBusy = this.state.requestedModalOpen
+            const playerIsBusy = this.state.requestedModalOpen || this.state.requestingModalOpen
+
 
             if (playerIsBusy){
                 const responseMessage = {
