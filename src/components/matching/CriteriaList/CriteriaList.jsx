@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Segment, Form, Label } from 'semantic-ui-react';
 import history from '../../../config/History';
 import Positions from './CriteriaListSection/Positions';
-import MatchList from './CriteriaListSection/AutoRefresh';
 import VoiceChat from './CriteriaListSection/VoiceChat';
 import AgeGroups from './CriteriaListSection/AgeGroups';
 
@@ -129,7 +128,6 @@ export default class CriteriaList extends Component {
                         <Positions onChange={this.onChangePositions} positions={this.state.positions} />
                         <AgeGroups onChange={this.onChangeAgeGroup} ageGroups={this.state.ageGroups} />
                         <VoiceChat onChange={this.onChangeVoiceChat} voiceChat={this.state.voiceChat}/>
-                        <MatchList/>
                     </Segment>
                 </Form>
             </div>
