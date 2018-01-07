@@ -4,7 +4,7 @@ import { backend_service } from '../../../config/API'
 import { GET_SUMMONER_INFO_MOCK2 } from '../../../config/API'
 
 const options = [
-  { key: 'euw', text: 'EU West', value: 'euw' },
+  { key: 'euw', text: 'EUW', value: 'euw' },
   { key: 'na', text: 'NA', value: 'na' },
   { key: 'kr', text: 'KR', value: 'kr' },
   { key: 'br', text: 'BR', value: 'br' },
@@ -42,6 +42,7 @@ class SearchSummoner extends Component {
         //console.log("Calling: " + url)
 
         fetch(`${backend_service}/summoner/${region}/${name}`).then(function(response) { 
+        //fetch(`/summoner/${region}/${name}`).then(function(response) { 
             return response.json();
         }).then(function(data) {
             if(data.error){
