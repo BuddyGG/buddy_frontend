@@ -4,9 +4,18 @@ import { backend_service } from '../../../config/API'
 import { GET_SUMMONER_INFO_MOCK2 } from '../../../config/API'
 
 const options = [
-  { key: 'euwest', text: 'EU West', value: 'euw' },
+  { key: 'euw', text: 'EU West', value: 'euw' },
   { key: 'na', text: 'NA', value: 'na' },
   { key: 'kr', text: 'KR', value: 'kr' },
+  { key: 'br', text: 'BR', value: 'br' },
+  { key: 'eune', text: 'EUNE', value: 'eune' },
+  { key: 'jp', text: 'JP', value: 'jp' },
+  { key: 'lan', text: 'LAN', value: 'lan' },
+  { key: 'las', text: 'LAS', value: 'las' },
+  { key: 'oce', text: 'OCE', value: 'oce' },
+  { key: 'tr', text: 'TR', value: 'tr' },
+  { key: 'ru', text: 'RU', value: 'ru' },
+  { key: 'pbe', text: 'PBE', value: 'pbe' },
 ]
 
 class SearchSummoner extends Component {
