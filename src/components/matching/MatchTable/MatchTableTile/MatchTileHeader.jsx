@@ -5,6 +5,9 @@ export default function MatchTileHeader() {
     return (
         <div className="match-tile">
         <Grid className="grid match-tile-header" columns='equal' verticalAlign='middle' divided>
+            <Grid.Column>
+                <h4> Profile </h4>
+            </Grid.Column>
             <Grid.Column width={2}>
                 <h4> Player name </h4>
             </Grid.Column>
@@ -22,8 +25,6 @@ export default function MatchTileHeader() {
             </Grid.Column>
             <Grid.Column>
                 <h4> Voice chat? </h4>
-            </Grid.Column><Grid.Column>
-                <h4> OP.GG profile </h4>
             </Grid.Column>
             <Grid.Column width={4}>
                 <h4> Comment </h4>

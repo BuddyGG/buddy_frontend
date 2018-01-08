@@ -25,6 +25,11 @@ export default class MatchTile extends Component {
         return (
             <div className="match-tile">
                 <Grid className="grid" columns='equal' verticalAlign='middle' divided>
+                    <Grid.Column>
+                        <h5 className="inline">
+                            <Button primary compact onClick={this.openInNewTab}> OP.GG</Button>
+                        </h5>
+                    </Grid.Column>
                     <Grid.Column width={2}>
                         <h5> {this.props.match.name} </h5>
                     </Grid.Column>
@@ -51,11 +56,6 @@ export default class MatchTile extends Component {
                             { this.props.match.voice ? <Icon name="microphone" size="large"/> : <Icon name="microphone slash" size="large"/>  }
                         </h5>
                     </Grid.Column> 
-                    <Grid.Column>
-                        <h5 className="inline">
-                            <Button primary compact onClick={this.openInNewTab}> OP.GG</Button>
-                        </h5>
-                    </Grid.Column>
                     <Grid.Column width={4}>
                         <h5 className="comment-box"> {this.props.match.comment} </h5>
                     </Grid.Column>

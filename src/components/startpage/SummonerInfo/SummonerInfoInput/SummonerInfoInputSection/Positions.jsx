@@ -16,7 +16,7 @@ export default class Positions extends Component {
     render () {
         return (
             <div>
-                <Divider inverted horizontal>Positions</Divider>
+                <Divider inverted horizontal>Desired positions</Divider>
                 <Form.Group inline id="positions">  
                     <PositionTile onClick={this.props.handleChange} active={this.props.roles.top} name="top" activeIcon={ Top_Icon } inactiveIcon={ Top_Icon_inactive }/>                    
                     <PositionTile onClick={this.props.handleChange} active={this.props.roles.jungle} name="jungle" activeIcon={ Jungler_Icon } inactiveIcon={ Jungler_Icon_inactive }/>
