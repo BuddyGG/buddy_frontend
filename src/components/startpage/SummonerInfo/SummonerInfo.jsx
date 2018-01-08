@@ -110,7 +110,12 @@ export default class SummonerInfo extends Component {
     return (
       <Form inverted id="search-form" onSubmit={this.findMatches}>
 
-        <SummonerInfoHeader icon={player.icon_id} name={player.name} league={this.props.league} champions={player.champions}/>
+        <SummonerInfoHeader 
+          icon={player.icon_id} 
+          name={player.name} 
+          league={this.props.league} 
+          champions={player.champions}/>
+          
         <SummonerInfoInput 
           handleLanguage={this.handleLanguage}
           handleVoiceChat={this.handleVoiceChat}
