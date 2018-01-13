@@ -154,10 +154,8 @@ class Welcome extends Component {
     render() {
         const {summonerInfo = undefined} = this.state
         
-        const league = (summonerInfo && summonerInfo.leagues[0]) ? 
-        convertLeague(summonerInfo.leagues) :
-        "No leagues to show";
-
+        const league = convertLeague(summonerInfo)
+      
         return (
               <div className="main-content">
                 <div className="width-control">
