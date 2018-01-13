@@ -1,13 +1,12 @@
 {
   "main.css": "static/css/main.98ee2766.css",
   "main.css.map": "static/css/main.98ee2766.css.map",
-  "main.js": "static/js/main.4c867b32.js",
-  "main.js.map": "static/js/main.4c867b32.js.map",
-  "static/media/Bot_icon_inactive.png": "static/media/Bot_icon_inactive.4dc3c487.png",
-  "static/media/Jungler_icon_inactive.png": "static/media/Jungler_icon_inactive.b4a7b1d0.png",
-  "static/media/LOLAMIGO2.png": "static/media/LOLAMIGO2.f4edef46.png",
-  "static/media/Mid_icon_inactive.png": "static/media/Mid_icon_inactive.31be3b3b.png",
-  "static/media/Support_icon_inactive.png": "static/media/Support_icon_inactive.e8d8560f.png",
-  "static/media/Top_icon_inactive.png": "static/media/Top_icon_inactive.004f7d43.png",
-  "static/media/background02.jpg": "static/media/background02.f9a14b4e.jpg"
+  "main.js": "static/js/main.62b67278.js",
+  "main.js.map": "static/js/main.62b67278.js.map",
+  "static\\media\\Bot_icon_inactive.png": "static/media/Bot_icon_inactive.4dc3c487.png",
+  "static\\media\\Jungler_icon_inactive.png": "static/media/Jungler_icon_inactive.b4a7b1d0.png",
+  "static\\media\\Mid_icon_inactive.png": "static/media/Mid_icon_inactive.31be3b3b.png",
+  "static\\media\\Support_icon_inactive.png": "static/media/Support_icon_inactive.e8d8560f.png",
+  "static\\media\\Top_icon_inactive.png": "static/media/Top_icon_inactive.004f7d43.png",
+  "static\\media\\background02.jpg": "static/media/background02.f9a14b4e.jpg"
 }
