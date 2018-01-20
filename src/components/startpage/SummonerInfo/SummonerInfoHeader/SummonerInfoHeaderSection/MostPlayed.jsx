@@ -19,8 +19,8 @@ export default class MostPlayed extends Component {
                     <Table.Body>
                         <Table.Row>
                             {
-                                this.props.champs.map(champ => 
-                                    <Table.Cell><Popup position="top center" style={style} trigger={getChampImage(champ)} content={champ}/></Table.Cell>
+                                this.props.champs.map((champ,index) => 
+                                    <Table.Cell key={index}><Popup position="top center" style={style} trigger={getChampImage(champ)} content={champ}/></Table.Cell>
                                 )
                             }
                         </Table.Row>                   

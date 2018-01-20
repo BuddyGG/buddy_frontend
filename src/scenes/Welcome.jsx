@@ -14,7 +14,8 @@ class Welcome extends Component {
         summonerInfo: null,
         channel: null,
         error: false,
-        isChallenger: false
+        isChallenger: false,
+        already_signed_up: false
       };
     }
 
@@ -89,12 +90,30 @@ class Welcome extends Component {
       const channel = socket.channel(`players:${session_id}`, {
           payload: player     
       });
-    
-      this.setState({
-          channel: channel
-      }, () => {
-        this.goToMatching()
-      } )
+
+      channel.join().receive('ok', (response) => {
+            console.log("Succesfully connected to channel");
+        });
+
+      channel.on('already_signed_up', (response) => {
+          console.log("already_signed_up:")
+          console.log(response)
+
+          this.setState({
+              already_signed_up: true
+          });
+      })
+
+      channel.on('initial_matches', (response) => {
+            console.log("initial_matches:")
+            console.log(response)
+
+            this.setState({
+                already_signed_up: false,
+                matches: response.players,
+                channel: channel                
+            }, () => this.goToMatching());
+        })
     }
 
     setInitialPositions = (player) => {
@@ -164,6 +183,7 @@ class Welcome extends Component {
                     <SearchSummoner loading={this.setLoader} getSummonerByName={this.getSummonerByName} errorHandler={this.handleError} />
                     { this.state.error && <Message warning header="" content="No information to show for given summoner" />}                 
                     { this.state.isChallenger && <Message warning header="" content="Challenger players are not allowed to duo queue!" />}                 
+                    { this.state.already_signed_up && <Message warning header="" content="Player already signed up!" />}                 
                   </div>
 
                   { !this.state.error && 

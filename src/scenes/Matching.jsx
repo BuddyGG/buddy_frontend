@@ -39,10 +39,7 @@ export default class Matching extends Component {
     }
 
     configureChannel = (channel) => {       
-        channel.join().receive('ok', (response) => {
-            console.log("Succesfully connected to channel");
-        });
-
+    
         channel.on('initial_matches', (response) => {
             console.log("initial_matches:")
             console.log(response)
