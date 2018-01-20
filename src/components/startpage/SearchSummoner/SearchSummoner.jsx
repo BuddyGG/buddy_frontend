@@ -49,7 +49,7 @@ class SearchSummoner extends Component {
         //fetch(`/summoner/${region}/${name}`).then(function(response) { 
             return response.json();
         }).then(function(data) {
-            if(data.error){
+            if(data.error || data.errors){
                 that.props.errorHandler()
                 that.setState({
                     loading: false

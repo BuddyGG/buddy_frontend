@@ -130,7 +130,7 @@ export default class SummonerInfo extends Component {
           roles={this.state.roles}
           />  
 
-        <Button fluid primary type="submit" id="submit-button" content="Find matches" disabled={this.props.buttonDisable}/>
+        <Button fluid primary type="submit" id="submit-button" content="Find matches" disabled={this.props.isChallenger || this.props.isUnranked}/>
         <ValidationMessage errorMessage={this.state.errorMessage} /> 
       </Form>
     );
