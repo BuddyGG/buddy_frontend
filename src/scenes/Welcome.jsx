@@ -162,7 +162,7 @@ class Welcome extends Component {
                   <div id="search-summoner">
                     <LoLAmigoHeader/>
                     <SearchSummoner loading={this.setLoader} getSummonerByName={this.getSummonerByName} errorHandler={this.handleError} />
-                    { this.state.error && <Message warning header="" content="No summoner with that name exists!" />}                 
+                    { this.state.error && <Message warning header="" content="No information to show for given summoner" />}                 
                     { this.state.isChallenger && <Message warning header="" content="Challenger players are not allowed to duo queue!" />}                 
                   </div>
 
