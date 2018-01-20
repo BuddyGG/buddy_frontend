@@ -28,6 +28,10 @@ class SearchSummoner extends Component {
         }
     }
 
+    componentDidMount() {
+        this.inputRef.focus()
+    }
+
     fetchSummoner = () => {
         var that = this;
         
@@ -67,11 +71,15 @@ class SearchSummoner extends Component {
     
     handleChangeRegion = (e, { value }) => this.setState({ region: value })
 
+    handleRef = (c) => {
+        this.inputRef = c
+    }
+
     render() {
         return (
             <div id="search-bar">
                 <Form onSubmit={this.fetchSummoner}>
-                    <Input required fluid type='text' placeholder='Find summoner' action onChange={this.handleChangeName}>
+                    <Input required fluid type='text' placeholder='Find summoner' action onChange={this.handleChangeName} ref={this.handleRef}>
                         <input />
                         <Select className="region-select" 
                                 compact 
