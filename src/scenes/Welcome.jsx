@@ -19,7 +19,8 @@ class Welcome extends Component {
       };
     }
 
-    getSummonerByName = (data) => {      
+    getSummonerByName = (data) => {     
+      console.log(data) 
       this.setState({
           summonerInfo: data.data,
           error: false
@@ -171,9 +172,16 @@ class Welcome extends Component {
     }
 
     render() {
-        const {summonerInfo = undefined} = this.state
+      const {summonerInfo = undefined} = this.state
+      let league = "";
+      if(summonerInfo) {
+        league = convertLeague(summonerInfo.leagues)
+        if(league.includes("UNRANKED")){
+        league = "UNRANKED"
+      }
+    }
+
         
-        const league = convertLeague(summonerInfo)
       
         return (
               <div className="main-content">

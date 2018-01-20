@@ -3,7 +3,7 @@ import { Grid, Button, Popup, Icon } from 'semantic-ui-react'
 import { getChampImage } from '../../../../config/ChampImages';
 import { getRoleImage } from '../../../../config/RoleImages';
 import { getFlagImage } from '../../../../config/FlagIcons';
-import { convertLeagueTile } from '../../../../config/LeagueConverter';
+import { convertLeague } from '../../../../config/LeagueConverter';
 
 export default class MatchTile extends Component {
     requestMatch = () => {
@@ -34,7 +34,7 @@ export default class MatchTile extends Component {
                         <h5> {this.props.match.name} </h5>
                     </Grid.Column>
                     <Grid.Column>
-                        <h5> {convertLeagueTile(this.props.match.leagues)} </h5>
+                        <h5> {convertLeague(this.props.match.leagues)} </h5>
                     </Grid.Column>
                     <Grid.Column>
                         <div className="inline">
