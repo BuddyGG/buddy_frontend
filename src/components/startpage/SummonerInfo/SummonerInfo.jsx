@@ -29,10 +29,6 @@ export default class SummonerInfo extends Component {
     this.setDefaultRoles(this.props.player.positions)
   }
 
-  componentWillReceiveProps = (nextProps) => {
-    this.setDefaultRoles(nextProps.player.positions)
-  }
-
   setDefaultRoles = (predictedPositions) => {
 
     // Reset roles to false

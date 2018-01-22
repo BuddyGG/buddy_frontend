@@ -20,8 +20,8 @@ class Welcome extends Component {
       };
     }
 
-    getSummonerByName = (data) => {     
-      console.log(data) 
+    getSummonerByName = (data) => {   
+      console.log(data)
       this.setState({
           summonerInfo: data.data,
           error: false
@@ -72,7 +72,6 @@ class Welcome extends Component {
       console.log(session_id)
       
       const socket = new Socket("wss://api.buddy.gg/socket", {
-      //const socket = new Socket("wss://lolbuddy.herokuapp.com/socket", {
         params: {
           session_token: session_token,
           session_id: session_id
