@@ -30,7 +30,6 @@ export default class SummonerInfo extends Component {
   }
 
   componentWillReceiveProps = (nextProps) => {
-    console.log("test")
     this.setDefaultRoles(nextProps.player.positions)
   }
 
@@ -42,7 +41,7 @@ export default class SummonerInfo extends Component {
       roles[role] = false;
     }
 
-    console.log(roles)
+    //console.log(roles)
 
     predictedPositions.map(pos => roles[pos] = true)
 

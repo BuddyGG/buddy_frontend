@@ -51,6 +51,10 @@ function handleOutliers (champ){
         case "Vel'Koz":
             convertedChamp = "Velkoz";   
             break;
+
+        case "Xin Zhao":
+            convertedChamp = "XinZhao";   
+            break;
                
         default:
             break;
