@@ -17,7 +17,7 @@ export default class RequestingMatchModal extends Component {
           <div>
             {player && 
 
-              <Modal dimmer={"blurring"} className="modal" open={this.props.open} onClose={this.props.handleClose}>
+              <Modal dimmer={"blurring"} closeOnRootNodeClick={false} className="modal" open={this.props.open} onClose={this.props.handleClose}>
               
                 <Modal.Header>Requesting match...</Modal.Header>
                 <Modal.Content className="no-padding">

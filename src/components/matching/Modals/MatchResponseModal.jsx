@@ -64,7 +64,7 @@ export default class MatchResponseModal extends Component {
           <div>
             {player && 
 
-              <Modal size="small" dimmer={"blurring"} className="modal" open={this.props.open} onClose={this.props.handleClose}>
+              <Modal size="small" closeOnRootNodeClick={false} dimmer={"blurring"} className="modal" open={this.props.open} onClose={this.props.handleClose}>
               
                 <Modal.Header> <h2> {responseHeader} </h2> </Modal.Header>
                 <Modal.Content>
