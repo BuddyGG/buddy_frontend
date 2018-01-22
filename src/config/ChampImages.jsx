@@ -1,7 +1,7 @@
 import React from 'react'
 import { Image } from 'semantic-ui-react'
 
-const outliers = ["Wukong","Jarvan IV","Kog'Maw","Dr. Mundo","Vel'Koz"];
+const outliers = ["Wukong","Jarvan IV","Kog'Maw","Dr. Mundo","Vel'Koz", "Xin Zhao"];
 
 export function getChampImage(champ){
     let championString;
