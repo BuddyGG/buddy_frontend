@@ -23,7 +23,7 @@ export default class MatchFound extends Component {
                             <Icon size="huge" color="green" name="check circle outline"  />
                         </div>
                         <h4> You have succesfully matched with <span className="match-name">{this.props.name}</span>!</h4>     
-                        <h4>Add eachother in the League of Legends<sup>TM</sup> client and fight together on the Rift!</h4>       
+                        <h4>Add each other in the League of Legends<sup>TM</sup> client and fight together on the Rift!</h4>       
                     </Segment>
                 </div>                         
           </div>
