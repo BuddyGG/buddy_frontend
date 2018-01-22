@@ -11,7 +11,7 @@ export const languages =
 {key:'zh-TW',value:'zh-TW',text:'Chinese (Traditional) '},
 {key:'hr',value:'hr',text:'Croatian  '},
 {key:'cs',value:'cs',text:'Czech  '},
-{key:'da',value:'da',text:'Danish  '},
+{key:'da',value:'dk',text:'Danish  '},
 {key:'nl',value:'nl',text:'Dutch  '},
 {key:'en',value:'gb',text:'English '},
 {key:'et',value:'et',text:'Estonian  '},
