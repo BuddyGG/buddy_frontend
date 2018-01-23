@@ -43,7 +43,7 @@ export const languages =
 {key:'sk',value:'sk',text:'Slovak'},
 {key:'sl',value:'sl',text:'Slovenian'},
 {key:'es',value:'es',text:'Spanish'},
-{key:'sw',value:'sw',text:'Swahili'},
+{key:'sw',value:'ke',text:'Swahili'},
 {key:'sv',value:'se',text:'Swedish'},
 {key:'ta',value:'in',text:'Tamil'},
 {key:'te',value:'in',text:'Telugu'},
