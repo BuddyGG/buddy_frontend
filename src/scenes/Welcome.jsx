@@ -20,6 +20,11 @@ class Welcome extends Component {
       };
     }
 
+    componentWillUnmount() {
+      const channel = this.state.channel;
+      channel.off("initial_matches");
+    }
+
     getSummonerByName = (data) => {   
       console.log(data)
       this.setState({
@@ -119,44 +124,60 @@ class Welcome extends Component {
     }
 
     setInitialPositions = (player) => {
+      // const positions = {
+      //     top: false,
+      //     jungle: false,
+      //     mid: false,
+      //     marksman: false,
+      //     support: false
+      // };    
+
+      // for (var key in positions){
+      //     positions[key] = !player.userInfo.selectedRoles[key]
+      // }
+
       const positions = {
-          top: false,
-          jungle: false,
-          mid: false,
-          marksman: false,
-          support: false
-      };    
-
-      for (var key in positions){
-          positions[key] = !player.userInfo.selectedRoles[key]
-      }
-
+        top: true,
+        jungle: true,
+        mid: true,
+        marksman: true,
+        support: true
+      }; 
       return positions
     } 
 
     setInitialAgeGroup = (player) => {
+      // const ageGroups = {
+      //     interval1: false,
+      //     interval2: false,
+      //     interval3: false
+      // }
+
+      // if (player.userInfo.agegroup === "interval1") ageGroups.interval1 = true
+      // if (player.userInfo.agegroup === "interval2") ageGroups.interval2 = true
+      // if (player.userInfo.agegroup === "interval3") ageGroups.interval3 = true
+      
       const ageGroups = {
-          interval1: false,
-          interval2: false,
-          interval3: false
+        interval1: true,
+        interval2: true,
+        interval3: true
       }
-
-      if (player.userInfo.agegroup === "interval1") ageGroups.interval1 = true
-      if (player.userInfo.agegroup === "interval2") ageGroups.interval2 = true
-      if (player.userInfo.agegroup === "interval3") ageGroups.interval3 = true
-
       return ageGroups
     }
 
     setInitialVoiceChat = (player) => {
+      // const voiceChat = {
+      //     YES: false,
+      //     NO: false
+      // }
+
+      // if (player.userInfo.voicechat) voiceChat.YES = true
+      // if (!player.userInfo.voicechat) voiceChat.NO = true
+      
       const voiceChat = {
-          YES: false,
-          NO: false
+        YES: true,
+        NO: true
       }
-
-      if (player.userInfo.voicechat) voiceChat.YES = true
-      if (!player.userInfo.voicechat) voiceChat.NO = true
-
       return voiceChat
     }   
 
