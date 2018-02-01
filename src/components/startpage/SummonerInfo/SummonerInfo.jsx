@@ -68,7 +68,7 @@ export default class SummonerInfo extends Component {
   validateInput = () => {
     const { value, agegroup } = this.state
 
-    if (value.length && agegroup){
+    if (value.length && agegroup.length){
       return true
     } else {
       return false
