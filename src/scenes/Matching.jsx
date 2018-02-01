@@ -220,7 +220,6 @@ export default class Matching extends Component {
     updateCriteria = (criteria) => {
         // Handle criteria
         if(this.state.channel){
-            console.log("pushing")
             const channel = this.state.channel
             channel.push('update_criteria', criteria)
         }    

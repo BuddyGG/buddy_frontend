@@ -43,7 +43,6 @@ class SearchSummoner extends Component {
             loading: true
         })
         console.log("Getting summoner...")
-        //console.log("Calling: " + url)
 
         fetch(`${backend_service}/summoner/${region}/${name}`).then(function(response) { 
         //fetch(`/summoner/${region}/${name}`).then(function(response) { 

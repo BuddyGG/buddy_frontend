@@ -11,7 +11,6 @@ export default class MatchTile extends Component {
     }
 
     openInNewTab = () =>  {
-        //console.log(this.props.match)
         var win = window.open(`http://${this.props.match.region}.op.gg/summoner/userName=${this.props.match.name}`, '_blank');
         win.focus();
     }
