@@ -93,7 +93,7 @@ export default class CriteriaList extends Component {
     onChangePositions = (event) => {
         const pos = event.target.name;
     
-        let positions = this.state.positions;
+        let positions = {...this.state.positions};
         positions[pos] = !positions[pos];
     
         this.setState({
@@ -102,7 +102,7 @@ export default class CriteriaList extends Component {
     }
 
     onChangeAgeGroup = (event, {name}) => {    
-        let ageGroups = this.state.ageGroups;
+        let ageGroups = {...this.state.ageGroups};
         ageGroups[name] = !ageGroups[name];
     
         this.setState({
@@ -111,7 +111,7 @@ export default class CriteriaList extends Component {
     }
 
     onChangeVoiceChat = (event, {label}) => {    
-        let voiceChat = this.state.voiceChat;
+        let voiceChat = {...this.state.voiceChat};
         voiceChat[label] = !voiceChat[label];
     
         this.setState({
@@ -124,7 +124,7 @@ export default class CriteriaList extends Component {
             <div style={{width: "100%"}}>
                 <Form inverted>
                     <Segment id="criteria-bar" raised inverted>
-                        <Label id="criteria-header" color='orange' floating>Search criteria</Label>
+                        <Label id="criteria-header" color='orange' floating>Filters</Label>
                         <Positions onChange={this.onChangePositions} positions={this.state.positions} />
                         <AgeGroups onChange={this.onChangeAgeGroup} ageGroups={this.state.ageGroups} />
                         <VoiceChat onChange={this.onChangeVoiceChat} voiceChat={this.state.voiceChat}/>
