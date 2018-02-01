@@ -18,7 +18,7 @@ export default class SummonerInfo extends Component {
       },
       languageOptions: languages,
       value: [],
-      voicechat: false,
+      voicechat: [true,false],
       agegroup: null,
       comment: null,
       errorMessage: false
@@ -36,8 +36,6 @@ export default class SummonerInfo extends Component {
     for (var role in roles){
       roles[role] = false;
     }
-
-    //console.log(roles)
 
     predictedPositions.map(pos => roles[pos] = true)
 
@@ -87,7 +85,21 @@ export default class SummonerInfo extends Component {
     });
   }
 
-  handleVoiceChat = (bool) => this.setState({ voicechat: bool })
+  handleVoiceChat = (event, {label}) => { 
+    let voicechat = [true];
+
+    if(label === "YES"){
+      voicechat = [true]
+    } else if(label === "NO") {
+      voicechat = [false]
+    } else {
+      voicechat = [true,false]
+    }
+   
+    this.setState({
+        voicechat: voicechat
+    });
+}
 
   handleAgeGroup = (age) => {
     this.setState({ agegroup: age })

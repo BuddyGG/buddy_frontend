@@ -11,7 +11,7 @@ export default class SummonerInfoInput extends Component {
             <div>
                 <Positions handleChange={this.props.handleRoles} roles={this.props.roles}/>
                 <Languages handleChange={this.props.handleLanguage} languageOptions={this.props.languageOptions} value={this.props.value} />
-                <VoiceChat handleChange={this.props.handleVoiceChat} value={this.props.voicechat}/>
+                <VoiceChat handleChange={this.props.handleVoiceChat} voicechat={this.props.voicechat}/>
                 <AgeGroup handleChange={this.props.handleAgeGroup} value={this.props.agegroup} />
                 <Comment handleChange={this.props.handleComment} value={this.props.comment}/>
             </div>
