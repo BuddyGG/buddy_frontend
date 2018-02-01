@@ -36,7 +36,7 @@ export const languages =
 {key:'no',value:'no',text:'Norwegian'},
 {key:'fa',value:'ir',text:'Persian'},
 {key:'pl',value:'pl',text:'Polish'},
-{key:'pt',value:'pt',text:'Portuguese
+{key:'pt',value:'pt',text:'Portuguese'},
 {key:'ro',value:'ro',text:'Romanian'},
 {key:'ru',value:'ru',text:'Russian'},
 {key:'sr',value:'cs',text:'Serbian'},
