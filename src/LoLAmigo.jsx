@@ -43,8 +43,6 @@ export default class LoLAmigo extends Component {
             const session_id = data.session_id
             const session_token = data.session_token
             
-            //console.log(session_id)
-
             localStorage.setItem('sessionToken', session_token)
             localStorage.setItem('sessionId', session_id)
         })
