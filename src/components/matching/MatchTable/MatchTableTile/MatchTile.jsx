@@ -52,7 +52,12 @@ export default class MatchTile extends Component {
                     </Grid.Column>
                     <Grid.Column>
                         <h5 className="inline">
-                            { this.props.match.voice ? <Icon name="microphone" size="large"/> : <Icon name="microphone slash" size="large"/>  }
+                            { 
+                                this.props.match.voice.map(bool => {
+                                    const icon = bool ? "microphone" : "microphone slash"
+                                    return <Icon name={icon} size="large"/>
+                                })
+                            }
                         </h5>
                     </Grid.Column> 
                     <Grid.Column width={4}>

@@ -15,7 +15,6 @@ class Welcome extends Component {
         channel: null,
         error: false,
         isChallenger: false,
-        isUnranked: false,
         already_signed_up: false
       };
     }
@@ -32,10 +31,8 @@ class Welcome extends Component {
           error: false
       }, () => {
         const isChallenger = convertLeague(this.state.summonerInfo.leagues).includes("CHALLENGER")
-        const isUnranked = convertLeague(this.state.summonerInfo.leagues).includes("UNRANKED")
         this.setState({
-          isChallenger: isChallenger,
-          isUnranked: isUnranked
+          isChallenger: isChallenger
         })
       })
     }
@@ -208,7 +205,6 @@ class Welcome extends Component {
                     <SearchSummoner loading={this.setLoader} getSummonerByName={this.getSummonerByName} errorHandler={this.handleError} />
                     { this.state.error && <Message warning header="" content="No information to show for given summoner" />}                 
                     { this.state.isChallenger && <Message warning header="" content="Challenger players are not allowed to duo queue!" />}                 
-                    { this.state.isUnranked && <Message warning header="" content="Unranked players are not allowed to sign up!" />}                 
                     { this.state.already_signed_up && <Message warning header="" content="Player already signed up!" />}                 
                   </div>
 
