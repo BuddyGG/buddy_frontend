@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import {
     Router,
-    Route,
-    Link
+    Route
   } from 'react-router-dom'
 import Welcome from './scenes/Welcome';
 import Matching from './scenes/Matching';
