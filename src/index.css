@@ -160,9 +160,6 @@ td{
   display: flex;
   justify-content: center;
 }
-.icon{
-  margin: 0px 5px 0px 5px;
-}
 .ui.modal{
   background: #1b1c1d !important;
   color: white !important;
