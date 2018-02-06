@@ -1,5 +1,5 @@
-export const backend_service = "https://api.buddy.gg/api";
-//export const backend_service = "https://lolbuddy.herokuapp.com/api"
+//export const backend_service = "https://api.buddy.gg/api";
+export const backend_service = "https://lolbuddy.herokuapp.com/api"
 
 
 export const GET_SUMMONER_INFO_MOCK = {
