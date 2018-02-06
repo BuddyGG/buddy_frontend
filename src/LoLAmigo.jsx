@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import {
     Router,
-    Route
+    Route,
+    Link
   } from 'react-router-dom'
 import Welcome from './scenes/Welcome';
 import Matching from './scenes/Matching';
 import MatchFound from './scenes/MatchFound';
 import history from './config/History';
+import { Button, Icon } from 'semantic-ui-react'
 import { backend_service } from './config/API'
 
 export default class LoLAmigo extends Component {
@@ -35,6 +37,11 @@ export default class LoLAmigo extends Component {
         })
     }
 
+    openInNewTab = () =>  {
+        var win = window.open(`https://twitter.com/buddyggofficial`, '_blank');
+        win.focus();
+    }
+
     componentDidMount = () => {
         fetch(`${backend_service}/auth/request`).then(function(response) { 
         //fetch("https://lolbuddy.herokuapp.com/api/auth/request").then(function(response) { 
@@ -54,7 +61,15 @@ export default class LoLAmigo extends Component {
                 <div>
                     <Route exact path={process.env.PUBLIC_URL + '/'} render={ () => <Welcome sendChannel={this.getChannel} sendCriteria={this.getCriteria} />} />
                     <Route path={process.env.PUBLIC_URL + '/matching'} render={ () => <Matching channel={this.state.channel} criteria={this.state.criteria} matchFoundName={this.getMatchedName} />} />                    
-                    <Route path={process.env.PUBLIC_URL + '/matchfound'} render={ () => <MatchFound channel={this.state.channel} name={this.state.name} />} />                    
+                    <Route path={process.env.PUBLIC_URL + '/matchfound'} render={ () => <MatchFound channel={this.state.channel} name={this.state.name} />} />      
+                    <div className="footer">
+                        <div className="footer-bg">
+                            <span className="footer-message">Follow us on Twitter for updates and support!</span>
+                            <Button onClick={this.openInNewTab} color='twitter'>
+                                <Icon name='twitter' /> Buddy.GG
+                            </Button>
+                        </div>
+                    </div>                                  
                 </div>
             </Router>
             
