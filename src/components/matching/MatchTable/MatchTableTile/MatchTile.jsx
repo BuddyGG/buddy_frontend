@@ -5,6 +5,8 @@ import { getRoleImage } from '../../../../config/RoleImages';
 import { getFlagImage } from '../../../../config/FlagIcons';
 import { convertLeague } from '../../../../config/LeagueConverter';
 import { ageGroups } from "../../../../config/AgeIntervals";
+import { languages } from "../../../../config/Languages";
+import * as _ from "lodash";
 
 export default class MatchTile extends Component {
     requestMatch = () => {
@@ -48,7 +50,18 @@ export default class MatchTile extends Component {
                     </Grid.Column>
                     <Grid.Column>
                         <div className="inline">
-                            {this.props.match.languages.map((language) => <div key={language}> {getFlagImage(language)} </div>)}
+                            {
+                                this.props.match.languages.map((language, index) => {
+                                return <Popup key={index}
+                                        position="top center" 
+                                        style={style} 
+                                        trigger={
+                                            <div> 
+                                                {getFlagImage(language)} 
+                                            </div>} 
+                                        content={_.find(languages, x => x.value===language).text}/>
+                                })
+                            }   
                         </div>
                     </Grid.Column>
                     <Grid.Column>
