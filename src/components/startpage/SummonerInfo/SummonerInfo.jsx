@@ -4,6 +4,7 @@ import SummonerInfoHeader from "./SummonerInfoHeader/SummonerInfoHeader"
 import SummonerInfoInput from "./SummonerInfoInput/SummonerInfoInput"
 import { Form, Button } from 'semantic-ui-react'
 import { languages } from '../../../config/Languages';
+import * as _ from "lodash";
 
 export default class SummonerInfo extends Component {
   constructor(props) {
@@ -67,12 +68,16 @@ export default class SummonerInfo extends Component {
 
   validateInput = () => {
     const { value, agegroup } = this.state
-
-    if (value.length && agegroup.length){
+    
+    if (value.length && agegroup.length && this.checkForNoPositions()){
       return true
     } else {
       return false
     }
+  }
+
+  checkForNoPositions = () => {
+    return _.values(this.state.roles).includes(true);
   }
 
   toggleRole = (event) => {
