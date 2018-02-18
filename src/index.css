@@ -238,6 +238,9 @@ canvas{
 .comment-box {
   word-wrap: break-word;
 }
+.language-box {
+  overflow: hidden;
+}
 .item {
   padding: 0 !important;
 }

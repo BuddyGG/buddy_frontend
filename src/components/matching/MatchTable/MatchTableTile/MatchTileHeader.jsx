@@ -24,6 +24,9 @@ export default function MatchTileHeader() {
                 <h4> Languages </h4>
             </Grid.Column>
             <Grid.Column>
+                <h4> Age Group </h4>
+            </Grid.Column>
+            <Grid.Column>
                 <h4> Voice chat? </h4>
             </Grid.Column>
             <Grid.Column width={4}>

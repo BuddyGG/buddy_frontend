@@ -4,6 +4,7 @@ import { getChampImage } from '../../../../config/ChampImages';
 import { getRoleImage } from '../../../../config/RoleImages';
 import { getFlagImage } from '../../../../config/FlagIcons';
 import { convertLeague } from '../../../../config/LeagueConverter';
+import { ageGroups } from "../../../../config/AgeIntervals";
 
 export default class MatchTile extends Component {
     requestMatch = () => {
@@ -48,6 +49,11 @@ export default class MatchTile extends Component {
                     <Grid.Column>
                         <div className="inline">
                             {this.props.match.languages.map((language) => <div key={language}> {getFlagImage(language)} </div>)}
+                        </div>
+                    </Grid.Column>
+                    <Grid.Column>
+                        <div className="language-box">
+                            {ageGroups[this.props.match.age_group]}
                         </div>
                     </Grid.Column>
                     <Grid.Column>
