@@ -59,7 +59,8 @@ class Welcome extends Component {
         "positions": this.setInitialPositions(player),
         "ageGroups": this.setInitialAgeGroup(player),
         "voiceChat": this.setInitialVoiceChat(player),
-        "autoRefresh":false
+        "autoRefresh":false,
+        "ignoreLanguage": true
       }
 
       player.userInfo.criteria = criteria

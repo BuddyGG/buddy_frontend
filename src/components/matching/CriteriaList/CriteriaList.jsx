@@ -4,6 +4,7 @@ import history from '../../../config/History';
 import Positions from './CriteriaListSection/Positions';
 import VoiceChat from './CriteriaListSection/VoiceChat';
 import AgeGroups from './CriteriaListSection/AgeGroups';
+import AllLanguages from './CriteriaListSection/AllLanguages';
 
 export default class CriteriaList extends Component {
     constructor(props) {
@@ -24,7 +25,8 @@ export default class CriteriaList extends Component {
             voiceChat: {
                 YES: false,
                 NO: false
-            }
+            },
+            ignoreLanguage: true
         }
     }
 
@@ -35,7 +37,8 @@ export default class CriteriaList extends Component {
             this.setState({
                 positions: this.props.criteria.positions,
                 ageGroups: this.props.criteria.ageGroups,
-                voiceChat: this.props.criteria.voiceChat
+                voiceChat: this.props.criteria.voiceChat,
+                ignoreLanguage: true
             })
         } 
     }
@@ -119,6 +122,12 @@ export default class CriteriaList extends Component {
         });
     }
 
+    onChangeAllLanguages = () => {           
+        this.setState({
+            ignoreLanguage: !this.state.ignoreLanguage
+        });
+    }
+
     render () {
         return (
             <div style={{width: "100%"}}>
@@ -127,6 +136,7 @@ export default class CriteriaList extends Component {
                         <Label id="criteria-header" color='orange' floating>Filters</Label>
                         <Positions onChange={this.onChangePositions} positions={this.state.positions} />
                         <AgeGroups onChange={this.onChangeAgeGroup} ageGroups={this.state.ageGroups} />
+                        <AllLanguages onChange={this.onChangeAllLanguages} ignoreLanguage={this.state.ignoreLanguage} />
                         <VoiceChat onChange={this.onChangeVoiceChat} voiceChat={this.state.voiceChat}/>
                     </Segment>
                 </Form>
