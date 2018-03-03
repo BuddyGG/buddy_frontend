@@ -1,7 +1,7 @@
 import React from 'react'
 import { Image } from 'semantic-ui-react'
 
-const outliers = ["Wukong","Jarvan IV","Kog'Maw","Dr. Mundo","Vel'Koz", "Xin Zhao", "Lee Sin", "Master Yi"];
+const outliers = ["Wukong","Jarvan IV","Kog'Maw","Dr. Mundo","Vel'Koz", "Xin Zhao", "Lee Sin", "Master Yi", "Twisted Fate"];
 
 export function getChampImage(champ){
     let championString;
@@ -62,6 +62,10 @@ function handleOutliers (champ){
             
         case "Master Yi":
             convertedChamp = "MasterYi";   
+            break;
+
+        case "Twisted Fate":
+            convertedChamp = "TwistedFate";   
             break;
                
         default:
