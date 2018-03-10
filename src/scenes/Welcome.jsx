@@ -5,6 +5,7 @@ import SummonerInfo from "../components/startpage/SummonerInfo/SummonerInfo";
 import { Segment, Transition, Message } from 'semantic-ui-react';
 import {convertLeague} from '../config/LeagueConverter'
 import history from '../config/History';
+import {socket_service} from '../config/API';
 import { Socket } from 'phoenix';
 
 class Welcome extends Component {
@@ -70,8 +71,7 @@ class Welcome extends Component {
       const session_token = localStorage.getItem('sessionToken')
       const session_id = localStorage.getItem('sessionId')
       
-      const socket = new Socket("wss://api.buddy.gg/socket", {      
-      //const socket = new Socket("wss://lolbuddy.herokuapp.com/socket", {
+      const socket = new Socket(socket_service, {      
         params: {
           session_token: session_token,
           session_id: session_id

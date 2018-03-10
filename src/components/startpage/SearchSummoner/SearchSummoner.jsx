@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Select, Input, Form, Button } from 'semantic-ui-react'
 import { backend_service } from '../../../config/API'
-import { GET_SUMMONER_INFO_MOCK2 } from '../../../config/API'
 
 const options = [
   { key: 'euw', text: 'EUW', value: 'euw' },
@@ -60,10 +59,6 @@ class SearchSummoner extends Component {
                 loading: false
             })
         })
-    }
-
-    fetchSummonerMock = () => {
-     this.props.getSummonerByName(GET_SUMMONER_INFO_MOCK2);
     }
 
     handleChangeName = (event) => this.setState({value: event.target.value})

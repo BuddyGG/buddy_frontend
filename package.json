@@ -24,7 +24,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://buddy.gg",
+  "homepage": "https://buddygg.github.io/buddy_frontend",
   "proxy": "https://lolbuddy.herokuapp.com",
   "devDependencies": {
     "babel-eslint": "^7.2.3",

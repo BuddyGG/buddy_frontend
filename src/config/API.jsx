@@ -1,57 +1,7 @@
-export const backend_service = "https://api.buddy.gg/api";
-//export const backend_service = "https://lolbuddy.herokuapp.com/api"
+// Test
+export const backend_service = "https://lolbuddy.herokuapp.com/api"
+export const socket_service = "wss://lolbuddy.herokuapp.com/socket"
 
-
-export const GET_SUMMONER_INFO_MOCK = {
-   "data":{
-      "region":"euw",
-      "positions":[
-         "marksman"
-      ],
-      "name":"Lethly",
-      "leagues":[
-         {
-            "type":"RANKED_SOLO_5x5",
-            "tier":"GOLD",
-            "rank":"I"
-         }
-      ],
-      "champions":[
-         {
-            "name":"Vayne",
-            "id":67
-         },
-         {
-            "name":"Caitlyn",
-            "id":51
-         },
-         {
-            "name":"Ezreal",
-            "id":81
-         }
-      ]
-   }
-}
-
-export const GET_SUMMONER_INFO_MOCK2 = {
-    "data": {
-        "champions":[
-            "Vayne",
-            "Caitlyn",
-            "Ezreal"
-        ],
-        "icon_id": 512,
-        "leagues":[
-            {
-                "type":"RANKED_SOLO_5x5",
-                "tier":"GOLD",
-                "rank":"I"
-            }
-        ],
-        "positions":[
-            "marksman"
-        ],
-        "name":"Lethly",
-        "region": "euw"
-    }
-}
+// Production
+//export const backend_service = "https://api.buddy.gg/api";
+//export const socket_service = "wss://api.buddy.gg/socket"
