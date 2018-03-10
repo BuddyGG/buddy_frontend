@@ -36,8 +36,13 @@ export default class LoLAmigo extends Component {
         })
     }
 
-    openInNewTab = () =>  {
+    openInNewTabTwitter = () =>  {
         var win = window.open(`https://twitter.com/buddyggofficial`, '_blank');
+        win.focus();
+    }
+
+    openInNewTabGithub = () =>  {
+        var win = window.open(`https://github.com/BuddyGG`, '_blank');
         win.focus();
     }
 
@@ -62,12 +67,12 @@ export default class LoLAmigo extends Component {
                     <Route path={process.env.PUBLIC_URL + '/matching'} render={ () => <Matching channel={this.state.channel} criteria={this.state.criteria} matchFoundName={this.getMatchedName} />} />                    
                     <Route path={process.env.PUBLIC_URL + '/matchfound'} render={ () => <MatchFound channel={this.state.channel} name={this.state.name} />} />      
                     <div className="footer">
-                        <div className="footer-bg">
-                            <span className="footer-message">Follow us on Twitter for updates and support!</span>
-                            <Button onClick={this.openInNewTab} color='twitter'>
-                                <Icon name='twitter' /> Buddy.GG
-                            </Button>
-                        </div>
+                        <Button onClick={this.openInNewTabTwitter} color='twitter'>
+                            <Icon name='twitter' /> Buddy.GG
+                        </Button>
+                        <Button onClick={this.openInNewTabGithub} color='twitter'>
+                            <Icon name='github' /> Github
+                        </Button>
                     </div>                                  
                 </div>
             </Router>

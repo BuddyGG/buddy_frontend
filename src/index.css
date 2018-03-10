@@ -76,19 +76,16 @@ td{
 }
 .footer {
   position: fixed;
-  right: 0;
   bottom: 0;
+
   display: flex;
-  justify-content: right;
-}
-.footer > .footer-bg {
-  text-align: right;
+  justify-content: flex-end;
+  align-items: center;
   background-color: #000000c7;
   color: white;
   font-weight: bold;
   width: 100%;
   padding: 7px;
-  border-radius: 2px;
 }
 .footer > .footer-bg > .footer-message {
   margin-right: 7px;
@@ -137,6 +134,7 @@ td{
   margin: 10px;
   width: 100%;
   text-align: center;
+  margin-bottom: 60px;
 }
 .match-tile{
   display: flex;
