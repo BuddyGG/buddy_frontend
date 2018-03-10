@@ -111,6 +111,9 @@ export default class SummonerInfo extends Component {
   }
 
   handleLanguage = (e, { value }) => {
+    if (this.state.value.length >= 5){
+      return;
+    }
     this.setState({value})
   }
 
