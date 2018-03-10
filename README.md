@@ -1,5 +1,7 @@
 # LoLBuddy - Frontend
 
+[![Join the chat at https://gitter.im/BuddyGG/buddy_frontend](https://badges.gitter.im/BuddyGG/buddy_frontend.svg)](https://gitter.im/BuddyGG/buddy_frontend?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 The official repository for the LoLBuddy frontend!
 
 ## Run locally
