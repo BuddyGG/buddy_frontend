@@ -15,7 +15,6 @@ class Welcome extends Component {
         summonerInfo: null,
         channel: null,
         error: false,
-        isChallenger: false,
         already_signed_up: false
       };
     }
@@ -29,11 +28,6 @@ class Welcome extends Component {
       this.setState({
           summonerInfo: data.data,
           error: false
-      }, () => {
-        const isChallenger = convertLeague(this.state.summonerInfo.leagues).includes("CHALLENGER")
-        this.setState({
-          isChallenger: isChallenger
-        })
       })
     }
 
@@ -202,14 +196,13 @@ class Welcome extends Component {
                     <LoLAmigoHeader/>
                     <SearchSummoner loading={this.setLoader} getSummonerByName={this.getSummonerByName} errorHandler={this.handleError} />
                     { this.state.error && <Message warning header="" content="No information to show for given summoner" />}                 
-                    { this.state.isChallenger && <Message warning header="" content="Challenger players are not allowed to duo queue!" />}                 
                     { this.state.already_signed_up && <Message warning header="" content="Player already signed up!" />}                 
                   </div>
 
                   { !this.state.error && 
                     <Transition visible={summonerInfo !== null} animation={"fade down"} duration={400}>
                     <Segment inverted raised className="summoner-segment">
-                      <SummonerInfo player={this.state.summonerInfo} submit={this.getUserInput} league={league} id={this.state.id} isChallenger={this.state.isChallenger} isUnranked={this.state.isUnranked}/>                   
+                      <SummonerInfo player={this.state.summonerInfo} submit={this.getUserInput} league={league} id={this.state.id} isUnranked={this.state.isUnranked}/>                   
                     </Segment>   
                   </Transition>       
                   }
