@@ -15,6 +15,13 @@ const outliers = [
     "Kai'Sa"
 ];
 
+// async function getNewestPatchVersion(){
+//     const res = await fetch("https://ddragon.leagueoflegends.com/api/versions.json");
+//     const jsonRes = await res.json();
+
+//     return jsonRes[0];
+// }
+
 export function getChampImage(champ){
     let championString;
 
@@ -26,13 +33,12 @@ export function getChampImage(champ){
         let allLoverCase = trimmedChamp2.toLowerCase();
         championString = capitalizeFirstLetter(allLoverCase);
     }
-    
-    const champImageUrl = "https://ddragon.leagueoflegends.com/cdn/8.4.1/img/champion/" + championString + ".png";
+    const champImageUrl = `https://ddragon.leagueoflegends.com/cdn/8.5.2/img/champion/${championString}.png`;
     return <Image  centered shape="circular" src={champImageUrl} size='mini'/>;
 }
 
 export function getSummonerIcon(id){
-    const champImageUrl = "https://ddragon.leagueoflegends.com/cdn/8.4.1/img/profileicon/" + id + ".png";
+    const champImageUrl = `https://ddragon.leagueoflegends.com/cdn/8.5.2/img/profileicon/${id}.png`;
     return <Image shape="rounded" src={champImageUrl} size='tiny'/>;
 }
 

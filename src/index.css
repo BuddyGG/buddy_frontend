@@ -255,4 +255,5 @@ canvas{
 }
 .summoner-segment {
   width: 100%;
+  margin-bottom: 50px !important;
 }
