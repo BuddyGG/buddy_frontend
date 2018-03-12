@@ -15,17 +15,13 @@ export default class MostPlayed extends Component {
         return (
             <div id="top-champs">
                 <Header inverted className="no-margin-header" as="h5" textAlign='center'>Recently most played:</Header>
-                <Table id="most-played-table" basic="very" compact="very" textAlign="center">
-                    <Table.Body>
-                        <Table.Row>
-                            {
-                                this.props.champs.map((champ,index) => 
-                                    <Table.Cell key={index}><Popup position="top center" style={style} trigger={getChampImage(champ)} content={champ}/></Table.Cell>
-                                )
-                            }
-                        </Table.Row>                   
-                    </Table.Body>
-                </Table>
+                <div className="most-played">
+                    {
+                        this.props.champs.map((champ,index) => 
+                            <div key={index}><Popup position="top center" style={style} trigger={getChampImage(champ)} content={champ}/></div>
+                        )
+                    }
+                </div>
             </div>    
         );
     }

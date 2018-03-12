@@ -60,9 +60,6 @@ body {
 td{
   border-top: 0px !important; /* Used to remove the border */
 }
-#top-champs{
-  margin: 0 auto;
-}
 #summoner-info{
   width: 100%;
   display: flex;
@@ -98,10 +95,12 @@ td{
   padding-top: 0 !important;
   padding-bottom: 0 !important;
 }
-#most-played-table{
-  margin-top: 3px !important;
-}
+.most-played{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px; 
 
+}
 .region-select{
   width: 110px;
 }
@@ -256,4 +255,14 @@ canvas{
 .summoner-segment {
   width: 100%;
   margin-bottom: 50px !important;
+}
+
+@media (max-width: 600px) {
+  #positions {
+    width: 100%;
+  }
+  .no-padding-column{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
 }
