@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table, Header, Popup } from 'semantic-ui-react'
+import { Header, Popup } from 'semantic-ui-react'
 import { getChampImage } from '../../../../../config/ChampImages';
 
 export default class MostPlayed extends Component {
